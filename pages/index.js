@@ -3,13 +3,9 @@ import Head from 'next/head';
 
 const Home = () => {
   return (
-    <div>
-      <main>
-        <h1>Hello world</h1>
-      </main>
-
-      <footer></footer>
-    </div>
+    <section>
+      <p>lorem Ipsum</p>
+    </section>
   );
 };
 

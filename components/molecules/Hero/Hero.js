@@ -4,24 +4,18 @@ import Image from 'next/image';
 
 import Logo from '../../../assets/images/svg/Logo_sqr.svg';
 import HeroImage from '../../../assets/images/svg/hero_image.svg';
+import DotsGrid from '../../../assets/images/svg/dot_grid.svg';
 
 const Hero = () => {
   return (
     <>
+      <Image src={DotsGrid} />
+      <Image src={DotsGrid} />
       <div>
         <div>
           <Image src={Logo} />
           <h1>Nerdistry.</h1>
         </div>
-        <nav>
-          <ul>
-            <li>Home</li>
-            <li>Blog</li>
-            <li>About</li>
-            <li>Projects</li>
-            <li>Contact</li>
-          </ul>
-        </nav>
       </div>
       <div>
         <div>

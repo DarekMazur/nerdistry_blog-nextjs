@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Head from 'next/head';
+import Hero from '../../Hero/Hero';
 
 const Header = () => {
   return (
@@ -11,7 +12,7 @@ const Header = () => {
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <header>
-        <h1>Hello world</h1>
+        <Hero />
       </header>
     </>
   );

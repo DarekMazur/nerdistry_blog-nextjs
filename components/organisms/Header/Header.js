@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Head from 'next/head';
-import Hero from '../../Hero/Hero';
+import Hero from '../../molecules/Hero/Hero';
 
 const Header = () => {
   return (

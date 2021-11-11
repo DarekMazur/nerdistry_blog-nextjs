@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Footer = () => {
-  return <footer>DarekMazur 2021</footer>;
+  const currentYear = new Date().getFullYear();
+
+  return <footer>{currentYear} &copy; DarekMazur</footer>;
 };
 
 export default Footer;

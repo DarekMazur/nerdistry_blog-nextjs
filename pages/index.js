@@ -5,12 +5,14 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title></title>
+        <title>Lorem ipsum</title>
         <meta name="description" content="" />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
-      <main></main>
+      <main>
+        <h1>Hello world</h1>
+      </main>
 
       <footer></footer>
     </div>

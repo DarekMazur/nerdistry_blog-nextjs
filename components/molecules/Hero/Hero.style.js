@@ -22,27 +22,11 @@ export const StyledDots = styled.div`
   }
 `;
 
-export const Branding = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-export const LogoWrapper = styled.div`
-  width: 100px;
-  height: 100px;
-`;
-
-export const SiteTitle = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize.l};
-  font-family: ${({ theme }) => theme.fonts.brandingFont};
-  padding-left: 1rem;
-`;
-
 export const SloganWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 106px;
+  margin: 122px 106px 0;
 `;
 
 export const Slogan = styled.h2`
@@ -52,7 +36,6 @@ export const Slogan = styled.h2`
 `;
 
 export const HeroImageWrapper = styled.div`
-  position: relative;
   width: 307px;
   height: 260px;
 `;

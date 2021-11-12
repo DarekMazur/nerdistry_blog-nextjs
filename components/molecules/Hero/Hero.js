@@ -11,16 +11,16 @@ const Hero = () => {
     <HeroWrapper>
       <StyledDots />
       <StyledDots />
-      <Branding>
+      {/* <Branding>
         <LogoWrapper>
           <Image src={Logo} alt="Nerdistry logo" width={100} height={100} />
         </LogoWrapper>
         <SiteTitle>Nerdistry.</SiteTitle>
-      </Branding>
+      </Branding> */}
       <SloganWrapper>
         <Slogan>Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt.</Slogan>
         <HeroImageWrapper>
-          <Image src={HeroImage} alt="" layout="fill" objectFit="cover" objectPosition="left" />
+          <Image src={HeroImage} alt="" width={307} heigth={260} />
         </HeroImageWrapper>
       </SloganWrapper>
     </HeroWrapper>

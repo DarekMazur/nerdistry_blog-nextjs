@@ -1,13 +1,12 @@
 import React from 'react';
+import SectionTitle from '../../molecules/SectionTitle/SectionTitle';
+
 import { HighlightWrapper } from './Highlight.style';
 
 const Highlight = () => {
   return (
     <HighlightWrapper>
-      <div>
-        <p>Dolor sit amet</p>
-        <h3>lorem Ipsum</h3>
-      </div>
+      <SectionTitle title="Lorem Ipsum" description="Dolor Sit Amet" />
       <div>
         <div>Highlite 1</div>
         <div>Highlite 2</div>

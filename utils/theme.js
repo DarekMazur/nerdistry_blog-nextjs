@@ -8,6 +8,7 @@ export const theme = {
     brown: '#69140E',
     grey: '#707070',
     black: '#000',
+    lightPurple: '#D8DCFF',
   },
   fonts: {
     mainFont: '"Montserrat", sans-serif',

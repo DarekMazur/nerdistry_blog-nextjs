@@ -16,5 +16,8 @@ export const GlobalStyle = createGlobalStyle`
         font-family: ${({ theme }) => theme.fonts.mainFont};
         color: ${({ theme }) => theme.colors.blue};
         font-size: ${({ theme }) => theme.fontSize.m};
+        width: 100vw;
+        overflow-x: hidden;
+        background-color: ${({ theme }) => theme.colors.midWhite};
     }
 `;

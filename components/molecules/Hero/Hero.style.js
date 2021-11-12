@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import DotsGrid from '../../../assets/images/svg/dot_grid.svg';
 
 export const HeroWrapper = styled.div`
   margin: 52px 32px;
@@ -37,4 +36,23 @@ export const SiteTitle = styled.h1`
   font-size: ${({ theme }) => theme.fontSize.l};
   font-family: ${({ theme }) => theme.fonts.brandingFont};
   padding-left: 1rem;
+`;
+
+export const SloganWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 106px;
+`;
+
+export const Slogan = styled.h2`
+  font-size: ${({ theme }) => theme.fontSize.l};
+  font-family: ${({ theme }) => theme.fonts.headerFont};
+  width: 50%;
+`;
+
+export const HeroImageWrapper = styled.div`
+  position: relative;
+  width: 307px;
+  height: 260px;
 `;

@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import Logo from '../../../assets/images/svg/Logo_sqr.svg';
 import HeroImage from '../../../assets/images/svg/hero_image.svg';
-import { Branding, HeroWrapper, LogoWrapper, SiteTitle, StyledDots } from './Hero.style';
+import { Branding, HeroImageWrapper, HeroWrapper, LogoWrapper, SiteTitle, Slogan, SloganWrapper, StyledDots } from './Hero.style';
 
 const Hero = () => {
   return (
@@ -17,12 +17,12 @@ const Hero = () => {
         </LogoWrapper>
         <SiteTitle>Nerdistry.</SiteTitle>
       </Branding>
-      <div>
-        <div>
-          <h2>Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt.</h2>
-        </div>
-        <Image src={HeroImage} />
-      </div>
+      <SloganWrapper>
+        <Slogan>Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt.</Slogan>
+        <HeroImageWrapper>
+          <Image src={HeroImage} alt="" layout="fill" objectFit="cover" objectPosition="left" />
+        </HeroImageWrapper>
+      </SloganWrapper>
     </HeroWrapper>
   );
 };

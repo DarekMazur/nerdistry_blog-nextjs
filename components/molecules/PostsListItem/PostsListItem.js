@@ -12,27 +12,37 @@ import {
   PostTitleWrapper,
 } from './PostsListItem.style';
 
-const PostsListItem = () => {
+const PostsListItem = ({ title, content, publishdate, photo, author, authorPhoto }) => {
+  const shortenContent = (content) => {
+    const contentToArray = content.split(' ');
+    const shorterContentArray = contentToArray.slice(0, 29);
+    const shorterContent = `${shorterContentArray.join(' ')} [...]`;
+    return shorterContent;
+  };
+
+  const readingTime = (content) => {
+    const words = content.trim().split(/\s+/).length;
+    const wps = 225;
+    const estimateReadingTime = Math.ceil(words / wps);
+    return estimateReadingTime;
+  };
+
   return (
     <PostListItemWrapper>
       <PostTitleWrapper>
-        <h4>Lorem Ipsum</h4>
-        <p>01.01.2021</p>
+        <h4>{title}</h4>
+        <p>{publishdate}</p>
       </PostTitleWrapper>
       <PostItemContentWrapper>
-        <PostImage imageUrl="https://images.unsplash.com/photo-1485856407642-7f9ba0268b51"></PostImage>
+        <PostImage imageUrl={photo}></PostImage>
         <PostContent>
           <PostTeaser>
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-              sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-              ipsum dolor sit amet. Lorem ipsum.
-            </p>
-            <p>Read in 3 minutes</p>
+            <p>{shortenContent(content)}</p>
+            <p>Read in {readingTime(content)} minutes</p>
           </PostTeaser>
           <PostAuthor>
-            <Avatar imageUrl="/image.jpg" />
-            <AuthorName>John Doe</AuthorName>
+            <Avatar imageUrl={authorPhoto} />
+            <AuthorName>{author}</AuthorName>
           </PostAuthor>
           <CTAbutton>Read more</CTAbutton>
         </PostContent>

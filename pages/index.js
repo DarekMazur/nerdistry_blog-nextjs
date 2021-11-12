@@ -1,9 +1,9 @@
+import Highlight from '../components/organisms/Highlight/Highlight';
+
 const Home = () => {
   return (
     <>
-      <section>
-        <p>lorem Ipsum</p>
-      </section>
+      <Highlight />
       <section>
         <p>lorem Ipsum</p>
       </section>

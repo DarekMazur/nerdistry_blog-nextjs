@@ -19,5 +19,7 @@ export const GlobalStyle = createGlobalStyle`
         width: 100vw;
         overflow-x: hidden;
         background-color: ${({ theme }) => theme.colors.midWhite};
+        padding: 0;
+        margin: 0;
     }
 `;

@@ -2,7 +2,7 @@ import { ThemeProvider } from 'styled-components';
 
 import Layout from '../components/templates/Layout/Layout';
 import { GlobalStyle } from '../styles/globalStyle';
-import { theme } from './theme';
+import { theme } from '../utils/theme';
 
 function MyApp({ Component, pageProps }) {
   return (

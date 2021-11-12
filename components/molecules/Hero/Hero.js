@@ -5,12 +5,16 @@ import Image from 'next/image';
 import Logo from '../../../assets/images/svg/Logo_sqr.svg';
 import HeroImage from '../../../assets/images/svg/hero_image.svg';
 import DotsGrid from '../../../assets/images/svg/dot_grid.svg';
+import { HeroWrapper, StyledDots } from './Hero.style';
 
 const Hero = () => {
   return (
-    <>
-      <Image src={DotsGrid} />
-      <Image src={DotsGrid} />
+    <HeroWrapper>
+      <StyledDots />
+      <StyledDots />
+      {/* <Image src={DotsGrid} alt="" width={485} height={382} />
+      </StyledDots> */}
+      {/* <Image src={DotsGrid} /> */}
       <div>
         <div>
           <Image src={Logo} />
@@ -23,7 +27,7 @@ const Hero = () => {
         </div>
         <Image src={HeroImage} />
       </div>
-    </>
+    </HeroWrapper>
   );
 };
 

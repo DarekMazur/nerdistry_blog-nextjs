@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import DotsGrid from '../../../assets/images/svg/dot_grid.svg';
 
 export const HeroWrapper = styled.div`
-  display: flex;
+  margin: 52px 32px;
 `;
 
 export const StyledDots = styled.div`
@@ -21,4 +21,20 @@ export const StyledDots = styled.div`
     top: 277px;
     left: 0;
   }
+`;
+
+export const Branding = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const LogoWrapper = styled.div`
+  width: 100px;
+  height: 100px;
+`;
+
+export const SiteTitle = styled.h1`
+  font-size: ${({ theme }) => theme.fontSize.l};
+  font-family: ${({ theme }) => theme.fonts.brandingFont};
+  padding-left: 1rem;
 `;

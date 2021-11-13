@@ -1,13 +1,21 @@
 import React from 'react';
-import { fakePosts } from '../../../assets/data/fakeData';
 import PostsListItem from '../../molecules/PostsListItem/PostsListItem';
 import { PostListWrapper } from './PostsList.style';
 
-const PostsList = () => {
+const PostsList = ({ posts }) => {
   return (
     <PostListWrapper>
-      {fakePosts.map(({ id, title, content, publishdate, photo, author, authorPhoto }) => (
-        <PostsListItem key={id} title={title} content={content} publishdate={publishdate} photo={photo} author={author} authorPhoto={authorPhoto} />
+      {posts.map(({ id, Title, Description, Content, published_at, CoverImage, User }) => (
+        <PostsListItem
+          key={id}
+          title={Title}
+          content={Content}
+          publishdate={published_at}
+          photo={`http://localhost:1337${CoverImage.url}`}
+          author={User.username}
+          authorPhoto={`http://localhost:1337${User.Avatar.url}`}
+          description={Description}
+        />
       ))}
     </PostListWrapper>
   );

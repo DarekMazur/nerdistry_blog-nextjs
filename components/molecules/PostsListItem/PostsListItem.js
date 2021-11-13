@@ -13,7 +13,7 @@ import {
   PostTitleWrapper,
 } from './PostsListItem.style';
 
-const PostsListItem = ({ title, content, publishdate, photo, author, authorPhoto }) => {
+const PostsListItem = ({ title, description, content, publishdate, photo, author, authorPhoto }) => {
   const shortenContent = (content) => {
     const contentToArray = content.split(' ');
     const shorterContentArray = contentToArray.slice(0, 29);
@@ -44,7 +44,7 @@ const PostsListItem = ({ title, content, publishdate, photo, author, authorPhoto
         <PostImage imageUrl={photo}></PostImage>
         <PostContent>
           <PostTeaser>
-            <p>{shortenContent(content)}</p>
+            <p>{description ? description : shortenContent(content)}</p>
             <p>Read in {readingTime(content)} minutes</p>
           </PostTeaser>
           <PostAuthor>

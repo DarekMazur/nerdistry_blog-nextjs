@@ -5,13 +5,15 @@ import SectionTitle from '../../molecules/SectionTitle/SectionTitle';
 import PostsList from '../PostsList/PostsList';
 import { LatestBlogWrapper } from './LatestBlog.style';
 
-const LatestBlog = () => {
+const LatestBlog = ({ posts }) => {
+  const latestPosts = posts.reverse().slice(0, 5);
+
   return (
     <LatestBlogWrapper>
       <CircleImage />
       <HeptagonImage />
       <SectionTitle title="Lorem Ipsum" description="Dolor Sit Amet" />
-      <PostsList />
+      <PostsList posts={latestPosts} />
     </LatestBlogWrapper>
   );
 };

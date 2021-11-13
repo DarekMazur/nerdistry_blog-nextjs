@@ -1,4 +1,5 @@
 import React from 'react';
+import slugify from 'slugify';
 import { CTAbutton } from '../../atoms/CTAbutton/CTAbutton.style';
 import {
   AuthorName,
@@ -27,11 +28,17 @@ const PostsListItem = ({ title, content, publishdate, photo, author, authorPhoto
     return estimateReadingTime;
   };
 
+  const PublishAtDay = new Date(publishdate).getDate();
+  const PublishAtMonth = new Date(publishdate).getMonth() + 1;
+  const PublishAtYear = new Date(publishdate).getFullYear();
+  const dateToDisplay = `${PublishAtDay}.${PublishAtMonth}.${PublishAtYear}`;
+
   return (
     <PostListItemWrapper>
+      {console.log(slugify(title, { remove: /[*+~.()'"!:@]/g, lower: true }))}
       <PostTitleWrapper>
         <h4>{title}</h4>
-        <p>{publishdate}</p>
+        <p>{dateToDisplay}</p>
       </PostTitleWrapper>
       <PostItemContentWrapper>
         <PostImage imageUrl={photo}></PostImage>

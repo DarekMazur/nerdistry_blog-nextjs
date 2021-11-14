@@ -19,4 +19,9 @@ export const SocialMediaListItem = styled.li`
   &:hover {
     opacity: 1;
   }
+
+  a:visited,
+  a:active {
+    color: inherit;
+  }
 `;

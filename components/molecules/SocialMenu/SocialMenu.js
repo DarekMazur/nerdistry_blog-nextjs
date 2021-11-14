@@ -10,13 +10,19 @@ export const SocialMenu = () => {
   return (
     <SocialMediaList>
       <SocialMediaListItem>
-        <FontAwesomeIcon icon={['fab', 'facebook-square']} />
+        <a href={process.env.NEXT_PUBLIC_FACEBOOK} target="_blank">
+          <FontAwesomeIcon icon={['fab', 'facebook-square']} />
+        </a>
       </SocialMediaListItem>
       <SocialMediaListItem>
-        <FontAwesomeIcon icon={['fab', 'twitter-square']} />
+        <a href={process.env.NEXT_PUBLIC_TWITTER} target="_blank">
+          <FontAwesomeIcon icon={['fab', 'twitter-square']} />
+        </a>
       </SocialMediaListItem>
       <SocialMediaListItem>
-        <FontAwesomeIcon icon={['fab', 'instagram']} />
+        <a href={process.env.NEXT_PUBLIC_INSTAGRAM} target="_blank">
+          <FontAwesomeIcon icon={['fab', 'instagram']} />
+        </a>
       </SocialMediaListItem>
     </SocialMediaList>
   );

@@ -23,7 +23,7 @@ const Home = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:1337/posts');
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts`);
   const posts = await res.json();
 
   return {

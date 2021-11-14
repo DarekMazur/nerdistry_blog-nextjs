@@ -22,18 +22,12 @@ export const StyledDots = styled.div`
   }
 `;
 
-export const SloganWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 122px 106px 0;
-`;
-
-export const Slogan = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.l};
-  font-family: ${({ theme }) => theme.fonts.headerFont};
-  width: 50%;
-`;
+// export const SloganWrapper = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   margin: 122px 106px 0;
+// `;
 
 export const HeroImageWrapper = styled.div`
   width: 307px;

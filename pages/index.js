@@ -20,11 +20,13 @@ const Home = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts?_sort=published_at:DESC&_limit=5`);
   const posts = await res.json();
 
   return {
-    props: { posts },
+    props: {
+      posts,
+    },
   };
 }
 

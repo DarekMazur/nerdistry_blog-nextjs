@@ -23,7 +23,6 @@ const Navigation = () => {
 
   return (
     <NavigationWrapper isScroll={scrollPosition > 200}>
-      {console.log(scrollPosition)}
       <Branding isScroll={scrollPosition > 200}>
         <LogoWrapper isScroll={scrollPosition > 200}>
           <Image src={Logo} alt="Nerdistry logo" layout="fill" objectFit="cover" />

@@ -9,16 +9,16 @@ const PostsList = () => {
 
   return (
     <PostListWrapper>
-      {latestPosts.map(({ id, Title, Description, Content, published_at, CoverImage, User }) => (
+      {latestPosts.map(({ id, Title, Description, Content, published_at, CoverImage, MainCategory, SecondaryCategory, Tags }) => (
         <PostsListItem
           key={id}
           title={Title}
           content={Content}
           publishdate={published_at}
           photo={CoverImage.url}
-          author={User.username}
-          authorPhoto={User.Avatar.url}
+          category={[MainCategory, SecondaryCategory]}
           description={Description}
+          tags={Tags}
         />
       ))}
     </PostListWrapper>

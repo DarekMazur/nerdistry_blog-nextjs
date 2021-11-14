@@ -1,15 +1,24 @@
+import React from 'react';
 import Highlight from '../components/organisms/Highlight/Highlight';
 import LatestBlog from '../components/organisms/LatestBlog/LatestBlog';
 
+export const PostsContext = React.createContext({
+  posts: [],
+});
+
 const Home = ({ posts }) => {
   return (
-    <>
+    <PostsContext.Provider
+      value={{
+        posts,
+      }}
+    >
       <Highlight />
-      <LatestBlog posts={posts} />
+      <LatestBlog />
       <section>
         <p>lorem Ipsum</p>
       </section>
-    </>
+    </PostsContext.Provider>
   );
 };
 

@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { PostsContext } from '../../../pages';
 import PostsListItem from '../../molecules/PostsListItem/PostsListItem';
 import { PostListWrapper } from './PostsList.style';
 
-const PostsList = ({ posts }) => {
+const PostsList = () => {
+  const { posts } = useContext(PostsContext);
+  const latestPosts = posts.reverse().slice(0, 5);
+
   return (
     <PostListWrapper>
-      {posts.map(({ id, Title, Description, Content, published_at, CoverImage, User }) => (
+      {latestPosts.map(({ id, Title, Description, Content, published_at, CoverImage, User }) => (
         <PostsListItem
           key={id}
           title={Title}

@@ -35,7 +35,7 @@ const PostsListItem = ({ title, description, content, publishdate, photo, author
 
   return (
     <PostListItemWrapper>
-      {console.log(slugify(title, { remove: /[*+~.()'"!:@]/g, lower: true }))}
+      {/* {console.log(slugify(title, { remove: /[*+~.()'"!:@]/g, lower: true }))} */}
       <PostTitleWrapper>
         <h4>{title}</h4>
         <p>{dateToDisplay}</p>

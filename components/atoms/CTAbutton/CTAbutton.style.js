@@ -14,4 +14,28 @@ export const CTAbutton = styled.button`
   font-weight: 700;
   background-color: ${({ theme }) => theme.colors.yellow};
   border: ${({ theme }) => `0.3rem solid ${theme.colors.brown}`};
+  transition: color 0.15s 0.1s ease-in-out;
+  z-index: 2;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.yellow};
+  }
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: ${({ theme }) => theme.colors.brown};
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    transition: transform 0.4s ease-in-out;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
 `;

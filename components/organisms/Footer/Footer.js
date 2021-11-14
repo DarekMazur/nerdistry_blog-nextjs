@@ -1,9 +1,10 @@
 import React from 'react';
+import { StyledFooter } from './Footer.style';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  return <footer>{currentYear} &copy; DarekMazur</footer>;
+  return <StyledFooter>{currentYear} &copy; DarekMazur</StyledFooter>;
 };
 
 export default Footer;

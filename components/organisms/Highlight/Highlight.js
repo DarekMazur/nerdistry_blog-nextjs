@@ -1,28 +1,40 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { PostsContext } from '../../../pages';
 import SectionTitle from '../../molecules/SectionTitle/SectionTitle';
 
 import { HighlightNews, HighlightNewsTitleContainer, HighlightNewsTitle, HighlightNewsWrapper, HighlightWrapper } from './Highlight.style';
 
 const Highlight = () => {
+  const { posts } = useContext(PostsContext);
+  const highlightedPosts = posts.filter((post) => post.Hilghlight);
+  const lastHighlitedPosts = highlightedPosts.reverse().slice(0, 3);
+
+  if (lastHighlitedPosts.length !== 3) {
+    const range = posts.length;
+
+    const getRandomId = () => {
+      return Math.ceil(Math.random() * range);
+    };
+
+    do {
+      let newId = getRandomId();
+      if (!lastHighlitedPosts.includes(posts.find((post) => post.id === newId))) {
+        lastHighlitedPosts.push(posts.find((post) => post.id === newId));
+      }
+    } while (lastHighlitedPosts.length !== 3);
+  }
+
   return (
     <HighlightWrapper>
       <SectionTitle title="Lorem Ipsum" description="Dolor Sit Amet" />
       <HighlightNewsWrapper>
-        <HighlightNews imageUrl="https://images.unsplash.com/photo-1485856407642-7f9ba0268b51">
-          <HighlightNewsTitleContainer>
-            <HighlightNewsTitle>Highlight 1</HighlightNewsTitle>
-          </HighlightNewsTitleContainer>
-        </HighlightNews>
-        <HighlightNews imageUrl="https://images.unsplash.com/photo-1603468620905-8de7d86b781e">
-          <HighlightNewsTitleContainer>
-            <HighlightNewsTitle>Highlight 2</HighlightNewsTitle>
-          </HighlightNewsTitleContainer>
-        </HighlightNews>
-        <HighlightNews imageUrl="https://images.unsplash.com/photo-1526649661456-89c7ed4d00b8">
-          <HighlightNewsTitleContainer>
-            <HighlightNewsTitle>Highlight 3</HighlightNewsTitle>
-          </HighlightNewsTitleContainer>
-        </HighlightNews>
+        {lastHighlitedPosts.map((lastHighlightedPost) => (
+          <HighlightNews key={lastHighlightedPost.id} imageUrl={`http://localhost:1337${lastHighlightedPost.CoverImage.url}`}>
+            <HighlightNewsTitleContainer>
+              <HighlightNewsTitle>{lastHighlightedPost.MainCategory}</HighlightNewsTitle>
+            </HighlightNewsTitleContainer>
+          </HighlightNews>
+        ))}
       </HighlightNewsWrapper>
     </HighlightWrapper>
   );

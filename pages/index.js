@@ -13,7 +13,7 @@ const Home = ({ posts }) => {
         posts,
       }}
     >
-      <Highlight />
+      {posts.length >= 3 ? <Highlight /> : null}
       <LatestBlog />
       <section>
         <p>lorem Ipsum</p>

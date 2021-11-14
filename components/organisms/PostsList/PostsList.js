@@ -15,9 +15,9 @@ const PostsList = () => {
           title={Title}
           content={Content}
           publishdate={published_at}
-          photo={`http://localhost:1337${CoverImage.url}`}
+          photo={CoverImage.url}
           author={User.username}
-          authorPhoto={`http://localhost:1337${User.Avatar.url}`}
+          authorPhoto={User.Avatar.url}
           description={Description}
         />
       ))}

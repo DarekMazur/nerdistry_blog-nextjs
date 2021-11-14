@@ -29,7 +29,7 @@ const Highlight = () => {
       <SectionTitle title="Lorem Ipsum" description="Dolor Sit Amet" />
       <HighlightNewsWrapper>
         {lastHighlitedPosts.map((lastHighlightedPost) => (
-          <HighlightNews key={lastHighlightedPost.id} imageUrl={`http://localhost:1337${lastHighlightedPost.CoverImage.url}`}>
+          <HighlightNews key={lastHighlightedPost.id} imageUrl={lastHighlightedPost.CoverImage.url}>
             <HighlightNewsTitleContainer>
               <HighlightNewsTitle>{lastHighlightedPost.MainCategory}</HighlightNewsTitle>
             </HighlightNewsTitleContainer>

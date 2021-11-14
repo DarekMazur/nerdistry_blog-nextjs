@@ -1,19 +1,9 @@
 import React from 'react';
 import slugify from 'slugify';
 import { CTAbutton } from '../../atoms/CTAbutton/CTAbutton.style';
-import {
-  AuthorName,
-  Avatar,
-  PostAuthor,
-  PostContent,
-  PostImage,
-  PostItemContentWrapper,
-  PostListItemWrapper,
-  PostTeaser,
-  PostTitleWrapper,
-} from './PostsListItem.style';
+import { PostContent, PostImage, PostItemContentWrapper, PostListItemWrapper, PostTeaser, PostTitleWrapper } from './PostsListItem.style';
 
-const PostsListItem = ({ title, description, content, publishdate, photo, author, authorPhoto }) => {
+const PostsListItem = ({ title, description, content, publishdate, photo }) => {
   const shortenContent = (content) => {
     const contentToArray = content.split(' ');
     const shorterContentArray = contentToArray.slice(0, 29);
@@ -47,10 +37,6 @@ const PostsListItem = ({ title, description, content, publishdate, photo, author
             <p>{description ? description : shortenContent(content)}</p>
             <p>Read in {readingTime(content)} minutes</p>
           </PostTeaser>
-          <PostAuthor>
-            <Avatar imageUrl={authorPhoto} />
-            <AuthorName>{author}</AuthorName>
-          </PostAuthor>
           <CTAbutton>Read more</CTAbutton>
         </PostContent>
       </PostItemContentWrapper>

@@ -23,11 +23,11 @@ export const CTAbutton = styled.button`
 
   &::before {
     content: '';
-    width: 100%;
+    width: calc(100% + 0.1rem);
     height: 100%;
     position: absolute;
     top: 0;
-    left: 0;
+    left: -0.1rem;
     background-color: ${({ theme }) => theme.colors.brown};
     transform: scaleX(0);
     transform-origin: 0 0;

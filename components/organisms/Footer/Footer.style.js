@@ -5,7 +5,7 @@ export const StyledFooter = styled.footer`
   display: flex;
   background-color: ${({ theme }) => theme.colors.blue};
   font-family: ${({ theme }) => theme.fonts.headerFont};
-  font-size: ${({ theme }) => theme.fontSize.l};
+  font-size: ${({ theme }) => theme.fontSize.lm};
   font-weight: 700;
   color: ${({ theme }) => theme.colors.yellow};
   padding: 18.4rem 5.2rem 0;

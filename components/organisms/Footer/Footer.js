@@ -1,7 +1,7 @@
 import React from 'react';
 import { SocialMenu } from '../../molecules/SocialMenu/SocialMenu';
 
-import { FooterContent, FooterLogoImage, SocialMediaMenu, StyledFooter } from './Footer.style';
+import { Dashes, FooterContent, FooterLogoImage, StyledFooter } from './Footer.style';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,6 +10,7 @@ const Footer = () => {
     <StyledFooter>
       <FooterLogoImage />
       <FooterContent>
+        <Dashes />
         {currentYear} &copy; DarekMazur
         <SocialMenu />
       </FooterContent>

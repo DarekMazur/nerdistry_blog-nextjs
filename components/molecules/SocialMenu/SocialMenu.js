@@ -1,12 +1,24 @@
 import React from 'react';
-import { SocialMediaMenu } from './SocialMenu.style';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+
+library.add(fab);
+
+import { SocialMediaListItem, SocialMediaList } from './SocialMenu.style';
 
 export const SocialMenu = () => {
   return (
-    <SocialMediaMenu>
-      <li>t</li>
-      <li>f</li>
-      <li>i</li>
-    </SocialMediaMenu>
+    <SocialMediaList>
+      <SocialMediaListItem>
+        <FontAwesomeIcon icon={['fab', 'facebook-square']} />
+      </SocialMediaListItem>
+      <SocialMediaListItem>
+        <FontAwesomeIcon icon={['fab', 'twitter-square']} />
+      </SocialMediaListItem>
+      <SocialMediaListItem>
+        <FontAwesomeIcon icon={['fab', 'instagram']} />
+      </SocialMediaListItem>
+    </SocialMediaList>
   );
 };

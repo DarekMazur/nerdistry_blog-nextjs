@@ -41,7 +41,6 @@ const PostsListItem = ({ title, description, content, publishdate, photo, author
         <p>{dateToDisplay}</p>
       </PostTitleWrapper>
       <PostItemContentWrapper>
-        {console.log(photo)}
         <PostImage imageUrl={photo}></PostImage>
         <PostContent>
           <PostTeaser>

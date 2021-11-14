@@ -15,9 +15,6 @@ const Home = ({ posts }) => {
     >
       {posts.length >= 3 ? <Highlight /> : null}
       <LatestBlog />
-      {/* <section>
-        <p>lorem Ipsum</p>
-      </section> */}
     </PostsContext.Provider>
   );
 };

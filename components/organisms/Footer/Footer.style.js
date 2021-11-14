@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledFooter = styled.footer`
+  position: relative;
   display: flex;
   background-color: ${({ theme }) => theme.colors.blue};
   font-family: ${({ theme }) => theme.fonts.headerFont};

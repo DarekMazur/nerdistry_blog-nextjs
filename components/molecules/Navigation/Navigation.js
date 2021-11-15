@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 import Image from 'next/image';
 
@@ -7,6 +9,7 @@ import { NavigationList, NavigationListItem, NavigationWrapper, StyledNavigation
 import Logo from '../../../assets/images/svg/Logo_sqr.svg';
 
 const Navigation = () => {
+  const { route } = useRouter();
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -31,8 +34,16 @@ const Navigation = () => {
       </Branding>
       <StyledNavigation>
         <NavigationList isScroll={scrollPosition > 200}>
-          <NavigationListItem>Home</NavigationListItem>
-          <NavigationListItem>Blog</NavigationListItem>
+          <Link href="/" passHref>
+            <NavigationListItem linkto="home" route={route} as="a">
+              Home
+            </NavigationListItem>
+          </Link>
+          <Link href="/blog" passHref>
+            <NavigationListItem linkto="blog" route={route} as="a">
+              Blog
+            </NavigationListItem>
+          </Link>
           <NavigationListItem>About</NavigationListItem>
           <NavigationListItem>Projects</NavigationListItem>
           <NavigationListItem>Contact</NavigationListItem>

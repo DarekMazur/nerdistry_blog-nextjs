@@ -33,7 +33,31 @@ export const NavigationList = styled.ul`
 `;
 
 export const NavigationListItem = styled.li`
+  position: relative;
   margin-left: 4rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.1s ease-in-out;
+
+  &:active,
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.2rem;
+    background-color: ${({ theme }) => theme.colors.blue};
+    display: ${({ href, route }) => (href === route && route !== undefined ? 'block' : 'none')};
+  }
 `;
 
 export const Branding = styled.div`

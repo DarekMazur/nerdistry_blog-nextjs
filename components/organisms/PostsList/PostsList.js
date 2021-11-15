@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { PostsContext } from '../../../pages';
 import { BlogContext } from '../../../pages/blog';
+import Loading from '../../molecules/Loading/Loaging';
 import PostsListItem from '../../molecules/PostsListItem/PostsListItem';
 import { PostListWrapper } from './PostsList.style';
 
@@ -24,8 +25,13 @@ const PostsList = ({ isBlog }) => {
 
   return (
     <PostListWrapper>
-      <InfiniteScroll dataLength={postsList.length} next={getMorePosts} hasMore={hasMore} loader={'Loading...'} endMessage={`That's all :)`}>
-        {console.log(`numberOfPosts: ${numberOfPosts}, postsList.length: ${postsList.length}, hasMore: ${hasMore}`)}
+      <InfiniteScroll
+        dataLength={postsList.length}
+        next={getMorePosts}
+        hasMore={true}
+        loader={<Loading />}
+        endMessage={isBlog ? `That's all :)` : null}
+      >
         {postsList.map(({ id, Title, Description, Content, published_at, CoverImage, MainCategory, SecondaryCategory, Tags }) => (
           <PostsListItem
             key={id}

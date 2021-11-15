@@ -21,14 +21,12 @@ const PostsListItem = ({ title, description, content, publishdate, photo, catego
       <PostItemContentWrapper>
         <PostImage imageUrl={photo}></PostImage>
         <PostContent>
-          {/* <ul>{category.map((cat) => (cat ? <li>{cat}</li> : null))}</ul> */}
           <PostContentList list={category} />
           <PostTeaser>
             <p>{description ? description : shortenContent(content)}</p>
             <p>Read in {readingTime(content)} minutes</p>
           </PostTeaser>
           <PostContentList list={tagsArray} isTagList />
-          {/* <ul>{tagsArray ? tagsArray.map((tag) => <li>{`#${tag}`}</li>) : null}</ul> */}
           <CTAbutton>Read more</CTAbutton>
         </PostContent>
       </PostItemContentWrapper>

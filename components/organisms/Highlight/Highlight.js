@@ -6,7 +6,7 @@ import { HighlightNews, HighlightNewsTitleContainer, HighlightNewsTitle, Highlig
 
 const Highlight = () => {
   const { posts } = useContext(PostsContext);
-  // const highlightedPosts = posts.filter((post) => post.Hilghlight);
+  const highlightedPosts = posts.filter((post) => post.Hilghlight);
   // const lastHighlitedPosts = highlightedPosts.reverse().slice(0, 3);
 
   // if (lastHighlitedPosts.length !== 3) {
@@ -28,7 +28,7 @@ const Highlight = () => {
     <HighlightWrapper>
       <SectionTitle title="Lorem Ipsum" description="Dolor Sit Amet" />
       <HighlightNewsWrapper>
-        {posts.map((lastHighlightedPost) => (
+        {highlightedPosts.map((lastHighlightedPost) => (
           <HighlightNews key={lastHighlightedPost.id} imageUrl={lastHighlightedPost.CoverImage.url}>
             <HighlightNewsTitleContainer>
               <HighlightNewsTitle>{lastHighlightedPost.MainCategory}</HighlightNewsTitle>

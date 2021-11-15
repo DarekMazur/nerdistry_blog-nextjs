@@ -2,6 +2,7 @@ import React from 'react';
 import slugify from 'slugify';
 import { dateToDisplay, readingTime, shortenContent } from '../../../utils/helpers';
 import { CTAbutton } from '../../atoms/CTAbutton/CTAbutton.style';
+import { TitleH4 } from '../../atoms/TitleH4/TitleH4.style';
 import PostContentList from '../PostContentList/PostContentList';
 import { PostContent, PostImage, PostItemContentWrapper, PostListItemWrapper, PostTeaser, PostTitleWrapper } from './PostsListItem.style';
 
@@ -14,7 +15,7 @@ const PostsListItem = ({ title, description, content, publishdate, photo, catego
     <PostListItemWrapper>
       {/* {console.log(slugify(title, { remove: /[*+~.()'"!:@]/g, lower: true }))} */}
       <PostTitleWrapper>
-        <h4>{title}</h4>
+        <TitleH4>{title}</TitleH4>
         <p>{dateToDisplay(publishdate)}</p>
       </PostTitleWrapper>
       <PostItemContentWrapper>

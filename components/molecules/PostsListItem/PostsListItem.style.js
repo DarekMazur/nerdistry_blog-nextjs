@@ -13,12 +13,6 @@ export const PostTitleWrapper = styled.div`
   margin-bottom: 0.8rem;
   font-family: ${({ theme }) => theme.fonts.secondaryHeaderFont};
 
-  h4 {
-    font-size: ${({ theme }) => theme.fontSize.l};
-    color: ${({ theme }) => theme.colors.brown};
-    margin: 0;
-  }
-
   p {
     font-size: ${({ theme }) => theme.fontSize.s};
     color: ${({ theme }) => theme.colors.blue};

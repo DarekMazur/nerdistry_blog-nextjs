@@ -9,7 +9,7 @@ export const HeptagonImage = styled.div`
   width: 236px;
   height: 235px;
   background-color: ${({ theme, bColor }) => (bColor ? theme.colors[bColor] : theme.colors.brown)};
-  mask: url(heptagon.svg) no-repeat;
+  mask: url(/heptagon.svg) no-repeat;
   mask-size: contain;
   opacity: 0.5;
   z-index: -1;

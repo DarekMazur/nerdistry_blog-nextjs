@@ -2,14 +2,19 @@ import React, { useContext, useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { PostsContext } from '../../../pages';
 import { BlogContext } from '../../../pages/blog';
+import { CategoryContext } from '../../../pages/category/[categorySlug]';
 import { TitleH4 } from '../../atoms/TitleH4/TitleH4.style';
 import Loading from '../../molecules/Loading/Loaging';
 import PostsListItem from '../../molecules/PostsListItem/PostsListItem';
 import { PostListWrapper } from './PostsList.style';
 
 const PostsList = ({ isBlog }) => {
-  const { posts, blogPosts, numberOfPosts } = useContext(isBlog ? BlogContext : PostsContext);
-  const postsToDisplay = isBlog ? blogPosts : posts;
+  const { posts, blogPosts, categoryPosts, numberOfPosts } = useContext(
+    isBlog ? (isBlog === 'category' ? CategoryContext : BlogContext) : PostsContext
+  );
+  const postsToDisplay = isBlog ? (isBlog === 'category' ? categoryPosts : blogPosts) : posts;
+
+  console.log(postsToDisplay);
 
   const [postsList, setPostList] = useState([...postsToDisplay]);
   const [hasMore, setHasMore] = useState(true);

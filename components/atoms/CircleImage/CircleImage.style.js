@@ -7,7 +7,7 @@ export const CircleImage = styled.div`
   width: 298px;
   height: 289px;
   background-color: ${({ theme }) => theme.colors.lightBlue};
-  mask: url(circle.svg) no-repeat;
+  mask: url(/circle.svg) no-repeat;
   mask-size: contain;
   opacity: 0.5;
   z-index: -1;

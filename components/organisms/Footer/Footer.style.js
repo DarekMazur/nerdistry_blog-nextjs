@@ -15,7 +15,7 @@ export const FooterLogoImage = styled.div`
   width: 20rem;
   height: 7rem;
   background-color: ${({ theme }) => theme.colors.midWhite};
-  mask: url(Logo.svg) no-repeat;
+  mask: url(/Logo.svg) no-repeat;
   mask-size: cover;
   opacity: 0.4;
 `;
@@ -38,7 +38,7 @@ export const Dashes = styled.div`
   width: 100%;
   height: 0.8rem;
   background-color: ${({ theme }) => theme.colors.yellow};
-  mask: url(line.svg) no-repeat;
+  mask: url(/line.svg) no-repeat;
   margin: 0;
   padding: 0;
 `;

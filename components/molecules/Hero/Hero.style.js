@@ -11,7 +11,7 @@ export const StyledDots = styled.div`
   width: 485px;
   height: 382px;
   background-color: ${({ theme }) => theme.colors.yellow};
-  mask: url(dot_grid.svg);
+  mask: url(/dot_grid.svg);
   mask-size: cover;
   opacity: 0.3;
   z-index: -1;
@@ -21,13 +21,6 @@ export const StyledDots = styled.div`
     left: 0;
   }
 `;
-
-// export const SloganWrapper = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   margin: 122px 106px 0;
-// `;
 
 export const HeroImageWrapper = styled.div`
   width: 307px;

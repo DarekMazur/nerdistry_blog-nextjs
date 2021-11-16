@@ -7,13 +7,11 @@ export const CategoryContext = React.createContext({
   categoryPosts: [],
 });
 
-const CategoryPosts = ({ getCategory }) => {
-  const posts = getCategory.posts;
-
+const CategoryPosts = ({ getCategory, getPosts }) => {
   return (
     <CategoryContext.Provider
       value={{
-        categoryPosts: posts,
+        categoryPosts: getPosts,
       }}
     >
       <SectionTitle title={`Posts from category ${getCategory.Name}:`} />
@@ -47,11 +45,16 @@ export async function getStaticProps(context) {
   const getAllCategories = await res.json();
 
   const getCategory = getAllCategories.find((category) => slugify(category.Name, { remove: /[*+~.()'"!:@]/g, lower: true }) === slug);
-  console.log(getCategory);
+
+  console.log(getCategory.Name);
+
+  const postRes = await fetch(`http://localhost:1337/posts?categories.Name=${getCategory.Name}`);
+  const getPosts = await postRes.json();
 
   return {
     props: {
       getCategory,
+      getPosts,
     },
   };
 }

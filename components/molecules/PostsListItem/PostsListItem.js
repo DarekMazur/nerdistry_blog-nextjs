@@ -6,7 +6,7 @@ import { TitleH4 } from '../../atoms/TitleH4/TitleH4.style';
 import PostContentList from '../PostContentList/PostContentList';
 import { PostContent, PostImage, PostItemContentWrapper, PostListItemWrapper, PostTeaser, PostTitleWrapper } from './PostsListItem.style';
 
-const PostsListItem = ({ title, description, content, publishdate, photo, category, tags }) => {
+const PostsListItem = ({ title, content, publishdate, photo, category, description, tags }) => {
   readingTime(content);
 
   const tagsArray = tags ? tags.split(', ') : null;

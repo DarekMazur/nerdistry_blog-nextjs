@@ -14,8 +14,6 @@ const PostsList = ({ isBlog }) => {
   );
   const postsToDisplay = isBlog ? (isBlog === 'category' ? categoryPosts : blogPosts) : posts;
 
-  console.log(postsToDisplay);
-
   const [postsList, setPostList] = useState([...postsToDisplay]);
   const [hasMore, setHasMore] = useState(true);
 
@@ -38,17 +36,19 @@ const PostsList = ({ isBlog }) => {
         loader={<Loading />}
         endMessage={isBlog ? <TitleH4 isSmall>That's all for now. Return later for more content :)</TitleH4> : null}
       >
-        {postsList.map(({ id, Title, Description, Content, published_at, CoverImage, MainCategory, SecondaryCategory, Tags }) => (
-          <PostsListItem
-            key={id}
-            title={Title}
-            content={Content}
-            publishdate={published_at}
-            photo={CoverImage.url}
-            category={[MainCategory, SecondaryCategory]}
-            description={Description}
-            tags={Tags}
-          />
+        {postsList.map(({ id, Title, Description, Content, published_at, CoverImage, MainCategory, SecondaryCategory, categories, Tags }) => (
+          <>
+            <PostsListItem
+              key={id}
+              title={Title}
+              content={Content}
+              publishdate={published_at}
+              photo={CoverImage.url}
+              category={categories}
+              description={Description}
+              tags={Tags}
+            />
+          </>
         ))}
       </InfiniteScroll>
     </PostListWrapper>

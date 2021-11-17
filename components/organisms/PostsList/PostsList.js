@@ -8,6 +8,13 @@ import Loading from '../../molecules/Loading/Loaging';
 import PostsListItem from '../../molecules/PostsListItem/PostsListItem';
 import { PostListWrapper } from './PostsList.style';
 
+export const PostDetailsContext = React.createContext({
+  details: {
+    categoriesItems: [],
+    tagsItems: '',
+  },
+});
+
 const PostsList = ({ isBlog }) => {
   const { posts, blogPosts, categoryPosts, numberOfPosts } = useContext(
     isBlog ? (isBlog === 'category' ? CategoryContext : BlogContext) : PostsContext
@@ -16,6 +23,10 @@ const PostsList = ({ isBlog }) => {
 
   const [postsList, setPostList] = useState([...postsToDisplay]);
   const [hasMore, setHasMore] = useState(true);
+
+  useEffect(() => {
+    setPostList(postsToDisplay);
+  }, [postsToDisplay]);
 
   const getMorePosts = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts?_sort=published_at:DESC&_start=${postsList.length}&_limit=5`);
@@ -36,19 +47,17 @@ const PostsList = ({ isBlog }) => {
         loader={<Loading />}
         endMessage={isBlog ? <TitleH4 isSmall>That's all for now. Return later for more content :)</TitleH4> : null}
       >
-        {postsList.map(({ id, Title, Description, Content, published_at, CoverImage, MainCategory, SecondaryCategory, categories, Tags }) => (
-          <>
-            <PostsListItem
-              key={id}
-              title={Title}
-              content={Content}
-              publishdate={published_at}
-              photo={CoverImage.url}
-              category={categories}
-              description={Description}
-              tags={Tags}
-            />
-          </>
+        {postsList.map(({ id, Title, Description, Content, published_at, CoverImage, categories, Tags }) => (
+          <PostDetailsContext.Provider
+            value={{
+              details: {
+                categoriesItems: categories,
+                tagsItems: Tags,
+              },
+            }}
+          >
+            <PostsListItem key={id} title={Title} content={Content} publishdate={published_at} photo={CoverImage.url} description={Description} />
+          </PostDetailsContext.Provider>
         ))}
       </InfiniteScroll>
     </PostListWrapper>

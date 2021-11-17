@@ -1,4 +1,5 @@
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 import slugify from 'slugify';
 import SectionTitle from '../../components/molecules/SectionTitle/SectionTitle';
 import PostsList from '../../components/organisms/PostsList/PostsList';
@@ -7,11 +8,26 @@ export const CategoryContext = React.createContext({
   categoryPosts: [],
 });
 
-const CategoryPosts = ({ getCategory, getPosts }) => {
+const CategoryPosts = ({ getCategory }) => {
+  const router = useRouter();
+  const route = router.query.categorySlug;
+
+  const [postsList, setPostList] = useState([]);
+
+  const getPosts = async () => {
+    const res = await fetch(`http://localhost:1337/posts?categories.Name=${getCategory.Name}`);
+    const posts = await res.json();
+    setPostList([...posts]);
+  };
+
+  useEffect(() => {
+    getPosts();
+  }, [route]);
+
   return (
     <CategoryContext.Provider
       value={{
-        categoryPosts: getPosts,
+        categoryPosts: postsList,
       }}
     >
       <SectionTitle title={`Posts from category ${getCategory.Name}:`} />
@@ -46,15 +62,9 @@ export async function getStaticProps(context) {
 
   const getCategory = getAllCategories.find((category) => slugify(category.Name, { remove: /[*+~.()'"!:@]/g, lower: true }) === slug);
 
-  console.log(getCategory.Name);
-
-  const postRes = await fetch(`http://localhost:1337/posts?categories.Name=${getCategory.Name}`);
-  const getPosts = await postRes.json();
-
   return {
     props: {
       getCategory,
-      getPosts,
     },
   };
 }

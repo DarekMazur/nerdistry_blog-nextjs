@@ -6,10 +6,8 @@ import { TitleH4 } from '../../atoms/TitleH4/TitleH4.style';
 import PostContentList from '../PostContentList/PostContentList';
 import { PostContent, PostImage, PostItemContentWrapper, PostListItemWrapper, PostTeaser, PostTitleWrapper } from './PostsListItem.style';
 
-const PostsListItem = ({ title, content, publishdate, photo, category, description, tags }) => {
+const PostsListItem = ({ title, content, publishdate, photo, description }) => {
   readingTime(content);
-
-  const tagsArray = tags ? tags.split(', ') : null;
 
   return (
     <PostListItemWrapper>
@@ -21,12 +19,12 @@ const PostsListItem = ({ title, content, publishdate, photo, category, descripti
       <PostItemContentWrapper>
         <PostImage imageUrl={photo}></PostImage>
         <PostContent>
-          <PostContentList list={category} />
+          <PostContentList />
           <PostTeaser>
             <p>{description ? description : shortenContent(content)}</p>
             <p>Read in {readingTime(content)} minutes</p>
           </PostTeaser>
-          <PostContentList list={tagsArray} isTagList />
+          <PostContentList isTagList />
           <CTAbutton>Read more</CTAbutton>
         </PostContent>
       </PostItemContentWrapper>

@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PostContentListItem from '../../atoms/PostContentListItem/PostContentListItem';
+import { PostDetailsContext } from '../../organisms/PostsList/PostsList';
 import { List } from './PostContentList/PostContentList.style';
 
-const PostContentList = ({ list, isTagList }) => {
+const PostContentList = ({ isTagList }) => {
+  const { details } = useContext(PostDetailsContext);
+
+  const list = isTagList ? (details.tagsItems ? details.tagsItems.split(', ') : null) : details.categoriesItems;
+
   return (
     <List isTagList={isTagList}>
       {list

@@ -16,6 +16,7 @@ export const CTAbutton = styled.button`
   border: ${({ theme }) => `0.3rem solid ${theme.colors.brown}`};
   transition: color 0.15s 0.1s ease-in-out;
   z-index: 2;
+  cursor: pointer;
 
   &:hover {
     color: ${({ theme }) => theme.colors.yellow};

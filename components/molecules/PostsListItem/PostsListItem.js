@@ -26,7 +26,7 @@ const PostsListItem = ({ title, content, publishdate, photo, description }) => {
           </PostTeaser>
           <PostContentList isTagList />
           <Link href={`/posts/${slugify(title, { remove: /[*+~.()'"!:@]/g, lower: true })}`}>
-            <CTAbutton>Read more</CTAbutton>
+            <CTAbutton as="a">Read more</CTAbutton>
           </Link>
         </PostContent>
       </PostItemContentWrapper>

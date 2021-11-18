@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
+import Markdown from 'react-markdown';
 import { PostContext } from '../../../pages/posts/[postSlug]';
 import SectionTitle from '../../molecules/SectionTitle/SectionTitle';
 import { SinglePostHero, SinglePostWrapper, SinglePostContent } from './SinglePost.style';
@@ -6,20 +7,16 @@ import { SinglePostHero, SinglePostWrapper, SinglePostContent } from './SinglePo
 const SinglePost = () => {
   const { post } = useContext(PostContext);
 
-  const [postDetails, setPostDetails] = useState(post);
-
-  useEffect(() => {
-    setPostDetails(post);
-  }, [post]);
-
   return (
     <SinglePostWrapper>
-      {postDetails.length !== 0 ? (
+      {post.length !== 0 ? (
         <>
-          <SinglePostHero background={postDetails[0].CoverImage.url}>
-            <SectionTitle title={postDetails[0].Title} description="Dolor sit amet" />
+          <SinglePostHero background={post.CoverImage.url}>
+            <SectionTitle title={post.Title} description="Dolor sit amet" />
           </SinglePostHero>
-          <SinglePostContent>{postDetails[0].Content}</SinglePostContent>
+          <SinglePostContent>
+            <Markdown children={post.Content} />
+          </SinglePostContent>
         </>
       ) : null}
     </SinglePostWrapper>

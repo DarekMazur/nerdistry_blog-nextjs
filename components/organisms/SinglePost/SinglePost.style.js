@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const SinglePostWrapper = styled.section`
   background-color: ${({ theme }) => theme.colors.midWhite};
+  margin-bottom: 6rem;
 `;
 
 export const SinglePostHero = styled.div`
@@ -11,7 +12,7 @@ export const SinglePostHero = styled.div`
   align-items: center;
   justify-content: center;
   height: 70vh;
-  background-color: ${({ theme }) => theme.colors.midWhite};
+  background-color: ${({ theme }) => theme.colors.white};
   border: ${({ theme }) => `${theme.colors.yellow} 1rem solid`};
   z-index: 0;
 
@@ -29,6 +30,6 @@ export const SinglePostHero = styled.div`
 `;
 
 export const SinglePostContent = styled.div`
-  padding-top: 3.2rem;
+  padding: 3.2rem 0;
   margin: 0 5.2rem 3.2rem;
 `;

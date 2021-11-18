@@ -8,21 +8,6 @@ export const PostContext = React.createContext({
 });
 
 const SinglePostPage = ({ getPost }) => {
-  // const router = useRouter();
-  // const route = router.query.postSlug;
-
-  // const [post, setPostList] = useState([]);
-
-  // const getPosts = async () => {
-  //   const res = await fetch(`http://localhost:1337/posts?Title=${getPost.Title}`);
-  //   const post = await res.json();
-  //   setPostList(post);
-  // };
-
-  // useEffect(() => {
-  //   getPosts();
-  // }, [route]);
-
   return (
     <PostContext.Provider
       value={{

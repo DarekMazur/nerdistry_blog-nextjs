@@ -41,5 +41,3 @@ const SinglePost = () => {
 };
 
 export default SinglePost;
-
-// {dateToDisplay(publishdate)}

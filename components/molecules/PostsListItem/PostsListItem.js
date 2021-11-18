@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import slugify from 'slugify';
 import { dateToDisplay, readingTime, shortenContent } from '../../../utils/helpers';
 import { CTAbutton } from '../../atoms/CTAbutton/CTAbutton.style';
@@ -11,7 +12,6 @@ const PostsListItem = ({ title, content, publishdate, photo, description }) => {
 
   return (
     <PostListItemWrapper>
-      {/* {console.log(slugify(title, { remove: /[*+~.()'"!:@]/g, lower: true }))} */}
       <PostTitleWrapper>
         <TitleH4>{title}</TitleH4>
         <p>{dateToDisplay(publishdate)}</p>
@@ -25,7 +25,9 @@ const PostsListItem = ({ title, content, publishdate, photo, description }) => {
             <p>Read in {readingTime(content)} minutes</p>
           </PostTeaser>
           <PostContentList isTagList />
-          <CTAbutton>Read more</CTAbutton>
+          <Link href={`/posts/${slugify(title, { remove: /[*+~.()'"!:@]/g, lower: true })}`}>
+            <CTAbutton>Read more</CTAbutton>
+          </Link>
         </PostContent>
       </PostItemContentWrapper>
     </PostListItemWrapper>

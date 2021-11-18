@@ -21,5 +21,18 @@ export const GlobalStyle = createGlobalStyle`
         background-color: ${({ theme }) => theme.colors.midWhite};
         padding: 0;
         margin: 0;
+
+        &::-webkit-scrollbar {
+            width: 1rem;
+            background-color: transparent;
+        }
+        
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: ${({ theme }) => theme.colors.yellow};
+        }
     }
 `;

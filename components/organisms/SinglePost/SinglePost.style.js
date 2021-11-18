@@ -33,3 +33,17 @@ export const SinglePostContent = styled.div`
   padding: 3.2rem 0;
   margin: 0 5.2rem 3.2rem;
 `;
+
+export const SinglePostCategoryLink = styled.a`
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+
+  &::after {
+    content: ', ';
+  }
+
+  &:last-of-type::after {
+    content: '';
+  }
+`;

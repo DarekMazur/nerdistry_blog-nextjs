@@ -1,14 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Link from 'next/link';
 import Markdown from 'react-markdown';
 import { PostContext } from '../../../pages/posts/[postSlug]';
 import { dateToDisplay } from '../../../utils/helpers';
 import SectionTitle from '../../molecules/SectionTitle/SectionTitle';
-import { SinglePostHero, SinglePostWrapper, SinglePostContent } from './SinglePost.style';
+import { SinglePostHero, SinglePostWrapper, SinglePostContent, SinglePostCategoryLink } from './SinglePost.style';
 import slugify from 'slugify';
+import { ContentContext } from '../../../providers/ContentProvider';
 
 const SinglePost = () => {
   const { post } = useContext(PostContext);
+  const { getPost } = useContext(ContentContext);
+
+  useEffect(() => {
+    getPost(post.Title);
+  }, []);
 
   return (
     <SinglePostWrapper>
@@ -22,7 +28,7 @@ const SinglePost = () => {
                   <p>
                     {post.categories.map((category) => (
                       <Link href={`/category/${slugify(category.Name, { remove: /[*+~.()'"!:@]/g, lower: true })}`}>
-                        <a>{category.Name}</a>
+                        <SinglePostCategoryLink>{category.Name}</SinglePostCategoryLink>
                       </Link>
                     ))}
                   </p>

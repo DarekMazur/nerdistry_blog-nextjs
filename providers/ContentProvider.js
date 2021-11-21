@@ -17,18 +17,6 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
   const [postsCount, setPostsCount] = useState(postsCountValue);
   const [isSingle, setIsSingle] = useState(false);
 
-  // useEffect(() => {
-  //   setPosts([...allPosts]);
-  //   setPostsCount(postsCountValue);
-  // }, []);
-
-  //   const getPost = async (title) => {
-  //     const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts?_sort=published_at:DESC`);
-  //     const allPosts = await res.json();
-  //     const singlePost = allPosts.filter((post) => post.Title === title);
-  //     setPosts(singlePost);
-  //   };
-
   const getIsSingle = () => {
     setIsSingle(true);
   };
@@ -50,15 +38,6 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
     const posts = await res.json();
     setPosts(posts);
   };
-
-  // const getAllposts = () => {
-  //   const res = await fetch(`http://localhost:1337/posts`);
-  //   const posts = await res.json();
-  // }
-
-  // const getPostsCount = (count) => {
-  //   setPostsCount(count);
-  // };
 
   return (
     <ContentContext.Provider

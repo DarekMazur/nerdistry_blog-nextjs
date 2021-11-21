@@ -6,19 +6,13 @@ import PostsList from '../../components/organisms/PostsList/PostsList';
 import { ContentContext } from '../../providers/ContentProvider';
 
 const CategoryPosts = ({ getCategory }) => {
-  const { posts, getCategoriesPosts } = useContext(ContentContext);
+  const { getCategoriesPosts } = useContext(ContentContext);
   const router = useRouter();
   const route = router.query.categorySlug;
-
-  const [postsList, setPostList] = useState([]);
 
   useEffect(() => {
     getCategoriesPosts(getCategory.Name);
   }, [route]);
-
-  useEffect(() => {
-    setPostList(posts);
-  }, [posts]);
 
   return (
     <>

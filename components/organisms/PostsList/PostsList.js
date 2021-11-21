@@ -36,9 +36,7 @@ const PostsList = ({ isBlog }) => {
         endMessage={isBlog ? <TitleH4 isSmall>That's all for now. Return later for more content :)</TitleH4> : null}
       >
         {postsList.map(({ id, Title }) => (
-          <>
-            <PostsListItem key={id} title={Title} />
-          </>
+          <PostsListItem key={id} title={Title} />
         ))}
       </InfiniteScroll>
     </PostListWrapper>

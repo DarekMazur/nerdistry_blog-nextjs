@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Markdown from 'react-markdown';
-import { PostContext } from '../../../pages/posts/[postSlug]';
 import { dateToDisplay } from '../../../utils/helpers';
 import SectionTitle from '../../molecules/SectionTitle/SectionTitle';
 import { SinglePostHero, SinglePostWrapper, SinglePostContent, SinglePostCategoryLink } from './SinglePost.style';

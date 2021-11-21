@@ -3,10 +3,10 @@ import PostsList from '../components/organisms/PostsList/PostsList';
 import { ContentContext } from '../providers/ContentProvider';
 
 const Blog = () => {
-  const { getAllPosts } = useContext(ContentContext);
+  const { getInitialPosts } = useContext(ContentContext);
 
   useEffect(() => {
-    getAllPosts();
+    getInitialPosts();
   }, []);
   return <PostsList isBlog />;
 };

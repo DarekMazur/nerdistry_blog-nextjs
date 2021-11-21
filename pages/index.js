@@ -8,10 +8,10 @@ export const PostsContext = React.createContext({
 });
 
 const Home = () => {
-  const { getAllPosts } = useContext(ContentContext);
+  const { getInitialPosts } = useContext(ContentContext);
 
   useEffect(() => {
-    getAllPosts();
+    getInitialPosts();
   }, []);
 
   return (

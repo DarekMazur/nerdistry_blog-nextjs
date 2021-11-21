@@ -1,22 +1,9 @@
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import slugify from 'slugify';
 import SinglePost from '../../components/organisms/SinglePost/SinglePost';
 
-export const PostContext = React.createContext({
-  posts: [],
-});
-
 const SinglePostPage = ({ getPost }) => {
-  return (
-    <PostContext.Provider
-      value={{
-        post: getPost,
-      }}
-    >
-      <SinglePost />
-    </PostContext.Provider>
-  );
+  return <SinglePost title={getPost.Title} />;
 };
 
 export async function getStaticPaths() {
@@ -40,13 +27,21 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const slug = context.params.postSlug;
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts`);
-  const getAllposts = await res.json();
+  const resPos = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts?_sort=published_at:DESC&_limit=5`);
+  const posts = await resPos.json();
 
-  const getPost = getAllposts.find((post) => slugify(post.Title, { remove: /[*+~.()'"!:@]/g, lower: true }) === slug);
+  const getNumberOfPosts = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts/count`);
+  const postsCount = await getNumberOfPosts.json();
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts`);
+  const getInitialPosts = await res.json();
+
+  const getPost = getInitialPosts.find((post) => slugify(post.Title, { remove: /[*+~.()'"!:@]/g, lower: true }) === slug);
 
   return {
     props: {
+      posts,
+      postsCount,
       getPost,
     },
   };

@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react';
 export const ContentContext = React.createContext({
   posts: [],
   postsCount: 0,
-  getAllPosts: () => {},
+  singlePost: {},
+  getInitialPosts: () => {},
   getPost: () => {},
   getCategoriesPosts: () => {},
 });
 
 const ContentPovider = ({ children, allPosts, postsCountValue }) => {
   const [posts, setPosts] = useState([...allPosts]);
+  const [singlePost, setSinglePost] = useState({});
   const [postsCount, setPostsCount] = useState(postsCountValue);
 
   // useEffect(() => {
@@ -24,13 +26,15 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
   //     setPosts(singlePost);
   //   };
 
-  const getAllPosts = () => {
+  const getInitialPosts = () => {
     setPosts([...allPosts]);
   };
 
-  const getPost = (title) => {
+  const getPost = async (title) => {
+    const res = await fetch(`http://localhost:1337/posts`);
+    const posts = await res.json();
     const singlePost = posts.filter((post) => post.Title === title);
-    setPosts(singlePost);
+    setSinglePost(...singlePost);
   };
 
   const getCategoriesPosts = async (name) => {
@@ -38,6 +42,11 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
     const posts = await res.json();
     setPosts(posts);
   };
+
+  // const getAllposts = () => {
+  //   const res = await fetch(`http://localhost:1337/posts`);
+  //   const posts = await res.json();
+  // }
 
   // const getPostsCount = (count) => {
   //   setPostsCount(count);
@@ -48,7 +57,8 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
       value={{
         posts,
         postsCount,
-        getAllPosts,
+        singlePost,
+        getInitialPosts,
         getPost,
         getCategoriesPosts,
       }}

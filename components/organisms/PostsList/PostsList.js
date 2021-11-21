@@ -3,6 +3,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { PostsContext } from '../../../pages';
 import { BlogContext } from '../../../pages/blog';
 import { CategoryContext } from '../../../pages/category/[categorySlug]';
+import { ContentContext } from '../../../providers/ContentProvider';
 import { TitleH4 } from '../../atoms/TitleH4/TitleH4.style';
 import Loading from '../../molecules/Loading/Loaging';
 import PostsListItem from '../../molecules/PostsListItem/PostsListItem';
@@ -16,17 +17,16 @@ export const PostDetailsContext = React.createContext({
 });
 
 const PostsList = ({ isBlog }) => {
-  const { posts, blogPosts, categoryPosts, numberOfPosts } = useContext(
-    isBlog ? (isBlog === 'category' ? CategoryContext : BlogContext) : PostsContext
-  );
-  const postsToDisplay = isBlog ? (isBlog === 'category' ? categoryPosts : blogPosts) : posts;
+  const { posts, blogPosts, categoryPosts, postsCount } = useContext(ContentContext);
+  // const postsToDisplay = [...posts];
 
-  const [postsList, setPostList] = useState([...postsToDisplay]);
+  const [postsList, setPostList] = useState(posts);
+  // const [postsList, setPostList] = useState(postsToDisplay);
   const [hasMore, setHasMore] = useState(true);
 
-  useEffect(() => {
-    setPostList(postsToDisplay);
-  }, [postsToDisplay]);
+  // useEffect(() => {
+  //   setPostList(postsToDisplay);
+  // }, [postsToDisplay]);
 
   const getMorePosts = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts?_sort=published_at:DESC&_start=${postsList.length}&_limit=5`);
@@ -35,11 +35,17 @@ const PostsList = ({ isBlog }) => {
   };
 
   useEffect(() => {
-    setHasMore(numberOfPosts > postsList.length);
+    setHasMore(postsCount > postsList.length);
+    console.log(postsCount);
   }, [postsList]);
 
   return (
     <PostListWrapper>
+      {console.log(postsList)}
+      {console.log(postsCount)}
+
+      {/* {console.log(postsCount > postsList.length)} */}
+      {/* {console.log(`hasMore ${hasMore}`)} */}
       <InfiniteScroll
         dataLength={postsList.length}
         next={getMorePosts}

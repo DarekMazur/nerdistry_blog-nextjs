@@ -2,20 +2,30 @@ import React, { useEffect, useState } from 'react';
 
 export const ContentContext = React.createContext({
   posts: [],
-  postsCount: 5,
+  postsCount: 0,
   getPost: () => {},
   getCategoriesPosts: () => {},
   getPostsCount: () => {},
 });
 
-const ContentPovider = ({ children }) => {
-  const [posts, setPosts] = useState([]);
-  const [postsCount, setPostsCount] = useState([]);
+const ContentPovider = ({ children, allPosts, postsCountValue }) => {
+  const [posts, setPosts] = useState([...allPosts]);
+  const [postsCount, setPostsCount] = useState(postsCountValue);
 
-  const getPost = async (title) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts?_sort=published_at:DESC`);
-    const allPosts = await res.json();
-    const singlePost = allPosts.filter((post) => post.Title === title);
+  // useEffect(() => {
+  //   setPosts([...allPosts]);
+  //   setPostsCount(postsCountValue);
+  // }, []);
+
+  //   const getPost = async (title) => {
+  //     const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts?_sort=published_at:DESC`);
+  //     const allPosts = await res.json();
+  //     const singlePost = allPosts.filter((post) => post.Title === title);
+  //     setPosts(singlePost);
+  //   };
+
+  const getPost = (title) => {
+    const singlePost = posts.filter((post) => post.Title === title);
     setPosts(singlePost);
   };
 
@@ -34,13 +44,11 @@ const ContentPovider = ({ children }) => {
       value={{
         posts,
         postsCount,
-        getPost,
         getCategoriesPosts,
         getPostsCount,
       }}
     >
       {children}
-      {console.log(posts)}
     </ContentContext.Provider>
   );
 };

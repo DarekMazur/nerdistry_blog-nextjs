@@ -12,9 +12,9 @@ const SinglePost = () => {
   const { post } = useContext(PostContext);
   const { getPost } = useContext(ContentContext);
 
-  useEffect(() => {
-    getPost(post.Title);
-  }, []);
+  // useEffect(() => {
+  //   getPost(post.Title);
+  // }, []);
 
   return (
     <SinglePostWrapper>
@@ -26,11 +26,11 @@ const SinglePost = () => {
               description={
                 post.categories ? (
                   <p>
-                    {post.categories.map((category) => (
+                    {/* {post.categories.map((category) => (
                       <Link href={`/category/${slugify(category.Name, { remove: /[*+~.()'"!:@]/g, lower: true })}`}>
                         <SinglePostCategoryLink>{category.Name}</SinglePostCategoryLink>
                       </Link>
-                    ))}
+                    ))} */}
                   </p>
                 ) : null
               }

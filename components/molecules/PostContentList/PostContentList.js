@@ -4,7 +4,6 @@ import { List } from './PostContentList/PostContentList.style';
 
 const PostContentList = ({ isTagList, details }) => {
   const list = isTagList ? (details.tagsItems ? details.tagsItems.split(', ') : null) : details.categoriesItems;
-  // console.log(list);
 
   return (
     <List isTagList={isTagList}>

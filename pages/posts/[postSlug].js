@@ -2,8 +2,13 @@ import React from 'react';
 import slugify from 'slugify';
 import SinglePost from '../../components/organisms/SinglePost/SinglePost';
 
-const SinglePostPage = ({ getPost }) => {
-  return <SinglePost title={getPost.Title} />;
+const SinglePostPage = ({ getPost, PostIndex, getInitialPosts }) => {
+  const pagination = {
+    nextElement: PostIndex < getInitialPosts.length - 1 ? getInitialPosts[PostIndex + 1].Title : 'last',
+    previousElement: PostIndex > 0 ? getInitialPosts[PostIndex - 1].Title : 'first',
+  };
+
+  return <SinglePost title={getPost.Title} pagination={pagination} />;
 };
 
 export async function getStaticPaths() {
@@ -38,11 +43,15 @@ export async function getStaticProps(context) {
 
   const getPost = getInitialPosts.find((post) => slugify(post.Title, { remove: /[*+~.()'"!:@]/g, lower: true }) === slug);
 
+  const PostIndex = getInitialPosts.indexOf(getPost);
+
   return {
     props: {
       posts,
       postsCount,
       getPost,
+      PostIndex,
+      getInitialPosts,
     },
   };
 }

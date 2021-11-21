@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 export const ContentContext = React.createContext({
+  isSingle: false,
   posts: [],
   postsCount: 0,
   singlePost: {},
+  getIsSingle: () => {},
   getInitialPosts: () => {},
   getPost: () => {},
   getCategoriesPosts: () => {},
@@ -13,6 +15,7 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
   const [posts, setPosts] = useState([...allPosts]);
   const [singlePost, setSinglePost] = useState({});
   const [postsCount, setPostsCount] = useState(postsCountValue);
+  const [isSingle, setIsSingle] = useState(false);
 
   // useEffect(() => {
   //   setPosts([...allPosts]);
@@ -26,8 +29,13 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
   //     setPosts(singlePost);
   //   };
 
+  const getIsSingle = () => {
+    setIsSingle(true);
+  };
+
   const getInitialPosts = () => {
     setPosts([...allPosts]);
+    setIsSingle(false);
   };
 
   const getPost = async (title) => {
@@ -55,9 +63,11 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
   return (
     <ContentContext.Provider
       value={{
+        isSingle,
         posts,
         postsCount,
         singlePost,
+        getIsSingle,
         getInitialPosts,
         getPost,
         getCategoriesPosts,

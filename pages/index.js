@@ -1,25 +1,19 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Highlight from '../components/organisms/Highlight/Highlight';
 import LatestBlog from '../components/organisms/LatestBlog/LatestBlog';
+import { ContentContext } from '../providers/ContentProvider';
 
 export const PostsContext = React.createContext({
   posts: [],
 });
 
-// const Home = ({ posts }) => {
-//   return (
-//     <PostsContext.Provider
-//       value={{
-//         posts,
-//       }}
-//     >
-//       {posts.length >= 3 ? <Highlight /> : null}
-//       <LatestBlog />
-//     </PostsContext.Provider>
-//   );
-// };
-
 const Home = () => {
+  const { getAllPosts } = useContext(ContentContext);
+
+  useEffect(() => {
+    getAllPosts();
+  }, []);
+
   return (
     <>
       {/* {posts.length >= 3 ? <Highlight /> : null} */}

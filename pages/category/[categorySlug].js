@@ -1,38 +1,30 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import slugify from 'slugify';
 import SectionTitle from '../../components/molecules/SectionTitle/SectionTitle';
 import PostsList from '../../components/organisms/PostsList/PostsList';
-
-export const CategoryContext = React.createContext({
-  categoryPosts: [],
-});
+import { ContentContext } from '../../providers/ContentProvider';
 
 const CategoryPosts = ({ getCategory }) => {
+  const { posts, getCategoriesPosts } = useContext(ContentContext);
   const router = useRouter();
   const route = router.query.categorySlug;
 
   const [postsList, setPostList] = useState([]);
 
-  const getPosts = async () => {
-    const res = await fetch(`http://localhost:1337/posts?categories.Name=${getCategory.Name}`);
-    const posts = await res.json();
-    setPostList([...posts]);
-  };
-
   useEffect(() => {
-    getPosts();
+    getCategoriesPosts(getCategory.Name);
   }, [route]);
 
+  useEffect(() => {
+    setPostList(posts);
+  }, [posts]);
+
   return (
-    <CategoryContext.Provider
-      value={{
-        categoryPosts: postsList,
-      }}
-    >
+    <>
       <SectionTitle title={`Posts from category ${getCategory.Name}:`} />
       <PostsList isBlog="category" />
-    </CategoryContext.Provider>
+    </>
   );
 };
 
@@ -57,13 +49,21 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const slug = context.params.categorySlug;
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/categories`);
-  const getAllCategories = await res.json();
+  const resCat = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/categories`);
+  const getAllCategories = await resCat.json();
 
   const getCategory = getAllCategories.find((category) => slugify(category.Name, { remove: /[*+~.()'"!:@]/g, lower: true }) === slug);
 
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts?_sort=published_at:DESC&_limit=5`);
+  const posts = await res.json();
+
+  const getNumberOfPosts = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts/count`);
+  const postsCount = await getNumberOfPosts.json();
+
   return {
     props: {
+      posts,
+      postsCount,
       getCategory,
     },
   };

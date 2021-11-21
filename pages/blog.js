@@ -1,25 +1,13 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import PostsList from '../components/organisms/PostsList/PostsList';
-
-export const BlogContext = React.createContext({
-  blogPosts: [],
-  numberOfPosts: 0,
-});
-
-// const Blog = ({ blogPosts, numberOfPosts }) => {
-//   return (
-//     <BlogContext.Provider
-//       value={{
-//         blogPosts,
-//         numberOfPosts,
-//       }}
-//     >
-//       <PostsList isBlog />
-//     </BlogContext.Provider>
-//   );
-// };
+import { ContentContext } from '../providers/ContentProvider';
 
 const Blog = () => {
+  const { getAllPosts } = useContext(ContentContext);
+
+  useEffect(() => {
+    getAllPosts();
+  }, []);
   return <PostsList isBlog />;
 };
 

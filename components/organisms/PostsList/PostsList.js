@@ -1,8 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { PostsContext } from '../../../pages';
-import { BlogContext } from '../../../pages/blog';
-import { CategoryContext } from '../../../pages/category/[categorySlug]';
 import { ContentContext } from '../../../providers/ContentProvider';
 import { TitleH4 } from '../../atoms/TitleH4/TitleH4.style';
 import Loading from '../../molecules/Loading/Loaging';
@@ -17,16 +14,16 @@ export const PostDetailsContext = React.createContext({
 });
 
 const PostsList = ({ isBlog }) => {
-  const { posts, blogPosts, categoryPosts, postsCount } = useContext(ContentContext);
+  const { posts, blogPosts, categoryPosts, postsCount, getCategoriesPosts } = useContext(ContentContext);
   // const postsToDisplay = [...posts];
 
   const [postsList, setPostList] = useState(posts);
   // const [postsList, setPostList] = useState(postsToDisplay);
   const [hasMore, setHasMore] = useState(true);
 
-  // useEffect(() => {
-  //   setPostList(postsToDisplay);
-  // }, [postsToDisplay]);
+  useEffect(() => {
+    setPostList(posts);
+  }, [posts]);
 
   const getMorePosts = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts?_sort=published_at:DESC&_start=${postsList.length}&_limit=5`);
@@ -36,20 +33,14 @@ const PostsList = ({ isBlog }) => {
 
   useEffect(() => {
     setHasMore(postsCount > postsList.length);
-    console.log(postsCount);
   }, [postsList]);
 
   return (
     <PostListWrapper>
-      {console.log(postsList)}
-      {console.log(postsCount)}
-
-      {/* {console.log(postsCount > postsList.length)} */}
-      {/* {console.log(`hasMore ${hasMore}`)} */}
       <InfiniteScroll
         dataLength={postsList.length}
         next={getMorePosts}
-        hasMore={hasMore}
+        hasMore={isBlog && isBlog !== 'category' ? hasMore : false}
         loader={<Loading />}
         endMessage={isBlog ? <TitleH4 isSmall>That's all for now. Return later for more content :)</TitleH4> : null}
       >

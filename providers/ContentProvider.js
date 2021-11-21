@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 export const ContentContext = React.createContext({
   posts: [],
   postsCount: 0,
+  getAllPosts: () => {},
   getPost: () => {},
   getCategoriesPosts: () => {},
-  getPostsCount: () => {},
 });
 
 const ContentPovider = ({ children, allPosts, postsCountValue }) => {
@@ -24,6 +24,10 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
   //     setPosts(singlePost);
   //   };
 
+  const getAllPosts = () => {
+    setPosts([...allPosts]);
+  };
+
   const getPost = (title) => {
     const singlePost = posts.filter((post) => post.Title === title);
     setPosts(singlePost);
@@ -35,17 +39,18 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
     setPosts(posts);
   };
 
-  const getPostsCount = (count) => {
-    setPostsCount(count);
-  };
+  // const getPostsCount = (count) => {
+  //   setPostsCount(count);
+  // };
 
   return (
     <ContentContext.Provider
       value={{
         posts,
         postsCount,
+        getAllPosts,
+        getPost,
         getCategoriesPosts,
-        getPostsCount,
       }}
     >
       {children}

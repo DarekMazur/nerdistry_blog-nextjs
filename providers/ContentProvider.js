@@ -46,7 +46,7 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
   };
 
   const getCategoriesPosts = async (name) => {
-    const res = await fetch(`http://localhost:1337/posts?categories.Name=${name}`);
+    const res = await fetch(`http://localhost:1337/posts?_sort=published_at:DESC&_categories.Name=${name}`);
     const posts = await res.json();
     setPosts(posts);
   };

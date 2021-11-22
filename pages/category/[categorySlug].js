@@ -6,9 +6,13 @@ import PostsList from '../../components/organisms/PostsList/PostsList';
 import { ContentContext } from '../../providers/ContentProvider';
 
 const CategoryPosts = ({ getCategory }) => {
-  const { getCategoriesPosts } = useContext(ContentContext);
+  const { getCategoriesPosts, getIsSingle } = useContext(ContentContext);
   const router = useRouter();
   const route = router.query.categorySlug;
+
+  useEffect(() => {
+    getIsSingle(false);
+  }, []);
 
   useEffect(() => {
     getCategoriesPosts(getCategory.Name);

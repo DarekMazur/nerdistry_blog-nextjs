@@ -18,8 +18,8 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
 
   const postsCount = postsCountValue;
 
-  const getIsSingle = () => {
-    setIsSingle(true);
+  const getIsSingle = (value) => {
+    setIsSingle(value);
   };
 
   const getInitialPosts = () => {

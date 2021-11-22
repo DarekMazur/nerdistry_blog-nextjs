@@ -18,7 +18,7 @@ const SinglePost = ({ title, pagination }) => {
 
   useEffect(() => {
     getPost(title);
-    getIsSingle();
+    getIsSingle(true);
   }, [route]);
 
   useEffect(() => {

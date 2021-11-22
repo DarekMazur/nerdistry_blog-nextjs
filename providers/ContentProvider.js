@@ -12,7 +12,7 @@ export const ContentContext = React.createContext({
 });
 
 const ContentPovider = ({ children, allPosts, postsCountValue }) => {
-  const [posts, setPosts] = useState([...allPosts]);
+  const [posts, setPosts] = useState(allPosts ? [...allPosts] : []);
   const [singlePost, setSinglePost] = useState({});
   const [isSingle, setIsSingle] = useState(false);
 

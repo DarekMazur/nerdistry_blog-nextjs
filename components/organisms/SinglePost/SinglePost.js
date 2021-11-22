@@ -5,18 +5,21 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { SinglePostWrapper, SinglePostContent } from './SinglePost.style';
 import { ContentContext } from '../../../providers/ContentProvider';
 import Pagination from '../../molecules/Pagination/Pagination';
+import { useRouter } from 'next/router';
 
 library.add(fas);
 
 const SinglePost = ({ title, pagination }) => {
   const { getPost, getIsSingle } = useContext(ContentContext);
+  const router = useRouter();
+  const route = router.query.postSlug;
   const [singlePostItem, setSinglePostItem] = useState({});
   const { singlePost } = useContext(ContentContext);
 
   useEffect(() => {
     getPost(title);
     getIsSingle();
-  }, []);
+  }, [route]);
 
   useEffect(() => {
     setSinglePostItem(singlePost);
@@ -28,20 +31,6 @@ const SinglePost = ({ title, pagination }) => {
         <SinglePostContent>
           <Markdown children={singlePostItem.Content} />
           <Pagination pagination={pagination} />
-          {/* <div>
-            {pagination.previousElement !== 'last' ? (
-              <p>
-                <FontAwesomeIcon icon={['fas', 'chevron-left']} />
-                {pagination.previousElement}
-              </p>
-            ) : null}
-            {pagination.previousElement !== 'first' ? (
-              <p>
-                {pagination.nextElement}
-                <FontAwesomeIcon icon={['fas', 'chevron-right']} />
-              </p>
-            ) : null}
-          </div> */}
         </SinglePostContent>
       ) : null}
     </SinglePostWrapper>

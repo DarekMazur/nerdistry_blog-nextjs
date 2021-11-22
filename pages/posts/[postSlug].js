@@ -2,13 +2,13 @@ import React from 'react';
 import slugify from 'slugify';
 import SinglePost from '../../components/organisms/SinglePost/SinglePost';
 
-const SinglePostPage = ({ getPost, PostIndex, getInitialPosts }) => {
+const SinglePostPage = ({ post, PostIndex, initialPosts }) => {
   const pagination = {
-    nextElement: PostIndex < getInitialPosts.length - 1 ? getInitialPosts[PostIndex + 1].Title : 'last',
-    previousElement: PostIndex > 0 ? getInitialPosts[PostIndex - 1].Title : 'first',
+    nextElement: PostIndex < initialPosts.length - 1 ? initialPosts[PostIndex + 1].Title : 'last',
+    previousElement: PostIndex > 0 ? initialPosts[PostIndex - 1].Title : 'first',
   };
 
-  return <SinglePost title={getPost.Title} pagination={pagination} />;
+  return <SinglePost title={post.Title} pagination={pagination} />;
 };
 
 export async function getStaticPaths() {
@@ -39,19 +39,19 @@ export async function getStaticProps(context) {
   const postsCount = await getNumberOfPosts.json();
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts`);
-  const getInitialPosts = await res.json();
+  const initialPosts = await res.json();
 
-  const getPost = getInitialPosts.find((post) => slugify(post.Title, { remove: /[*+~.()'"!:@]/g, lower: true }) === slug);
+  const post = initialPosts.find((post) => slugify(post.Title, { remove: /[*+~.()'"!:@]/g, lower: true }) === slug);
 
-  const PostIndex = getInitialPosts.indexOf(getPost);
+  const PostIndex = initialPosts.indexOf(post);
 
   return {
     props: {
       posts,
       postsCount,
-      getPost,
+      post,
       PostIndex,
-      getInitialPosts,
+      initialPosts,
     },
   };
 }

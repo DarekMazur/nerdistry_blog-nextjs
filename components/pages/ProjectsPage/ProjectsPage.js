@@ -1,34 +1,29 @@
-import React from 'react';
-import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../molecules/SectionTitle/SectionTitle';
-import { ProjectSection, ProjectsWrapper, StyledPage } from '../StyledPage/StyledPage.style';
+import { StyledPage } from '../StyledPage/StyledPage.style';
+import ProjectsWrapper from '../../organisms/ProjectWrapper/ProjectWrapper';
 
 const ProjectsPage = ({ repos }) => {
+  const [images, setImages] = useState([]);
+
+  const getCoverImage = async () => {
+    const res = await fetch(
+      `https://api.unsplash.com/search/photos?client_id=${process.env.NEXT_PUBLIC_UNSPLASH_TOKEN}&query=technology&page=1&per_page=${repos.length}`
+    );
+    const images = await res.json();
+
+    setImages(images.results);
+  };
+
+  useEffect(() => {
+    getCoverImage();
+  }, []);
+
   return (
     <StyledPage>
       <SectionTitle title="Projects" description="Dolor Sit Amet" />
-      {repos.map((repo) => (
-        <ProjectsWrapper key={repo.id}>
-          <ProjectSection>
-            <SectionTitle isProject description={repo.name} />
-          </ProjectSection>
-          <ProjectSection background>
-            <SectionTitle isProject title="Show details" />
-          </ProjectSection>
-          <ProjectSection>
-            <p>{repo.description}</p>
-            <p>Stack: {repo.language}</p>
-            <p>
-              {repo.homepage ? (
-                <Link href={repo.homepage}>
-                  <a target="_blank">Visit project page</a>
-                </Link>
-              ) : (
-                <p>Work in progress</p>
-              )}
-            </p>
-          </ProjectSection>
-        </ProjectsWrapper>
+      {repos.map((repo, index) => (
+        <ProjectsWrapper key={repo.id} repo={repo} image={images[index]?.urls.regular} />
       ))}
     </StyledPage>
   );

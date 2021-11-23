@@ -7,7 +7,7 @@ import PostsListItem from '../../molecules/PostsListItem/PostsListItem';
 import { PostListWrapper } from './PostsList.style';
 
 const PostsList = ({ isBlog }) => {
-  const { posts, blogPosts, categoryPosts, postsCount, getCategoriesPosts } = useContext(ContentContext);
+  const { posts, postsCount } = useContext(ContentContext);
 
   const [postsList, setPostList] = useState(posts);
   const [hasMore, setHasMore] = useState(true);

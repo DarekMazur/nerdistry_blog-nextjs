@@ -1,3 +1,4 @@
+import SimpleReactLightbox from 'simple-react-lightbox';
 import { ThemeProvider } from 'styled-components';
 
 import Layout from '../components/templates/Layout/Layout';
@@ -10,9 +11,11 @@ function MyApp({ Component, pageProps }) {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <ContentPovider allPosts={pageProps.posts} postsCountValue={pageProps.postsCount}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <SimpleReactLightbox>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </SimpleReactLightbox>
       </ContentPovider>
     </ThemeProvider>
   );

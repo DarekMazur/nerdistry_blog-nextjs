@@ -19,7 +19,8 @@ export const ProjectSection = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-left: ${({ theme, background }) => (background ? `1rem solid ${theme.colors.yellow}` : '0')};
+  border-left: ${({ theme, isCurtain }) => (isCurtain ? `1rem solid ${theme.colors.yellow}` : '0')};
+  cursor: ${({ isCurtain }) => (isCurtain ? 'pointer' : 'inherit')};
 
   img {
     object-fit: cover;

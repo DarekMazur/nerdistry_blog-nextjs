@@ -9,12 +9,15 @@ export const theme = {
     grey: '#707070',
     black: '#000',
     lightPurple: '#D8DCFF',
+    green: '#49E22D',
+    deepPurple: '#11072C',
   },
   fonts: {
     mainFont: '"Montserrat", sans-serif',
     headerFont: '"Cinzel", serif',
     brandingFont: '"Hahmlet", serif',
     secondaryHeaderFont: '"Gentium Book Basic", serif',
+    codeFont: '"Share Tech Mono", monospace',
   },
   fontSize: {
     xxl: '5rem',

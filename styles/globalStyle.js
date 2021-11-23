@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Gentium+Book+Basic:wght@700&family=Hahmlet:wght@600&family=Montserrat:ital,wght@0,400;0,600;1,400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Gentium+Book+Basic:wght@700&family=Hahmlet:wght@600&family=Montserrat:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap');
 
     html {
         box-sizing: border-box;
@@ -16,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: ${({ theme }) => theme.fonts.mainFont};
         color: ${({ theme }) => theme.colors.blue};
         font-size: ${({ theme }) => theme.fontSize.m};
+        line-height: 2;
         width: 100vw;
         overflow-x: hidden;
         background-color: ${({ theme }) => theme.colors.midWhite};
@@ -34,5 +35,9 @@ export const GlobalStyle = createGlobalStyle`
         &::-webkit-scrollbar-thumb {
             background-color: ${({ theme }) => theme.colors.yellow};
         }
+    }
+
+    p {
+        margin: 2.7rem 0;
     }
 `;

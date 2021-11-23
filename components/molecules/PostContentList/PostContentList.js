@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PostContentListItem from '../../atoms/PostContentListItem/PostContentListItem';
 import { List } from './PostContentList/PostContentList.style';
 

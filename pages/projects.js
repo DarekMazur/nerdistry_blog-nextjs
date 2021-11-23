@@ -1,7 +1,14 @@
 import React from 'react';
 import ProjectsPage from '../components/pages/ProjectsPage/ProjectsPage';
+import { ContentContext } from '../providers/ContentProvider';
 
 const Projects = ({ repos }) => {
+  const { getIsSingle } = React.useContext(ContentContext);
+
+  React.useEffect(() => {
+    getIsSingle(false);
+  }, []);
+
   return <ProjectsPage repos={repos} />;
 };
 

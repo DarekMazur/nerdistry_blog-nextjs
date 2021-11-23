@@ -6,6 +6,7 @@ import { SinglePostWrapper, SinglePostContent } from './SinglePost.style';
 import { ContentContext } from '../../../providers/ContentProvider';
 import Pagination from '../../molecules/Pagination/Pagination';
 import { useRouter } from 'next/router';
+import { SRLWrapper } from 'simple-react-lightbox';
 
 library.add(fas);
 
@@ -27,12 +28,14 @@ const SinglePost = ({ title, pagination }) => {
 
   return (
     <SinglePostWrapper>
-      {singlePostItem.length !== 0 ? (
-        <SinglePostContent>
-          <Markdown children={singlePostItem.Content} />
-          <Pagination pagination={pagination} />
-        </SinglePostContent>
-      ) : null}
+      <SRLWrapper>
+        {singlePostItem.length !== 0 ? (
+          <SinglePostContent>
+            <Markdown children={singlePostItem.Content} />
+            <Pagination pagination={pagination} />
+          </SinglePostContent>
+        ) : null}
+      </SRLWrapper>
     </SinglePostWrapper>
   );
 };

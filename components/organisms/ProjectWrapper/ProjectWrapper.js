@@ -36,7 +36,7 @@ const ProjectsWrapper = ({ repo, image }) => {
       <ProjectSection ref={titleRef}>
         <SectionTitle isProject description={repo.name} />
       </ProjectSection>
-      <ProjectSection ref={imageRef} onClick={handleClick}>
+      <ProjectSection ref={imageRef} onClick={handleClick} isCurtain>
         <img src={image} alt="" />
         <SectionTitle isProject title={isOpen ? 'Hide details' : 'Show details'} />
       </ProjectSection>

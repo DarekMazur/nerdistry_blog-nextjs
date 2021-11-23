@@ -2,11 +2,11 @@ import React from 'react';
 
 import { SectionTitleDescription, SectionTitleWrapper, StyledSectionTitle } from './SectionTitle.style';
 
-const SectionTitle = ({ title, description }) => {
+const SectionTitle = ({ title, description, isProject }) => {
   return (
     <SectionTitleWrapper>
-      <SectionTitleDescription>{description}</SectionTitleDescription>
-      <StyledSectionTitle>{title}</StyledSectionTitle>
+      <SectionTitleDescription isProject={isProject}>{description}</SectionTitleDescription>
+      <StyledSectionTitle isProject={isProject}>{title}</StyledSectionTitle>
     </SectionTitleWrapper>
   );
 };

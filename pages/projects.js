@@ -1,28 +1,8 @@
 import React from 'react';
-import Link from 'next/link';
+import ProjectsPage from '../components/pages/ProjectsPage/ProjectsPage';
 
-const ProjectsPage = ({ repos }) => {
-  return (
-    <>
-      <h1>Projects</h1>
-      {repos.map((repo) => (
-        <>
-          <h3>{repo.name}</h3>
-          <p>{repo.description}</p>
-          <p>Stack: {repo.language}</p>
-          <p>
-            {repo.homepage ? (
-              <Link href={repo.homepage}>
-                <a target="_blank">Visit project page</a>
-              </Link>
-            ) : (
-              <p>Work in progress</p>
-            )}
-          </p>
-        </>
-      ))}
-    </>
-  );
+const Projects = ({ repos }) => {
+  return <ProjectsPage repos={repos} />;
 };
 
 export async function getStaticProps() {
@@ -36,4 +16,4 @@ export async function getStaticProps() {
   };
 }
 
-export default ProjectsPage;
+export default Projects;

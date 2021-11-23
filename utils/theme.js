@@ -17,6 +17,7 @@ export const theme = {
     secondaryHeaderFont: '"Gentium Book Basic", serif',
   },
   fontSize: {
+    xxl: '5rem',
     xl: '4.2rem',
     l: '3rem',
     lm: '1.8rem',

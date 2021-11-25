@@ -37,6 +37,7 @@ const SinglePost = ({ title, pagination }) => {
 
   return (
     <SinglePostWrapper>
+      <Author author={singlePost.User} />
       <SRLWrapper
         options={{
           buttons: {
@@ -45,7 +46,6 @@ const SinglePost = ({ title, pagination }) => {
           },
         }}
       >
-        <Author author={singlePost.User} />
         {singlePostItem.length !== 0 ? (
           <SinglePostContent onClick={handleCopy} isCopied={isCopied}>
             <Markdown children={singlePostItem.Content} />

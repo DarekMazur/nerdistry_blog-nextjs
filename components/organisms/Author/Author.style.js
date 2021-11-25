@@ -10,6 +10,7 @@ export const AuthorWrapper = styled.div`
   padding: 2rem;
   background-color: ${({ theme }) => theme.colors.white};
   transform: translateX(${({ isOpen }) => (isOpen ? '0' : '100%')});
+  border-left: solid 1rem ${({ theme }) => theme.colors.yellow};
   z-index: 10;
   transition: transform 0.15s ease-in-out;
 `;

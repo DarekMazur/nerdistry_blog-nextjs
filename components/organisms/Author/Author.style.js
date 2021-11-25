@@ -1,0 +1,20 @@
+import styled from 'styled-components';
+
+export const AuthorWrapper = styled.div`
+  width: 30vw;
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 2rem;
+  background-color: ${({ theme }) => theme.colors.white};
+  transform: translateX(${({ isOpen }) => (isOpen ? '0' : '100%')});
+  z-index: 10;
+  transition: transform 0.15s ease-in-out;
+`;
+
+export const Avatar = styled.img`
+  width: 100%;
+  padding: 1rem 5rem;
+`;

@@ -5,6 +5,7 @@ import { ContentContext } from '../../../providers/ContentProvider';
 import Pagination from '../../molecules/Pagination/Pagination';
 import { useRouter } from 'next/router';
 import { SRLWrapper } from 'simple-react-lightbox';
+import Author from '../Author/Author';
 
 const SinglePost = ({ title, pagination }) => {
   const { getPost, getIsSingle } = useContext(ContentContext);
@@ -44,6 +45,7 @@ const SinglePost = ({ title, pagination }) => {
           },
         }}
       >
+        <Author author={singlePost.User} />
         {singlePostItem.length !== 0 ? (
           <SinglePostContent onClick={handleCopy} isCopied={isCopied}>
             <Markdown children={singlePostItem.Content} />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 export const ContentContext = React.createContext({
   isSingle: false,
+  isOpen: false,
   posts: [],
   postsCount: 0,
   singlePost: {},
@@ -9,17 +10,23 @@ export const ContentContext = React.createContext({
   getInitialPosts: () => {},
   getPost: () => {},
   getCategoriesPosts: () => {},
+  handleClick: () => {},
 });
 
 const ContentPovider = ({ children, allPosts, postsCountValue }) => {
   const [posts, setPosts] = useState(allPosts ? [...allPosts] : []);
   const [singlePost, setSinglePost] = useState({});
   const [isSingle, setIsSingle] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const postsCount = postsCountValue;
 
   const getIsSingle = (value) => {
     setIsSingle(value);
+  };
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
   };
 
   const getInitialPosts = () => {
@@ -52,6 +59,7 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
     <ContentContext.Provider
       value={{
         isSingle,
+        isOpen,
         posts,
         postsCount,
         singlePost,
@@ -59,6 +67,7 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
         getInitialPosts,
         getPost,
         getCategoriesPosts,
+        handleClick,
       }}
     >
       {children}

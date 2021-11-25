@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Link from 'next/link';
 import slugify from 'slugify';
 import { dateToDisplay } from '../../../utils/helpers';
 import { ContentContext } from '../../../providers/ContentProvider';
 import SectionTitle from '../SectionTitle/SectionTitle';
-import { SinglePostCategoryLink, SinglePostHeroWrapper } from './SinglePostHero.style';
+import { AuthorName, SinglePostCategoryLink, SinglePostHeroWrapper } from './SinglePostHero.style';
 
 const SinglePostHero = () => {
-  const { singlePost } = useContext(ContentContext);
+  const { singlePost, handleClick } = useContext(ContentContext);
 
   return (
     <SinglePostHeroWrapper background={singlePost.CoverImage?.url}>
@@ -25,7 +25,12 @@ const SinglePostHero = () => {
           ) : null
         }
       />
-      <p>{`${dateToDisplay(singlePost.published_at)} by ${singlePost.User?.username}`}</p>
+      <p>
+        {dateToDisplay(singlePost.published_at)} by{' '}
+        <AuthorName onClick={handleClick}>
+          <strong>{singlePost.User?.username}</strong>
+        </AuthorName>
+      </p>
     </SinglePostHeroWrapper>
   );
 };

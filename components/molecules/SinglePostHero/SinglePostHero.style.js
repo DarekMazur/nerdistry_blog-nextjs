@@ -37,3 +37,8 @@ export const SinglePostCategoryLink = styled.a`
     content: '';
   }
 `;
+
+export const AuthorName = styled.span`
+  font-weight: 700;
+  cursor: pointer;
+`;

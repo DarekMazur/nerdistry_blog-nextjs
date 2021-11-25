@@ -28,7 +28,7 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
   };
 
   const getPost = async (title) => {
-    const res = await fetch(`http://localhost:1337/posts`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts`, {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
       },

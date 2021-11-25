@@ -28,7 +28,14 @@ const SinglePost = ({ title, pagination }) => {
 
   return (
     <SinglePostWrapper>
-      <SRLWrapper>
+      <SRLWrapper
+        options={{
+          buttons: {
+            iconPadding: '10px',
+            showDownloadButton: false,
+          },
+        }}
+      >
         {singlePostItem.length !== 0 ? (
           <SinglePostContent>
             <Markdown children={singlePostItem.Content} />

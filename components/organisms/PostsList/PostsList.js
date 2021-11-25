@@ -17,7 +17,11 @@ const PostsList = ({ isBlog }) => {
   }, [posts]);
 
   const getMorePosts = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts?_sort=published_at:DESC&_start=${postsList.length}&_limit=5`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts?_sort=published_at:DESC&_start=${postsList.length}&_limit=5`, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
+      },
+    });
     const newPosts = await res.json();
     setPostList((postsList) => [...postsList, ...newPosts]);
   };

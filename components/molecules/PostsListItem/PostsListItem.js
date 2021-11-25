@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import slugify from 'slugify';
 import { dateToDisplay, readingTime, shortenContent } from '../../../utils/helpers';
@@ -11,7 +11,11 @@ const PostsListItem = ({ title }) => {
   const [singlePost, setSinglePost] = useState({});
 
   const getPost = async (title) => {
-    const res = await fetch(`http://localhost:1337/posts`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts`, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
+      },
+    });
     const posts = await res.json();
     const singlePost = posts.filter((post) => post.Title === title);
     setSinglePost(...singlePost);

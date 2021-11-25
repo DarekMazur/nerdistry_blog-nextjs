@@ -28,14 +28,22 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
   };
 
   const getPost = async (title) => {
-    const res = await fetch(`http://localhost:1337/posts`);
+    const res = await fetch(`http://localhost:1337/posts`, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
+      },
+    });
     const posts = await res.json();
     const singlePost = posts.filter((post) => post.Title === title);
     setSinglePost(...singlePost);
   };
 
   const getCategoriesPosts = async (name) => {
-    const res = await fetch(`http://localhost:1337/posts?_sort=published_at:DESC&_categories.Name=${name}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts?_sort=published_at:DESC&_categories.Name=${name}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
+      },
+    });
     const posts = await res.json();
     setPosts(posts);
   };

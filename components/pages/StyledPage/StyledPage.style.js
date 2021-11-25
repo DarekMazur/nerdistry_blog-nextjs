@@ -4,6 +4,20 @@ export const StyledPage = styled.div`
   background-color: ${({ theme }) => theme.colors.midWhite};
 `;
 
+export const ParagraphWithIcon = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6rem;
+  color: inherit;
+  text-decoration: none;
+
+  svg {
+    height: 4rem;
+    margin-left: 1rem;
+  }
+`;
+
 export const StyledProjectsWrapper = styled.div`
   width: 150vw;
   display: flex;

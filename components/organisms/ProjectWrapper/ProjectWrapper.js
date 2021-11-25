@@ -15,7 +15,7 @@ const ProjectsWrapper = ({ repo, image }) => {
   const contentRef = useRef(null);
 
   const getTech = async () => {
-    const res = await fetch(repo.languages_url);
+    const res = await fetch(repo?.languages_url);
     const techStackObj = await res.json();
     const techStack = Object.keys(techStackObj);
     setTechnologies(techStack);
@@ -70,7 +70,7 @@ const ProjectsWrapper = ({ repo, image }) => {
             <strong>Stack: </strong>
           </p>
           <ul>
-            {technologies?.map((technology) => (
+            {(repo.techStack ? repo.techStack : technologies).map((technology) => (
               <li key={technology}>{technology}</li>
             ))}
           </ul>

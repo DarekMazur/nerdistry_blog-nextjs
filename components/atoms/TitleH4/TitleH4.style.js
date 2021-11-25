@@ -6,4 +6,10 @@ export const TitleH4 = styled.h4`
   color: ${({ theme }) => theme.colors.brown};
   margin: ${({ isSmall }) => (isSmall ? '-4rem 0 4rem' : '0')};
   font-family: ${({ theme }) => theme.fonts.secondaryHeaderFont};
+  transition: transform 0.1s ease-in-out;
+  cursor: ${({ isLink }) => (isLink ? 'pointer' : 'auto')};
+
+  &:hover {
+    transform: scale(${({ isLink }) => (isLink ? '1.05' : '1')});
+  }
 `;

@@ -33,7 +33,9 @@ const PostsListItem = ({ title }) => {
   return (
     <PostListItemWrapper>
       <PostTitleWrapper>
-        <TitleH4>{singlePost.Title}</TitleH4>
+        <Link href={`/posts/${slugify(singlePost.Title || '', { remove: /[*+~.()'"!:@]/g, lower: true })}`}>
+          <TitleH4 isLink>{singlePost.Title}</TitleH4>
+        </Link>
         <p>{dateToDisplay(singlePost.published_at)}</p>
       </PostTitleWrapper>
       <PostItemContentWrapper>

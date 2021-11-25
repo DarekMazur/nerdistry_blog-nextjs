@@ -25,7 +25,7 @@ export const PostItemContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-left: 5.2rem;
-  height: 25.8rem;
+  min-height: 32rem;
   border-radius: 1rem 0 0 1rem;
   background-color: ${({ theme }) => theme.colors.white};
 `;
@@ -41,7 +41,7 @@ export const PostTeaser = styled.div`
 
 export const PostImage = styled.div`
   background: ${({ imageUrl }) => `url(${imageUrl}) no-repeat center/cover`};
-  height: 100%;
+  min-height: 32rem;
   width: 45%;
   margin-left: 50px;
   border: ${({ theme }) => `1.6rem solid ${theme.colors.yellow}`};

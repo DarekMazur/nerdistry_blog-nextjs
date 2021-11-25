@@ -10,7 +10,7 @@ export const SinglePostContent = styled.div`
   margin: 0 auto 3.2rem;
   max-width: 102.4rem;
 
-  pre {
+  code {
     background: ${({ theme }) => theme.colors.deepPurple};
     border: 1px solid #ddd;
     border-left: ${({ theme }) => `0.5rem solid ${theme.colors.yellow}`};
@@ -22,8 +22,9 @@ export const SinglePostContent = styled.div`
     margin-bottom: 1.6rem;
     max-width: 100%;
     overflow: auto;
-    padding: 1rem 1.5rem 2rem;
+    padding: 1rem 1.5rem 7rem;
     display: block;
+    position: relative;
 
     &::before {
       content: '// code';
@@ -33,13 +34,32 @@ export const SinglePostContent = styled.div`
       opacity: 0.7;
     }
 
-    code {
+    &::after {
+      content: '${({ isCopied }) => (isCopied ? 'copied!' : '')}';
+      height: 5rem;
+      width: 5rem;
+      background-color: ${({ theme, isCopied }) => (isCopied ? 'transparent' : theme.colors.grey)};
+      mask: ${({ isCopied }) => (isCopied ? 'none' : 'url(/copy-regular.svg) no-repeat')};
+      color: ${({ theme }) => theme.colors.grey};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 1rem;
+      opacity: ${({ isCopied }) => (isCopied ? '0.7' : '0.3')};
+      position: absolute;
+      bottom: ${({ isCopied }) => (isCopied ? '0.2rem' : '1rem')};
+      right: ${({ isCopied }) => (isCopied ? '3rem' : '1rem')};
+    }
+
+    /* code {
+      width: 100%;
+      height: 100%;
       display: inline-block;
       white-space: normal;
       max-width: 100%;
       word-break: break-word;
       word-wrap: break-word;
-    }
+    } */
   }
 
   img {

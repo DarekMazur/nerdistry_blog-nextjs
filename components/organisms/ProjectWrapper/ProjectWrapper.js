@@ -2,14 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
 import SectionTitle from '../../molecules/SectionTitle/SectionTitle';
-import {
-  ButtonContent,
-  Pointer,
-  ProjectSection,
-  StyledButton,
-  StyledProjectsWrapper,
-  TechnologiesWrapper,
-} from '../../pages/StyledPage/StyledPage.style';
+import { Pointer, ProjectSection, StyledButton, StyledProjectsWrapper, TechnologiesWrapper } from '../../pages/StyledPage/StyledPage.style';
 import { dateToDisplay } from '../../../utils/helpers';
 
 const ProjectsWrapper = ({ repo, image }) => {
@@ -58,11 +51,6 @@ const ProjectsWrapper = ({ repo, image }) => {
   const handleMouseLeave = () => {
     setIsMouseOver(false);
   };
-
-  // const test = (e) => {
-  //   const content = e.target.innerHTML;
-  //   navigator.clipboard.writeText(content);
-  // };
 
   return (
     <StyledProjectsWrapper>

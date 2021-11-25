@@ -20,7 +20,7 @@ const Footer = () => {
       <FooterLogoImage onClick={scrollToTop} />
       <FooterContent>
         <Dashes />
-        {currentYear} &copy; DarekMazur
+        <p>{currentYear} &copy; DarekMazur</p>
         <SocialMenu />
       </FooterContent>
     </StyledFooter>

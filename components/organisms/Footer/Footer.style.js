@@ -30,6 +30,10 @@ export const FooterContent = styled.div`
   align-items: center;
   margin-left: 3rem;
   opacity: 0.4;
+
+  p {
+    margin-left: -10rem;
+  }
 `;
 
 export const Dashes = styled.div`
@@ -39,7 +43,7 @@ export const Dashes = styled.div`
   width: 100%;
   height: 0.8rem;
   background-color: ${({ theme }) => theme.colors.yellow};
-  mask: url(/line.svg) no-repeat;
+  mask: url(/line.svg) repeat-x;
   margin: 0;
   padding: 0;
 `;

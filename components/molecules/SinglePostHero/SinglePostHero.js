@@ -26,7 +26,7 @@ const SinglePostHero = () => {
         }
       />
       <p>
-        {dateToDisplay(singlePost.published_at)} by{' '}
+        {dateToDisplay(singlePost?.published_at)} by{' '}
         <AuthorName onClick={handleClick}>
           <strong>{singlePost.User?.username}</strong>
         </AuthorName>

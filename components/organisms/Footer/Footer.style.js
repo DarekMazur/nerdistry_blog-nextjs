@@ -18,6 +18,7 @@ export const FooterLogoImage = styled.div`
   mask: url(/Logo.svg) no-repeat;
   mask-size: cover;
   opacity: 0.4;
+  cursor: pointer;
 `;
 
 export const FooterContent = styled.div`

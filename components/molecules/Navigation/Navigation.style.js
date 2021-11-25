@@ -68,6 +68,7 @@ export const Branding = styled.div`
   align-items: center;
   transform: translateY(${({ isScroll }) => (isScroll ? '15px' : '25px')});
   transition: transform 0.2s ease-in-out;
+  cursor: pointer;
 `;
 
 export const LogoWrapper = styled.div`

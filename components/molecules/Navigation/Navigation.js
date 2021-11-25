@@ -26,12 +26,14 @@ const Navigation = () => {
 
   return (
     <NavigationWrapper isScroll={scrollPosition > 200}>
-      <Branding isScroll={scrollPosition > 200}>
-        <LogoWrapper isScroll={scrollPosition > 200}>
-          <Image src={Logo} alt="Nerdistry logo" layout="fill" objectFit="cover" />
-        </LogoWrapper>
-        <SiteTitle isScroll={scrollPosition > 200}>Nerdistry.</SiteTitle>
-      </Branding>
+      <Link href="/" passHref>
+        <Branding isScroll={scrollPosition > 200}>
+          <LogoWrapper isScroll={scrollPosition > 200}>
+            <Image src={Logo} alt="Nerdistry logo" layout="fill" objectFit="cover" />
+          </LogoWrapper>
+          <SiteTitle isScroll={scrollPosition > 200}>Nerdistry.</SiteTitle>
+        </Branding>
+      </Link>
       <StyledNavigation>
         <NavigationList isScroll={scrollPosition > 200}>
           <Link href="/" passHref>

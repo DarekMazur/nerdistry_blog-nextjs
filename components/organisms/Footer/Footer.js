@@ -7,10 +7,17 @@ import { Dashes, FooterContent, FooterLogoImage, StyledFooter } from './Footer.s
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <StyledFooter>
       <HeptagonImage bColor="blue" leftPos="-4.8" bottomPos="19.5" />
-      <FooterLogoImage />
+      <FooterLogoImage onClick={scrollToTop} />
       <FooterContent>
         <Dashes />
         {currentYear} &copy; DarekMazur

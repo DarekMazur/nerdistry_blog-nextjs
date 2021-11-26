@@ -6,9 +6,11 @@ export const readingTime = (content) => {
 };
 
 export const dateToDisplay = (publishdate) => {
-  const PublishAtDay = new Date(publishdate).getDate();
-  const PublishAtMonth = new Date(publishdate).getMonth() + 1;
+  const PublishAtDay = new Date(publishdate).getDate() < 10 ? `0${new Date(publishdate).getDate()}` : new Date(publishdate).getDate();
+  const PublishAtMonth =
+    new Date(publishdate).getMonth() + 1 < 10 ? `0${new Date(publishdate).getMonth() + 1}` : new Date(publishdate).getMonth() + 1;
   const PublishAtYear = new Date(publishdate).getFullYear();
+
   const propperDate = `${PublishAtDay}.${PublishAtMonth}.${PublishAtYear}`;
   return propperDate;
 };

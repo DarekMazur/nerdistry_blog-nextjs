@@ -116,6 +116,7 @@ export const TechnologiesWrapper = styled.div`
   ul {
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     padding-left: 0.9rem;
 
     li {

@@ -9,7 +9,7 @@ export const blasts = [
   },
   {
     name: 'Się Wypowiem',
-    techStack: ['JavaScript', 'ReactJS', 'GatsbyJS', 'HTML5', 'CSS3', 'Styled Components', 'GraphQL', 'GraphCMS'],
+    techStack: ['JavaScript', 'ReactJS', 'GatsbyJS', 'HTML5', 'CSS3', 'Styled-Components', 'GraphQL', 'GraphCMS'],
     description: 'Blog osobisty',
     updated_at: '08.01.2019',
     homepage: 'https://siewypowiem.pl/',

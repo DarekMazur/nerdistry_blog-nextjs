@@ -46,7 +46,6 @@ const Navigation = () => {
               Blog
             </NavigationListItem>
           </Link>
-          <NavigationListItem>About</NavigationListItem>
           <Link href="/projects" passHref>
             <NavigationListItem linkto="projects" route={route} as="a">
               Projects

@@ -44,13 +44,13 @@ const Contact = () => {
   return (
     <form onSubmit={formik.handleSubmit}>
       <label for="name">Name</label>
-      <input type="text" name="name" onChange={formik.handleChange} value={formik.values.name}></input>
+      <input type="text" name="name" onChange={formik.handleChange} value={formik.values.name} required></input>
       {formik.errors.name ? <p>{formik.errors.name}</p> : null}
       <label for="email">E-mail</label>
-      <input type="text" name="email" onChange={formik.handleChange} value={formik.values.email}></input>
+      <input type="email" name="email" onChange={formik.handleChange} value={formik.values.email} required></input>
       {formik.errors.email ? <p>{formik.errors.email}</p> : null}
       <label for="message">Message</label>
-      <textarea name="message" onChange={formik.handleChange} value={formik.values.message}></textarea>
+      <textarea name="message" onChange={formik.handleChange} value={formik.values.message} required></textarea>
       {formik.errors.message ? <p>{formik.errors.message}</p> : null}
       <button type="submit">Send</button>
     </form>

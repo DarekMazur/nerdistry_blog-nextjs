@@ -51,7 +51,11 @@ const Navigation = () => {
               Projects
             </NavigationListItem>
           </Link>
-          <NavigationListItem>Contact</NavigationListItem>
+          <Link href="/contact" passHref>
+            <NavigationListItem linkto="projects" route={route} as="a">
+              Contact
+            </NavigationListItem>
+          </Link>
         </NavigationList>
       </StyledNavigation>
     </NavigationWrapper>

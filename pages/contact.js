@@ -15,7 +15,9 @@ const validate = (values) => {
     errors.name = 'name is too long, max length is 10';
   }
 
-  if (!pattern.test(values.email)) {
+  if (!values.email.length) {
+    errors.email = 'email is required';
+  } else if (!pattern.test(values.email)) {
     errors.email = 'email is not valid';
   }
 

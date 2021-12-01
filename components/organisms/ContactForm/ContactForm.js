@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { ContactSection } from '../../molecules/ContactSection/ContactSection.style';
 import Input from '../../atoms/Input/Input';
-import { ErrorMessage } from '../../atoms/Input/Input.style';
+import { ErrorMessage, SubmitButton } from '../../atoms/Input/Input.style';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('name is required').min(2, 'name is too short, min length is 2').max(30, 'name is too long, max length is 30'),
@@ -60,7 +60,7 @@ const ContactForm = () => {
         errorMessage={errorMessage(formik.errors.message)}
         isRequired
       />
-      <button type="submit">Send</button>
+      <SubmitButton type="submit">Send</SubmitButton>
     </ContactSection>
   );
 };

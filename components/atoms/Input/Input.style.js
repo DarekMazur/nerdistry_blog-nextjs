@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { CTAbutton } from '../CTAbutton/CTAbutton.style';
 
 export const InputWrapper = styled.div`
   width: 100%;
@@ -29,4 +30,11 @@ export const ErrorMessage = styled.p`
   bottom: -3.5rem;
   font-size: ${({ theme }) => theme.fontSize.s};
   color: ${({ theme }) => theme.colors.red};
+`;
+
+export const SubmitButton = styled(CTAbutton)`
+  position: relative;
+  margin-top: 4rem;
+  top: 0;
+  left: 0;
 `;

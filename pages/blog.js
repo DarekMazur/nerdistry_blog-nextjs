@@ -19,7 +19,11 @@ export async function getStaticProps() {
   });
   const posts = await res.json();
 
-  const getNumberOfPosts = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts/count`);
+  const getNumberOfPosts = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts/count`, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
+    },
+  });
   const postsCount = await getNumberOfPosts.json();
 
   return {

@@ -39,12 +39,4 @@ export const blasts = [
     homepage: 'http://www.batquiz.dariusz-mazur.pl/',
     image: '/blast/quiz.jpg',
   },
-  {
-    name: 'Krzysztof Słoń Senator RP',
-    techStack: ['Wordpress', 'JavaScript', 'jQuery', 'HTML5', 'CSS3', 'PHP'],
-    description: 'Oficjalna strona Senatora Krzysztofa Słonia',
-    updated_at: '04.01.2017',
-    homepage: 'http://www.krzysztof-slon.pl/',
-    image: '/blast/kms.jpg',
-  },
 ];

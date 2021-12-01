@@ -11,6 +11,7 @@ export const theme = {
     lightPurple: '#D8DCFF',
     green: '#49E22D',
     deepPurple: '#11072C',
+    red: '#D70A1C',
   },
   fonts: {
     mainFont: '"Montserrat", sans-serif',

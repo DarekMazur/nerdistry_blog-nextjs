@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFormik } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { ContactSection } from '../../molecules/ContactSection/ContactSection.style';
 import Input from '../../atoms/Input/Input';
@@ -12,56 +12,55 @@ const validationSchema = Yup.object().shape({
 });
 
 const ContactForm = () => {
-  const formik = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      message: '',
-    },
-    validationSchema,
-    onSubmit: (values) => {
-      console.log(JSON.stringify(values));
-    },
-  });
-
   const errorMessage = (message) => {
     const error = message ? <ErrorMessage>{message}</ErrorMessage> : null;
     return error;
   };
 
   return (
-    <ContactSection as="form" onSubmit={formik.handleSubmit}>
-      <Input
-        name="name"
-        id="name"
-        label="Name"
-        onChange={formik.handleChange}
-        value={formik.values.name}
-        errorMessage={errorMessage(formik.errors.name)}
-        isRequired
-      />
-      <Input
-        type="email"
-        name="email"
-        id="email"
-        label="E-mail"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-        errorMessage={errorMessage(formik.errors.email)}
-        isRequired
-      />
-      <Input
-        tag="textarea"
-        name="message"
-        id="message"
-        label="Message"
-        onChange={formik.handleChange}
-        value={formik.values.message}
-        errorMessage={errorMessage(formik.errors.message)}
-        isRequired
-      />
-      <SubmitButton type="submit">Send</SubmitButton>
-    </ContactSection>
+    <Formik
+      initialValues={{
+        name: '',
+        email: '',
+        message: '',
+      }}
+      validationSchema={validationSchema}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 4000);
+      }}
+    >
+      {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (
+        <ContactSection as="form" onSubmit={handleSubmit}>
+          <Input name="name" id="name" label="Name" onChange={handleChange} value={values.name} errorMessage={errorMessage(errors.name)} isRequired />
+          <Input
+            type="email"
+            name="email"
+            id="email"
+            label="E-mail"
+            onChange={handleChange}
+            value={values.email}
+            errorMessage={errorMessage(errors.email)}
+            isRequired
+          />
+          <Input
+            tag="textarea"
+            name="message"
+            id="message"
+            label="Message"
+            onChange={handleChange}
+            value={values.message}
+            errorMessage={errorMessage(errors.message)}
+            isRequired
+          />
+          <SubmitButton disabled={isSubmitting} type="submit">
+            Send
+          </SubmitButton>
+        </ContactSection>
+      )}
+    </Formik>
   );
 };
 

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect } from 'react';
 import slugify from 'slugify';
-import { CategoryDescription } from '../../components/atoms/CategoryDescription/CategoryDescription';
+import { Description } from '../../components/atoms/Description/Description.style';
 import SectionTitle from '../../components/molecules/SectionTitle/SectionTitle';
 import PostsList from '../../components/organisms/PostsList/PostsList';
 import { ContentContext } from '../../providers/ContentProvider';
@@ -22,7 +22,7 @@ const CategoryPosts = ({ getCategory }) => {
   return (
     <>
       <SectionTitle title={`Posts from category ${getCategory.Name}:`} />
-      <CategoryDescription>{getCategory.Description}</CategoryDescription>
+      <Description>{getCategory.Description}</Description>
       <PostsList isBlog="category" />
     </>
   );

@@ -26,9 +26,9 @@ const ContactForm = () => {
         message: '',
       }}
       validationSchema={validationSchema}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={async (values, { setSubmitting }) => {
         axios
-          .post('https://us-central1-nerdistry-mailing.cloudfunctions.net/sendEmail', values)
+          .post('/api/contact', values)
           .then((res) => {
             console.log(res);
             setSubmitting(false);

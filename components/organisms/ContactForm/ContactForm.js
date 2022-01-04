@@ -27,16 +27,9 @@ const ContactForm = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting }) => {
-        axios
-          .post('/api/contact', values)
-          .then((res) => {
-            console.log(res);
-            setSubmitting(false);
-          })
-          .catch((err) => {
-            console.log(err);
-            setSubmitting(false);
-          });
+        axios.post('/api/contact', values).then((res) => {
+          setSubmitting(false);
+        });
       }}
     >
       {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (

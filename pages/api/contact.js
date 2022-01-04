@@ -1,7 +1,5 @@
-'use strict';
-
 const nodemailer = require('nodemailer');
-const nodemailerSendgrid = require('nodemailer-sendgrid'); // require('nodemailer-sendgrid');
+const nodemailerSendgrid = require('nodemailer-sendgrid');
 const transport = nodemailer.createTransport(
   nodemailerSendgrid({
     apiKey: process.env.SENDGRID_API_KEY,
@@ -15,7 +13,10 @@ export default async (req, res) => {
       to: 'kontakt@nerdistry.pl',
       replyTo: `${req.body.name} <${req.body.email}>`,
       subject: 'Message from Nerdistry.pl',
-      html: `<h1>Hello world!</h1><h3>Message from ${req.body.name} (${req.body.email})</h3><p>${req.body.message}</p>`,
+      text: `${req.body.name} (${req.body.email}) wrote: ${req.body.message}`,
+      html: `<h1>Hello world!</h1>
+      <h3>Message from ${req.body.name} (${req.body.email})</h3>
+      <p>${req.body.message}</p>`,
     })
     .then(([res]) => {
       console.log('Message delivered with code %s %s', res.statusCode, res.statusMessage);

@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { ContactSection } from '../../molecules/ContactSection/ContactSection.style';
 import Input from '../../atoms/Input/Input';
 import { ErrorMessage, SubmitButton } from '../../atoms/Input/Input.style';
+import axios from 'axios';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('name is required').min(2, 'name is too short, min length is 2').max(30, 'name is too long, max length is 30'),
@@ -26,10 +27,16 @@ const ContactForm = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 4000);
+        axios
+          .post('https://us-central1-nerdistry-mailing.cloudfunctions.net/sendEmail', values)
+          .then((res) => {
+            console.log(res);
+            setSubmitting(false);
+          })
+          .catch((err) => {
+            console.log(err);
+            setSubmitting(false);
+          });
       }}
     >
       {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (

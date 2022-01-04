@@ -2,8 +2,6 @@ import { useRouter } from 'next/router';
 import React, { useContext, useEffect } from 'react';
 import slugify from 'slugify';
 import { CategoryDescription } from '../../components/atoms/CategoryDescription/CategoryDescription';
-import { Slogan } from '../../components/atoms/Slogan/Slogan.style';
-import { TitleH4 } from '../../components/atoms/TitleH4/TitleH4.style';
 import SectionTitle from '../../components/molecules/SectionTitle/SectionTitle';
 import PostsList from '../../components/organisms/PostsList/PostsList';
 import { ContentContext } from '../../providers/ContentProvider';

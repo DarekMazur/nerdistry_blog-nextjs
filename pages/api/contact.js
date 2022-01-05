@@ -9,10 +9,12 @@ const transport = nodemailer.createTransport(
 export default async (req, res) => {
   const info = transport
     .sendMail({
-      from: `${req.body.name} <kontakt@nerdistry.pl>`,
+      from: `Nerdistry - ${req.body.name} <notification@nerdistry.pl>`,
+      // from: req.body.email,
       to: 'kontakt@nerdistry.pl',
+      // to: 'dariusz.p.mazur@gmail.com',
       replyTo: `${req.body.name} <${req.body.email}>`,
-      subject: 'Message from Nerdistry.pl',
+      subject: `Nerdistry.pl - Message from ${req.body.name}`,
       text: `${req.body.name} (${req.body.email}) wrote: ${req.body.message}`,
       html: `<h1>Hello world!</h1>
       <h3>Message from ${req.body.name} (${req.body.email})</h3>

@@ -14,9 +14,11 @@ const Contact = () => {
         You can contact me using my social media profiles. And if prefere more traditional way - no problem! Fill contact form and press [Send]! I'll
         read all messages and I'll do my best to answer ;)
       </Description>
+      <ContactContainer />
       <ContactWrapper>
-        <ContactContainer />
+        {/* <ContactContainer /> */}
         <ContactForm />
+        <div>lorem ipsum</div>
       </ContactWrapper>
     </>
   );

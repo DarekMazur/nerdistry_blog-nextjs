@@ -1,4 +1,5 @@
 import React from 'react';
+import { ContactImage } from '../components/atoms/ContactImage/ContactImage.style';
 import { Description } from '../components/atoms/Description/Description.style';
 
 import SectionTitle from '../components/molecules/SectionTitle/SectionTitle';
@@ -16,9 +17,8 @@ const Contact = () => {
       </Description>
       <ContactContainer />
       <ContactWrapper>
-        {/* <ContactContainer /> */}
         <ContactForm />
-        <div>lorem ipsum</div>
+        <ContactImage />
       </ContactWrapper>
     </>
   );

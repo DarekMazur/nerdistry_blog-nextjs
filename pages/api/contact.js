@@ -10,9 +10,7 @@ export default async (req, res) => {
   const info = transport
     .sendMail({
       from: `Nerdistry - ${req.body.name} <notification@nerdistry.pl>`,
-      // from: req.body.email,
       to: 'kontakt@nerdistry.pl',
-      // to: 'dariusz.p.mazur@gmail.com',
       replyTo: `${req.body.name} <${req.body.email}>`,
       subject: `Nerdistry.pl - Message from ${req.body.name}`,
       text: `${req.body.name} (${req.body.email}) wrote: ${req.body.message}`,

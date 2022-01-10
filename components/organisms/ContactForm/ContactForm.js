@@ -1,15 +1,16 @@
 import React from 'react';
-import { Formik } from 'formik';
+import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { ContactSection } from '../../molecules/ContactSection/ContactSection.style';
 import Input from '../../atoms/Input/Input';
-import { ErrorMessage, SubmitButton } from '../../atoms/Input/Input.style';
+import { ErrorMessage, InputWrapper, Label, SubmitButton } from '../../atoms/Input/Input.style';
 import axios from 'axios';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('name is required').min(2, 'name is too short, min length is 2').max(30, 'name is too long, max length is 30'),
   email: Yup.string().required('email is required').email('email is not valid'),
   message: Yup.string().required(`message can't be empty`),
+  acceptTerms: Yup.bool().oneOf([true], 'Accept Terms & Conditions is required'),
 });
 
 const ContactForm = () => {
@@ -24,6 +25,7 @@ const ContactForm = () => {
         name: '',
         email: '',
         message: '',
+        acceptTerms: false,
       }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -56,6 +58,22 @@ const ContactForm = () => {
             errorMessage={errorMessage(errors.message)}
             isRequired
           />
+          <Input
+            type="checkbox"
+            name="acceptTerms"
+            id="acceptTerms"
+            label="Accept Terms & Conditions"
+            onChange={handleChange}
+            value={values.message}
+            errorMessage={errorMessage(errors.acceptTerms)}
+            isRequired
+          />
+          {/* <InputWrapper>
+            <Field type="checkbox" name="acceptTerms" required="true" />
+            <Label htmlFor="acceptTerms">Accept Terms & Conditions</Label>
+            {errorMessage(errors.acceptTerms)}
+          </InputWrapper> */}
+
           <SubmitButton disabled={isSubmitting} type="submit">
             Send
           </SubmitButton>

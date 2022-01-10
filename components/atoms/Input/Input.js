@@ -17,7 +17,7 @@ const Input = ({ tag: Tag, type, name, id, label, isRequired, onChange, value, e
 
   return (
     <InputWrapper>
-      <Label htmlFor={name} isBlur={isBlur}>
+      <Label htmlFor={name} isBlur={type === 'checkbox' ? false : isBlur} type={type}>
         {label}
       </Label>
       <StyledInput

@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { CTAbutton } from '../CTAbutton/CTAbutton.style';
 
@@ -7,18 +8,18 @@ export const InputWrapper = styled.div`
 `;
 
 export const StyledInput = styled.input`
-  width: 100%;
-  height: ${({ name }) => (name === 'message' ? '15rem' : '5rem')};
+  width: ${({ type }) => (type === 'checkbox' ? '2rem' : '100%')};
+  height: ${({ name, type }) => (name === 'message' ? '15rem' : type === 'checkbox' ? '2rem' : '5rem')};
   margin: 1.5rem 0;
   padding: ${({ name }) => (name === 'message' ? '2rem 1rem' : '0 1rem')};
   color: ${({ theme }) => theme.colors.gray};
-  border-color: ${({ theme, isError }) => (isError ? theme.colors.red : 'default')};
+  border-color: ${({ theme, isError }) => (isError ? theme.colors.red : null)};
 `;
 
 export const Label = styled.label`
   position: absolute;
-  top: 1.2rem;
-  left: 0.2rem;
+  top: ${({ type }) => (type === 'checkbox' ? '1rem' : '1.2rem')};
+  left: ${({ type }) => (type === 'checkbox' ? '2.5rem' : '0.2rem')};
   transform-origin: 0 100%;
   transform: ${({ isBlur }) => (isBlur ? 'translateY(-1.5rem) scale(0.5)' : 'ranslateY(-1rem) scale(1)')};
   transition: transform 0.15s ease-in-out;

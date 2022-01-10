@@ -26,24 +26,10 @@ const ContactForm = () => {
         message: '',
       }}
       validationSchema={validationSchema}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={(values, { setSubmitting, resetForm }) => {
         axios.post('/api/contact', values).then((res) => {
-          console.log(res);
-          if (res.values.result !== 'success') {
-            setData({
-              ...values,
-              sent: false,
-            });
-            setSubmitting(false);
-            resetForm();
-          } else {
-            setData({
-              ...values,
-              sent: true,
-            });
-            setSubmitting(false);
-            resetForm();
-          }
+          setSubmitting(false);
+          resetForm();
         });
       }}
     >

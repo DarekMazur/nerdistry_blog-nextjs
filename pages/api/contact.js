@@ -22,6 +22,7 @@ export default async (req, res) => {
     })
     .then(([res]) => {
       console.log('Message delivered with code %s %s', res.statusCode, res.statusMessage);
+      return res.end();
     })
     .catch((err) => {
       console.log('Errors occurred, failed to deliver message');
@@ -31,5 +32,7 @@ export default async (req, res) => {
       } else {
         console.log(err);
       }
+
+      return res.end();
     });
 };

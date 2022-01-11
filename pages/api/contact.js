@@ -13,8 +13,8 @@ export default async (req, res) => {
     replyTo: `${req.body.name} <${req.body.email}>`,
     subject: `Nerdistry.pl - Message from ${req.body.name}`,
     text: `${req.body.name} (${req.body.email}) wrote: ${req.body.message}`,
-    html: `<h1>Hello world!</h1>
-    <h3>Message from ${req.body.name} (${req.body.email})</h3>
+    html: `<h1>Hello Nerdistry!</h1>
+    <h3>You got new mesage from ${req.body.name} (${req.body.email})</h3>
     <p>${req.body.message}</p>`,
   };
 

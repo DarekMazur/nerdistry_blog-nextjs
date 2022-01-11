@@ -44,22 +44,6 @@ const PostsListItem = ({ title }) => {
         stagger: 0.1,
         scrollTrigger: {
           trigger: article.current,
-          start: 'top bottom',
-        },
-      }
-    );
-
-    gsap.fromTo(
-      articleImg.current,
-      { x: '-=150%', autoAlpha: 0 },
-      {
-        x: 0,
-        autoAlpha: 1,
-        duration: 1,
-        ease: 'power3',
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: articleImg.current,
           start: 'top bottom-=100px',
         },
       }
@@ -79,9 +63,9 @@ const PostsListItem = ({ title }) => {
         </Link>
         <p>{dateToDisplay(singlePost.published_at)}</p>
       </PostTitleWrapper>
-      <PostItemContentWrapper>
-        <PostImage imageUrl={singlePost.CoverImage?.url} ref={articleImg} />
-        <PostContent ref={article}>
+      <PostItemContentWrapper ref={article}>
+        <PostImage imageUrl={singlePost.CoverImage?.url} />
+        <PostContent>
           <PostContentList details={details} />
           <PostTeaser>
             <p>{singlePost.Description ? singlePost.Description : shortenContent(singlePost.Content)}</p>

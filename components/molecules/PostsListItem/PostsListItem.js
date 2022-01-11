@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import slugify from 'slugify';
+import gsap from 'gsap';
 import { dateToDisplay, readingTime, shortenContent } from '../../../utils/helpers';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { CTAbutton } from '../../atoms/CTAbutton/CTAbutton.style';
 import { TitleH4 } from '../../atoms/TitleH4/TitleH4.style';
 import PostContentList from '../PostContentList/PostContentList';
 import { PostContent, PostImage, PostItemContentWrapper, PostListItemWrapper, PostTeaser, PostTitleWrapper } from './PostsListItem.style';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const PostsListItem = ({ title }) => {
+  const article = useRef();
+  const articleImg = useRef();
+
   const [singlePost, setSinglePost] = useState({});
 
   const getPost = async (title) => {
@@ -25,6 +32,40 @@ const PostsListItem = ({ title }) => {
     getPost(title);
   }, []);
 
+  useEffect(() => {
+    gsap.fromTo(
+      article.current.children,
+      { x: '+=150%', autoAlpha: 0 },
+      {
+        x: 0,
+        autoAlpha: 1,
+        duration: 1,
+        ease: 'power3',
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: article.current,
+          start: 'top bottom',
+        },
+      }
+    );
+
+    gsap.fromTo(
+      articleImg.current,
+      { x: '-=150%', autoAlpha: 0 },
+      {
+        x: 0,
+        autoAlpha: 1,
+        duration: 1,
+        ease: 'power3',
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: articleImg.current,
+          start: 'top bottom-=100px',
+        },
+      }
+    );
+  });
+
   const details = {
     categoriesItems: singlePost.categories,
     tagsItems: singlePost.Tags,
@@ -39,8 +80,8 @@ const PostsListItem = ({ title }) => {
         <p>{dateToDisplay(singlePost.published_at)}</p>
       </PostTitleWrapper>
       <PostItemContentWrapper>
-        <PostImage imageUrl={singlePost.CoverImage?.url}></PostImage>
-        <PostContent>
+        <PostImage imageUrl={singlePost.CoverImage?.url} ref={articleImg} />
+        <PostContent ref={article}>
           <PostContentList details={details} />
           <PostTeaser>
             <p>{singlePost.Description ? singlePost.Description : shortenContent(singlePost.Content)}</p>

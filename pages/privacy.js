@@ -1,9 +1,10 @@
 import React from 'react';
 import SectionTitle from '../components/molecules/SectionTitle/SectionTitle';
+import { PrivacyPage } from '../components/pages/PrivacyPage/PrivacyPage.style';
 
 const PrivacyPolicy = () => {
   return (
-    <>
+    <PrivacyPage>
       <SectionTitle title="Polityka prywatności" />
       <p>
         Polityka prywatności opisuje zasady przetwarzania przez nas informacji na Twój temat, w tym danych osobowych oraz ciasteczek, czyli tzw.
@@ -192,7 +193,7 @@ const PrivacyPolicy = () => {
             </li>
             <li>
               W celu zarządzania ustawienia cookies wybierz z listy poniżej przeglądarkę internetową, której używasz i postępuj zgodnie z
-              instrukcjami: o
+              instrukcjami:
               <ul>
                 <li>Edge</li>
                 <li>Internet Explorer</li>
@@ -211,16 +212,7 @@ const PrivacyPolicy = () => {
           </ol>
         </li>
       </ol>
-      <p>
-        Niniejszy wzór polityki został wygenerowany bezpłatnie, w celach informacyjnych, w oparciu o naszą wiedzę, branżowe praktyki i przepisy prawa
-        obowiązujące na dzień 2018-08-14. Zalecamy sprawdzenie wzoru polityki przed użyciem jej na stronie. Wzór opiera się na najczęściej
-        występujących na stronach internetowych sytuacjach, ale może nie odzwierciedlać pełnej i dokładnej specyfiki Twojej strony www. Przeczytaj
-        uważnie wygenerowany dokument i w razie potrzeb dostosuj go do Twojej sytuacji lub zasięgnij porady prawnej. Nie bierzemy odpowiedzialności za
-        skutki posługiwania się tym dokumentem, ponieważ tylko Ty masz wpłw na to, czy wszystkie informacje w nim zawarte są zgodne z prawdą. Zwróć
-        także uwagę, że Polityka Prywatności, nawet najlepsza, jest tylko jednym z elementów Twojej troski o dane osobowe i prywatność użytkownika na
-        stronie www.
-      </p>
-    </>
+    </PrivacyPage>
   );
 };
 

@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { ContactSection } from '../../molecules/ContactSection/ContactSection.style';
 import Input from '../../atoms/Input/Input';
-import { ErrorMessage, InputWrapper, Label, SubmitButton } from '../../atoms/Input/Input.style';
+import { ErrorMessage, SubmitButton } from '../../atoms/Input/Input.style';
 import axios from 'axios';
 
 const validationSchema = Yup.object().shape({

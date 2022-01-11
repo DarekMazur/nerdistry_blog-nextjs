@@ -19,6 +19,18 @@ const ContactForm = () => {
     return error;
   };
 
+  const privacyLink = (linked, prefix, sufix) => {
+    return (
+      <>
+        {prefix ? `${prefix} ` : 'null'}
+        <a href="/privacy" target="_blank">
+          {linked}
+        </a>
+        {sufix ? ` ${sufix}` : ''}
+      </>
+    );
+  };
+
   return (
     <Formik
       initialValues={{
@@ -62,7 +74,7 @@ const ContactForm = () => {
             type="checkbox"
             name="acceptTerms"
             id="acceptTerms"
-            label="Accept Terms & Conditions"
+            label={privacyLink('Terms & Conditions', 'Accept')}
             onChange={handleChange}
             value={values.message}
             errorMessage={errorMessage(errors.acceptTerms)}

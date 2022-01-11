@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Field } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { ContactSection } from '../../molecules/ContactSection/ContactSection.style';
 import Input from '../../atoms/Input/Input';

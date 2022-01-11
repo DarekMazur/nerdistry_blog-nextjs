@@ -7,17 +7,30 @@ const transport = nodemailer.createTransport(
 );
 
 export default async (req, res) => {
-  const info = transport
-    .sendMail({
-      from: `Nerdistry - ${req.body.name} <notification@nerdistry.pl>`,
-      to: 'kontakt@nerdistry.pl',
-      replyTo: `${req.body.name} <${req.body.email}>`,
-      subject: `Nerdistry.pl - Message from ${req.body.name}`,
-      text: `${req.body.name} (${req.body.email}) wrote: ${req.body.message}`,
-      html: `<h1>Hello world!</h1>
-      <h3>Message from ${req.body.name} (${req.body.email})</h3>
-      <p>${req.body.message}</p>`,
-    })
+  const mailMail = {
+    from: `Nerdistry - ${req.body.name} <notification@nerdistry.pl>`,
+    to: 'kontakt@nerdistry.pl',
+    replyTo: `${req.body.name} <${req.body.email}>`,
+    subject: `Nerdistry.pl - Message from ${req.body.name}`,
+    text: `${req.body.name} (${req.body.email}) wrote: ${req.body.message}`,
+    html: `<h1>Hello world!</h1>
+    <h3>Message from ${req.body.name} (${req.body.email})</h3>
+    <p>${req.body.message}</p>`,
+  };
+
+  const confirmMail = {
+    from: `Nerdistry <no-replay@nerdistry.pl>`,
+    to: `${req.body.name} <${req.body.email}>`,
+    subject: `Hello ${req.body.name}, thank you for your message!`,
+    text: `Hi ${req.body.name}, your message from nerdistry.pl was sent: "${req.body.message}"`,
+    html: `<h1>Hi ${req.body.name}</h1>
+    <h3>Thank you for your message, ${req.body.name}!</h3>
+    <p>For sure I'll read it and do my best to answer!</p>
+    <p>You can check your message bellow:</p>
+    <p>"${req.body.message}"</p>`,
+  };
+
+  Promise.all([transport.sendMail(mailMail), transport.sendMail(confirmMail)])
     .then(([res]) => {
       console.log('Message delivered with code %s %s', res.statusCode, res.statusMessage);
       return res.end();

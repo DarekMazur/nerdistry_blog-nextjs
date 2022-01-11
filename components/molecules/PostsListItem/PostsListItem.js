@@ -13,7 +13,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const PostsListItem = ({ title }) => {
   const article = useRef();
-  const articleImg = useRef();
 
   const [singlePost, setSinglePost] = useState({});
 
@@ -48,7 +47,7 @@ const PostsListItem = ({ title }) => {
         },
       }
     );
-  });
+  }, []);
 
   const details = {
     categoriesItems: singlePost.categories,

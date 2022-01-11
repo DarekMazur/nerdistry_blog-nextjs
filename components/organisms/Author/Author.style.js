@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 
 export const AuthorWrapper = styled.div`
@@ -13,6 +14,16 @@ export const AuthorWrapper = styled.div`
   border-left: solid 1rem ${({ theme }) => theme.colors.yellow};
   z-index: 10;
   transition: transform 0.15s ease-in-out;
+`;
+
+export const CloseButton = styled(FontAwesomeIcon)`
+  position: absolute;
+  width: 2rem;
+  transition: transform 0.15s ease-in-out;
+
+  &:hover {
+    transform: rotate(180deg);
+  }
 `;
 
 export const Avatar = styled.img`

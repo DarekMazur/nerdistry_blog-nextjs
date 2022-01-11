@@ -43,7 +43,7 @@ const PostsListItem = ({ title }) => {
         stagger: 0.1,
         scrollTrigger: {
           trigger: article.current,
-          start: 'top bottom-=100px',
+          start: 'top center+=100px',
         },
       }
     );

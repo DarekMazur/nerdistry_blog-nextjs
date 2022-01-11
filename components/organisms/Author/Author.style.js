@@ -20,7 +20,8 @@ export const CloseButton = styled(FontAwesomeIcon)`
   position: absolute;
   width: 2rem;
   transition: transform 0.15s ease-in-out;
-
+  top: 2rem;
+  left: 2rem;
   &:hover {
     transform: rotate(180deg);
   }

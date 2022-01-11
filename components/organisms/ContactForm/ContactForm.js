@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { ContactSection } from '../../molecules/ContactSection/ContactSection.style';
 import Input from '../../atoms/Input/Input';
 import { ErrorMessage, SubmitButton } from '../../atoms/Input/Input.style';
 import axios from 'axios';
+import SendConfirmation from '../../molecules/SendConfirmation/SendConfirmation';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('name is required').min(2, 'name is too short, min length is 2').max(30, 'name is too long, max length is 30'),
@@ -14,6 +15,12 @@ const validationSchema = Yup.object().shape({
 });
 
 const ContactForm = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleSend = () => {
+    setIsOpen(!isOpen);
+  };
+
   const errorMessage = (message) => {
     const error = message ? <ErrorMessage>{message}</ErrorMessage> : null;
     return error;
@@ -32,61 +39,77 @@ const ContactForm = () => {
   };
 
   return (
-    <Formik
-      initialValues={{
-        name: '',
-        email: '',
-        message: '',
-        acceptTerms: false,
-      }}
-      validationSchema={validationSchema}
-      onSubmit={(values, { setSubmitting, resetForm }) => {
-        axios.post('/api/contact', values).then((res) => {
-          setSubmitting(false);
-          resetForm();
-        });
-      }}
-    >
-      {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (
-        <ContactSection as="form" onSubmit={handleSubmit}>
-          <Input name="name" id="name" label="Name" onChange={handleChange} value={values.name} errorMessage={errorMessage(errors.name)} isRequired />
-          <Input
-            type="email"
-            name="email"
-            id="email"
-            label="E-mail"
-            onChange={handleChange}
-            value={values.email}
-            errorMessage={errorMessage(errors.email)}
-            isRequired
-          />
-          <Input
-            tag="textarea"
-            name="message"
-            id="message"
-            label="Message"
-            onChange={handleChange}
-            value={values.message}
-            errorMessage={errorMessage(errors.message)}
-            isRequired
-          />
-          <Input
-            type="checkbox"
-            name="acceptTerms"
-            id="acceptTerms"
-            label={privacyLink('Terms & Conditions', 'Accept')}
-            onChange={handleChange}
-            value={values.message}
-            errorMessage={errorMessage(errors.acceptTerms)}
-            isRequired
-          />
+    <>
+      {isOpen ? <SendConfirmation handleSend={handleSend} /> : null}
+      <Formik
+        initialValues={{
+          name: '',
+          email: '',
+          message: '',
+          acceptTerms: false,
+        }}
+        validationSchema={validationSchema}
+        onSubmit={(values, { setSubmitting, resetForm }) => {
+          axios
+            .post('/api/contact', values)
+            .then((res) => {
+              setSubmitting(false);
+              resetForm();
+              document.querySelector('#acceptTerms').checked = false;
+              handleSend();
+            })
+            .catch(console.log('Ooops...'));
+        }}
+      >
+        {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (
+          <ContactSection as="form" onSubmit={handleSubmit}>
+            <Input
+              name="name"
+              id="name"
+              label="Name"
+              onChange={handleChange}
+              value={values.name}
+              errorMessage={errorMessage(errors.name)}
+              isRequired
+            />
+            <Input
+              type="email"
+              name="email"
+              id="email"
+              label="E-mail"
+              onChange={handleChange}
+              value={values.email}
+              errorMessage={errorMessage(errors.email)}
+              isRequired
+            />
+            <Input
+              tag="textarea"
+              name="message"
+              id="message"
+              label="Message"
+              onChange={handleChange}
+              value={values.message}
+              errorMessage={errorMessage(errors.message)}
+              isRequired
+            />
+            <Input
+              type="checkbox"
+              name="acceptTerms"
+              id="acceptTerms"
+              label={privacyLink('Terms & Conditions', 'Accept')}
+              onChange={handleChange}
+              value={values.acceptTerms}
+              errorMessage={errorMessage(errors.acceptTerms)}
+              isRequired
+            />
 
-          <SubmitButton disabled={isSubmitting} type="submit">
-            Send
-          </SubmitButton>
-        </ContactSection>
-      )}
-    </Formik>
+            <SubmitButton disabled={isSubmitting} type="submit">
+              Send
+            </SubmitButton>
+          </ContactSection>
+        )}
+      </Formik>
+    </>
   );
 };
 

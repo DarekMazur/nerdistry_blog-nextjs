@@ -80,11 +80,6 @@ const ContactForm = () => {
             errorMessage={errorMessage(errors.acceptTerms)}
             isRequired
           />
-          {/* <InputWrapper>
-            <Field type="checkbox" name="acceptTerms" required="true" />
-            <Label htmlFor="acceptTerms">Accept Terms & Conditions</Label>
-            {errorMessage(errors.acceptTerms)}
-          </InputWrapper> */}
 
           <SubmitButton disabled={isSubmitting} type="submit">
             Send

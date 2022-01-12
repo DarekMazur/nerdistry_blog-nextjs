@@ -57,21 +57,21 @@ const PostsListItem = ({ title }) => {
   return (
     <PostListItemWrapper>
       <PostTitleWrapper>
-        <Link href={`/posts/${slugify(singlePost.Title || '', { remove: /[*+~.()'"!:@]/g, lower: true })}`}>
-          <TitleH4 isLink>{singlePost.Title}</TitleH4>
+        <Link href={singlePost.Title ? `/posts/${slugify(singlePost.Title || '', { remove: /[*+~.()'"!:@]/g, lower: true })}` : ''}>
+          <TitleH4 isLink>{singlePost.Title ? singlePost.Title : 'loading...'}</TitleH4>
         </Link>
-        <p>{dateToDisplay(singlePost.published_at)}</p>
+        <p>{singlePost.published_at ? dateToDisplay(singlePost.published_at) : 'loading...'}</p>
       </PostTitleWrapper>
       <PostItemContentWrapper ref={article}>
         <PostImage imageUrl={singlePost.CoverImage?.url} />
         <PostContent>
           <PostContentList details={details} />
           <PostTeaser>
-            <p>{singlePost.Description ? singlePost.Description : shortenContent(singlePost.Content)}</p>
-            <p>Read in {readingTime(singlePost.Content)} minutes</p>
+            <p>{singlePost.Content ? (singlePost.Description ? singlePost.Description : shortenContent(singlePost.Content)) : 'loading...'}</p>
+            <p>{singlePost.Content ? `Read in ${readingTime(singlePost.Content)} minutes` : 'calculating...'}</p>
           </PostTeaser>
           <PostContentList isTagList details={details} />
-          <Link href={`/posts/${slugify(singlePost.Title || '', { remove: /[*+~.()'"!:@]/g, lower: true })}`}>
+          <Link href={singlePost.Title ? `/posts/${slugify(singlePost.Title || '', { remove: /[*+~.()'"!:@]/g, lower: true })}` : ''}>
             <CTAbutton as="a">Read more</CTAbutton>
           </Link>
         </PostContent>

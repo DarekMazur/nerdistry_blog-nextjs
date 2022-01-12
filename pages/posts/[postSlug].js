@@ -17,15 +17,20 @@ export async function getStaticPaths() {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
     },
   });
+
+  let paths = [];
+
   const posts = await res.json();
 
-  const paths = posts.map((post) => {
-    return {
-      params: {
-        postSlug: slugify(post.Title, { remove: /[*+~.()'"!:@]/g, lower: true }),
-      },
-    };
-  });
+  if (posts.length > 0) {
+    paths = posts.map((post) => {
+      return {
+        params: {
+          postSlug: slugify(post.Title, { remove: /[*+~.()'"!:@]/g, lower: true }),
+        },
+      };
+    });
+  }
 
   return {
     paths,

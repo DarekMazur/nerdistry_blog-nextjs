@@ -28,6 +28,7 @@ export async function getStaticProps() {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
     },
   });
+
   const posts = await res.json();
 
   const getNumberOfPosts = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts/count`, {

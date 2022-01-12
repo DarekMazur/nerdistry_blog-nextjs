@@ -10,7 +10,7 @@ const SloganWrapper = () => {
     <Wrapper>
       <Slogan>Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt.</Slogan>
       <HeroImageWrapper>
-        <Image src={HeroImage} alt="" width={307} heigth={260} />
+        <Image src={HeroImage} alt="" width={307} height={260} />
       </HeroImageWrapper>
     </Wrapper>
   );

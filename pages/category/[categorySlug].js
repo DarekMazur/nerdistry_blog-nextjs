@@ -36,7 +36,7 @@ export async function getStaticPaths() {
   });
   const categories = await res.json();
 
-  const paths = [];
+  let paths = [];
 
   if (categories.length > 0) {
     paths = categories.map((category) => {

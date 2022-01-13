@@ -14,7 +14,7 @@ export const ContentContext = React.createContext({
 });
 
 const ContentPovider = ({ children, allPosts, postsCountValue }) => {
-  const [posts, setPosts] = useState(allPosts.length > 0 ? [...allPosts] : []);
+  const [posts, setPosts] = useState(allPosts && allPosts.length > 0 ? [...allPosts] : []);
   const [singlePost, setSinglePost] = useState({});
   const [isSingle, setIsSingle] = useState(false);
   const [isOpen, setIsOpen] = useState(false);

@@ -77,7 +77,7 @@ const ProjectsWrapper = ({ repo, image }) => {
         </TechnologiesWrapper>
         <p>
           <strong>Created at: </strong>
-          {`${dateToDisplay(repo.created_at)} ${repo.updated_at ? `(updated: ${dateToDisplay(repo.updated_at)})` : ''}`}
+          {`${dateToDisplay(repo.created_at)} ${repo.updated_at ? `(updated: ${dateToDisplay(repo.pushed_at)})` : ''}`}
         </p>
         <p>
           {repo.homepage ? (

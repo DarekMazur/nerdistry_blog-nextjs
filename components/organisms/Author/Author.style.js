@@ -14,6 +14,10 @@ export const AuthorWrapper = styled.div`
   border-left: solid 1rem ${({ theme }) => theme.colors.yellow};
   z-index: 10;
   transition: transform 0.15s ease-in-out;
+
+  @media (max-width: 1280px) {
+    width: 50vw;
+  }
 `;
 
 export const CloseButton = styled(FontAwesomeIcon)`
@@ -22,8 +26,13 @@ export const CloseButton = styled(FontAwesomeIcon)`
   transition: transform 0.15s ease-in-out;
   top: 2rem;
   left: 2rem;
+
   &:hover {
     transform: rotate(180deg);
+  }
+
+  @media (max-width: 1280px) {
+    width: 4rem;
   }
 `;
 

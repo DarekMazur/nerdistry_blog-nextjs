@@ -5,7 +5,7 @@ export const Slogan = styled.h2`
   font-family: ${({ theme }) => theme.fonts.headerFont};
   width: 50%;
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     font-size: ${({ theme }) => theme.fontSize.lm};
   }
 `;

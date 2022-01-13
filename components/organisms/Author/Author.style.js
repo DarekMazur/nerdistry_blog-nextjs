@@ -15,7 +15,7 @@ export const AuthorWrapper = styled.div`
   z-index: 10;
   transition: transform 0.15s ease-in-out;
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     width: 50vw;
   }
 
@@ -35,7 +35,7 @@ export const CloseButton = styled(FontAwesomeIcon)`
     transform: rotate(180deg);
   }
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     width: 4rem;
   }
 `;

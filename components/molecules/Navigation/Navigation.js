@@ -4,7 +4,16 @@ import Link from 'next/link';
 
 import Image from 'next/image';
 
-import { NavigationList, NavigationListItem, NavigationWrapper, StyledNavigation, Branding, LogoWrapper, SiteTitle } from './Navigation.style';
+import {
+  NavigationList,
+  NavigationListItem,
+  NavigationWrapper,
+  StyledNavigation,
+  Branding,
+  LogoWrapper,
+  SiteTitle,
+  MenuButton,
+} from './Navigation.style';
 
 import Logo from '../../../assets/images/svg/Logo_sqr.svg';
 
@@ -58,6 +67,7 @@ const Navigation = () => {
           </Link>
         </NavigationList>
       </StyledNavigation>
+      <MenuButton icon={['fas', 'bars']} />
     </NavigationWrapper>
   );
 };

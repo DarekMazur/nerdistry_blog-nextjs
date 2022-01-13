@@ -12,7 +12,7 @@ export const CircleImage = styled.div`
   opacity: 0.5;
   z-index: -1;
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     top: -150px;
     left: -80px;
     width: 200px;

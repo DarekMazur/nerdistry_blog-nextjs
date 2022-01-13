@@ -36,7 +36,7 @@ export const ProjectSection = styled.div`
   border-left: ${({ theme, isCurtain }) => (isCurtain ? `1rem solid ${theme.colors.yellow}` : '0')};
   cursor: ${({ isCurtain }) => (isCurtain ? 'pointer' : 'inherit')};
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     width: ${({ isCurtain }) => (isCurtain ? `100vw` : '50vw')};
     align-items: ${({ isCurtain }) => (isCurtain ? `flex-end` : 'flex-start')};
     min-height: 50rem;

@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 
 export const NavigationWrapper = styled.div`
@@ -9,18 +10,26 @@ export const NavigationWrapper = styled.div`
   width: 100%;
   height: 91px;
   background-color: ${({ theme }) => theme.colors.white};
-  padding: 0 52px;
+  padding: 0 5.2rem;
   box-shadow: 0 0.2rem 1rem ${({ theme }) => theme.colors.black};
   z-index: 10;
   transform: translateY(${({ isScroll }) => (isScroll ? '-41px' : '0')});
   transition: transform 0.2s ease-in-out;
 
-  @media (max-width: 1280px) {
-    transform: translateY(-41px);
+  @media (max-width: 1080px) {
+    height: 5rem;
+    transform: translateY(0);
+    padding: 0;
   }
 `;
 
-export const StyledNavigation = styled.nav``;
+export const StyledNavigation = styled.nav`
+  @media (max-width: 767px) {
+    transform: translateX(120%);
+    top: 0;
+    height: 100vh;
+  }
+`;
 
 export const NavigationList = styled.ul`
   display: flex;
@@ -35,7 +44,7 @@ export const NavigationList = styled.ul`
   margin: 0;
   transition: font-size 0.2s ease-in-out;
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     align-items: flex-end;
     font-size: ${({ theme }) => theme.fontSize.m};
     padding: 0 0 12px;
@@ -80,20 +89,21 @@ export const Branding = styled.div`
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
 
-  @media (max-width: 1280px) {
-    transform: translateY(15px);
+  @media (max-width: 1080px) {
+    transform: translateY(-25px);
+    left: 0;
   }
 `;
 
 export const LogoWrapper = styled.div`
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 10rem;
+  height: 10rem;
   transform: scale(${({ isScroll }) => (isScroll ? '0.4' : '1')});
   transition: transform 0.2s ease-in-out;
   background-color: ${({ theme }) => theme.colors.white};
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     transform: scale(0.4);
   }
 `;
@@ -105,7 +115,20 @@ export const SiteTitle = styled.h1`
   padding-left: 1rem;
   transition: font-size 0.2s ease-in-out, transform 0.2s ease-in-out;
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
+    font-size: ${({ theme }) => theme.fontSize.m};
     transform: translateX(-35px);
+  }
+`;
+
+export const MenuButton = styled(FontAwesomeIcon)`
+  position: absolute;
+  top: 0.8rem;
+  right: 3rem;
+  display: none;
+  height: 3rem;
+
+  @media (max-width: 767px) {
+    display: inline;
   }
 `;

@@ -8,7 +8,7 @@ export const ContactSection = styled.div`
   justify-content: flex-start;
   align-items: center;
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     width: 100%;
   }
 `;

@@ -29,7 +29,7 @@ export const PostItemContentWrapper = styled.div`
   border-radius: 1rem 0 0 1rem;
   background-color: ${({ theme }) => theme.colors.white};
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     flex-direction: column;
     margin-left: 0;
   }
@@ -39,7 +39,7 @@ export const PostContent = styled.div`
   width: 50%;
   position: relative;
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     width: 100%;
   }
 `;
@@ -55,7 +55,7 @@ export const PostImage = styled.div`
   margin-left: 50px;
   border: ${({ theme }) => `1.6rem solid ${theme.colors.yellow}`};
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     width: 100%;
     margin-left: 0;
   }

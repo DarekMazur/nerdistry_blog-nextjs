@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
 export const HeroWrapper = styled.div`
-  margin: 52px 32px;
+  margin: 5.2rem 3.2rem;
+
+  @media (max-width: 1080px) {
+    margin: 2rem 3rem;
+  }
 `;
 
 export const StyledDots = styled.div`
@@ -21,7 +25,7 @@ export const StyledDots = styled.div`
     left: 0;
   }
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     width: 350px;
     height: 160px;
     top: -5px;
@@ -38,7 +42,7 @@ export const HeroImageWrapper = styled.div`
   width: 307px;
   height: 260px;
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     width: 200px;
     height: 180px;
   }

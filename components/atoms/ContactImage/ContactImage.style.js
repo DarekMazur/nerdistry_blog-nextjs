@@ -5,7 +5,7 @@ export const ContactImage = styled.div`
   min-height: 40rem;
   background: url('/contactImg.jpg') no-repeat center/cover;
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     display: none;
   }
 `;

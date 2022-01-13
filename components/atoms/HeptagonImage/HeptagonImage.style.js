@@ -14,7 +14,7 @@ export const HeptagonImage = styled.div`
   opacity: 0.5;
   z-index: -1;
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1080px) {
     top: ${({ bottomPos }) => (bottomPos ? null : '-120px')};
     bottom: ${({ bottomPos }) => (bottomPos ? `${bottomPos}rem` : null)};
     right: ${({ leftPos }) => (leftPos ? null : '-100px')};

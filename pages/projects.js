@@ -17,8 +17,8 @@ export async function getStaticProps() {
   const unsortedRepos = await res.json();
 
   const repos = unsortedRepos.sort((a, b) => {
-    const dateA = new Date(a.pushed_at);
-    const dateB = new Date(b.pushed_at);
+    const dateA = new Date(a.created_at);
+    const dateB = new Date(b.created_at);
     return dateB - dateA;
   });
 

@@ -30,7 +30,7 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
   };
 
   const getInitialPosts = () => {
-    setPosts([...allPosts]);
+    setPosts(allPosts.length > 0 ? [...allPosts] : []);
     setIsSingle(false);
   };
 

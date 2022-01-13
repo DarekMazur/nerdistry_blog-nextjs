@@ -6,7 +6,7 @@
   Nerdistry blog
 </h1>
 
-## Version: 0.9.1 (beta)
+## Version: 0.1 (beta)
 
 Live demo: [app]
 
@@ -42,10 +42,10 @@ lorem ipsum
 
 ## :computer: Frontend
 
-   This application is created using [NextJS framework] and CSSinJS (styled-components).
-    
-   Other libraries:
-    
+This application is created using [NextJS framework] and CSSinJS (styled-components).
+
+Other libraries:
+
     * fortawesome
     * sendgrid
     * axios
@@ -59,8 +59,8 @@ lorem ipsum
     * slugify
 
 ## :wrench: Backend
-    
-   App is designed to work with [Strapi.io] (used v3). You can also use this tool, choose other API provider (Wordpress, DatoCMS etc) or design your API server.
+
+App is designed to work with [Strapi.io] (used v3). You can also use this tool, choose other API provider (Wordpress, DatoCMS etc) or design your API server.
 
 API schema:
 
@@ -107,5 +107,5 @@ You can recreate this schema in your Strapi application or create own API based 
 - and most probably much, much more ;)
 
 [app]: https://nerdistry.pl/
-[NextJS framework]: https://nextjs.org/docs
-[Strapi.io]: https://strapi.io/
+[nextjs framework]: https://nextjs.org/docs
+[strapi.io]: https://strapi.io/

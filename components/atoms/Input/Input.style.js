@@ -39,6 +39,12 @@ export const SubmitButton = styled(CTAbutton)`
   left: 0;
 
   &:disabled {
-    color: ${({ theme }) => theme.colors.yellow};
+    color: ${({ theme }) => theme.colors.grey};
+    border: ${({ theme }) => `0.3rem solid ${theme.colors.lightPurple}`};
+  }
+
+  &:disabled::before {
+    background-color: ${({ theme }) => theme.colors.lightPurple};
+    transform: scaleX(1);
   }
 `;

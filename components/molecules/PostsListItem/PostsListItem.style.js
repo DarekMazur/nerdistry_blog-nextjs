@@ -28,11 +28,20 @@ export const PostItemContentWrapper = styled.div`
   min-height: 32rem;
   border-radius: 1rem 0 0 1rem;
   background-color: ${({ theme }) => theme.colors.white};
+
+  @media (max-width: 1280px) {
+    flex-direction: column;
+    margin-left: 0;
+  }
 `;
 
 export const PostContent = styled.div`
   width: 50%;
   position: relative;
+
+  @media (max-width: 1280px) {
+    width: 100%;
+  }
 `;
 
 export const PostTeaser = styled.div`
@@ -45,4 +54,9 @@ export const PostImage = styled.div`
   width: 45%;
   margin-left: 50px;
   border: ${({ theme }) => `1.6rem solid ${theme.colors.yellow}`};
+
+  @media (max-width: 1280px) {
+    width: 100%;
+    margin-left: 0;
+  }
 `;

@@ -19,15 +19,22 @@ export const NavigationWrapper = styled.div`
   @media (max-width: 1080px) {
     height: 5rem;
     transform: translateY(0);
+  }
+
+  @media (max-width: 767px) {
     padding: 0;
   }
 `;
 
 export const StyledNavigation = styled.nav`
+  transition: transform 0.1s ease-in-out;
+
   @media (max-width: 767px) {
-    transform: translateX(120%);
+    transform: translateX(${({ isOpen }) => (isOpen ? '0' : '120%')});
     top: 0;
     height: 100vh;
+    width: 100vw;
+    background: ${({ theme }) => theme.colors.midWhite};
   }
 `;
 
@@ -45,9 +52,14 @@ export const NavigationList = styled.ul`
   transition: font-size 0.2s ease-in-out;
 
   @media (max-width: 1080px) {
-    align-items: flex-end;
     font-size: ${({ theme }) => theme.fontSize.m};
     padding: 0 0 12px;
+  }
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -76,6 +88,11 @@ export const NavigationListItem = styled.li`
     height: 0.2rem;
     background-color: ${({ theme }) => theme.colors.blue};
     display: ${({ href, route }) => (href === route && route !== undefined ? 'block' : 'none')};
+  }
+
+  @media (max-width: 767px) {
+    margin: 1rem 0;
+    font-size: ${({ theme }) => theme.fontSize.l};
   }
 `;
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const HeroWrapper = styled.div`
   margin: 5.2rem 3.2rem;
 
-  @media (max-width: 1080px) {
+  @media (max-width: 767px) {
     margin: 2rem 3rem;
   }
 `;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
@@ -20,6 +20,7 @@ import Logo from '../../../assets/images/svg/Logo_sqr.svg';
 const Navigation = () => {
   const { route } = useRouter();
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
   const handleScroll = () => {
     const position = window.pageYOffset;
     setScrollPosition(position);
@@ -33,6 +34,10 @@ const Navigation = () => {
     };
   }, []);
 
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <NavigationWrapper isScroll={scrollPosition > 200}>
       <Link href="/" passHref>
@@ -43,31 +48,31 @@ const Navigation = () => {
           <SiteTitle isScroll={scrollPosition > 200}>Nerdistry.</SiteTitle>
         </Branding>
       </Link>
-      <StyledNavigation>
+      <StyledNavigation isOpen={isOpen}>
         <NavigationList isScroll={scrollPosition > 200}>
           <Link href="/" passHref>
-            <NavigationListItem linkto="home" route={route} as="a">
+            <NavigationListItem linkto="home" route={route} as="a" onClick={handleClick}>
               Home
             </NavigationListItem>
           </Link>
           <Link href="/blog" passHref>
-            <NavigationListItem linkto="blog" route={route} as="a">
+            <NavigationListItem linkto="blog" route={route} as="a" onClick={handleClick}>
               Blog
             </NavigationListItem>
           </Link>
           <Link href="/projects" passHref>
-            <NavigationListItem linkto="projects" route={route} as="a">
+            <NavigationListItem linkto="projects" route={route} as="a" onClick={handleClick}>
               Projects
             </NavigationListItem>
           </Link>
           <Link href="/contact" passHref>
-            <NavigationListItem linkto="projects" route={route} as="a">
+            <NavigationListItem linkto="projects" route={route} as="a" onClick={handleClick}>
               Contact
             </NavigationListItem>
           </Link>
         </NavigationList>
       </StyledNavigation>
-      <MenuButton icon={['fas', 'bars']} />
+      <MenuButton icon={['fas', `${isOpen ? 'times' : 'bars'}`]} onClick={handleClick} />
     </NavigationWrapper>
   );
 };

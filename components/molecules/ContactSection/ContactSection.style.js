@@ -7,4 +7,8 @@ export const ContactSection = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+
+  @media (max-width: 1280px) {
+    width: 100%;
+  }
 `;

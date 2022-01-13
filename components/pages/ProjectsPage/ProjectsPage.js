@@ -26,7 +26,7 @@ const ProjectsPage = ({ repos }) => {
     <StyledPage>
       <SectionTitle title="Projects" description="Dolor Sit Amet" />
       {repos.map((repo, index) => (
-        <ProjectsWrapper key={repo.id} repo={repo} image={images[index]?.urls.regular} />
+        <ProjectsWrapper key={repo.id} repo={repo} image={images[index]?.urls.small} />
       ))}
       <Link href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USER}`} passHref>
         <ParagraphWithIcon as="a" target="_blank">

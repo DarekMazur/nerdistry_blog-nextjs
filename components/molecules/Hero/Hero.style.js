@@ -20,9 +20,26 @@ export const StyledDots = styled.div`
     top: 277px;
     left: 0;
   }
+
+  @media (max-width: 1280px) {
+    width: 350px;
+    height: 160px;
+    top: -5px;
+    right: -50px;
+
+    &:nth-child(2) {
+      top: 200px;
+      left: -30px;
+    }
+  }
 `;
 
 export const HeroImageWrapper = styled.div`
   width: 307px;
   height: 260px;
+
+  @media (max-width: 1280px) {
+    width: 200px;
+    height: 180px;
+  }
 `;

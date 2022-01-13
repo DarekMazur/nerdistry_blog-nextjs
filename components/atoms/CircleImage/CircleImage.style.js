@@ -11,4 +11,11 @@ export const CircleImage = styled.div`
   mask-size: contain;
   opacity: 0.5;
   z-index: -1;
+
+  @media (max-width: 1280px) {
+    top: -150px;
+    left: -80px;
+    width: 200px;
+    height: 200px;
+  }
 `;

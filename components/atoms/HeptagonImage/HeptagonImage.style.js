@@ -13,4 +13,13 @@ export const HeptagonImage = styled.div`
   mask-size: contain;
   opacity: 0.5;
   z-index: -1;
+
+  @media (max-width: 1280px) {
+    top: ${({ bottomPos }) => (bottomPos ? null : '-120px')};
+    bottom: ${({ bottomPos }) => (bottomPos ? `${bottomPos}rem` : null)};
+    right: ${({ leftPos }) => (leftPos ? null : '-100px')};
+    left: ${({ leftPos }) => (leftPos ? `${leftPos}rem` : null)};
+    width: 200px;
+    height: 200px;
+  }
 `;

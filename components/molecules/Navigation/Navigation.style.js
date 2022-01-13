@@ -14,6 +14,10 @@ export const NavigationWrapper = styled.div`
   z-index: 10;
   transform: translateY(${({ isScroll }) => (isScroll ? '-41px' : '0')});
   transition: transform 0.2s ease-in-out;
+
+  @media (max-width: 1280px) {
+    transform: translateY(-41px);
+  }
 `;
 
 export const StyledNavigation = styled.nav``;
@@ -30,6 +34,12 @@ export const NavigationList = styled.ul`
   padding: ${({ isScroll }) => (isScroll ? '0 0 12px' : '0')};
   margin: 0;
   transition: font-size 0.2s ease-in-out;
+
+  @media (max-width: 1280px) {
+    align-items: flex-end;
+    font-size: ${({ theme }) => theme.fontSize.m};
+    padding: 0 0 12px;
+  }
 `;
 
 export const NavigationListItem = styled.li`
@@ -69,6 +79,10 @@ export const Branding = styled.div`
   transform: translateY(${({ isScroll }) => (isScroll ? '15px' : '25px')});
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
+
+  @media (max-width: 1280px) {
+    transform: translateY(15px);
+  }
 `;
 
 export const LogoWrapper = styled.div`
@@ -78,6 +92,10 @@ export const LogoWrapper = styled.div`
   transform: scale(${({ isScroll }) => (isScroll ? '0.4' : '1')});
   transition: transform 0.2s ease-in-out;
   background-color: ${({ theme }) => theme.colors.white};
+
+  @media (max-width: 1280px) {
+    transform: scale(0.4);
+  }
 `;
 
 export const SiteTitle = styled.h1`
@@ -86,4 +104,8 @@ export const SiteTitle = styled.h1`
   transform: translateX(${({ isScroll }) => (isScroll ? '-35px' : '0')});
   padding-left: 1rem;
   transition: font-size 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+  @media (max-width: 1280px) {
+    transform: translateX(-35px);
+  }
 `;

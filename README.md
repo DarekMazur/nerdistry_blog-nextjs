@@ -1,34 +1,111 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+    <img alt="Nerdistry logo" src="assets/images/svg/Logo_sqr.svg" width="150" />
+</p>
 
-## Getting Started
+<h1 align="center">
+  Nerdistry blog
+</h1>
 
-First, run the development server:
+## Version: 0.9.1 (beta)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Live demo: [app]
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## :black_nib: About app
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+lorem ipsum
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 🚀 Quick start
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1.  **Requirement**
 
-## Learn More
+    - npm (v7.16.0)
 
-To learn more about Next.js, take a look at the following resources:
+2.  **Installation**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    To install application navigate to app's directory and use npm command
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    ```shell
+    cd app-main-dir/
+    npm install
+    npm run build
+    ```
 
-## Deploy on Vercel
+3.  **Developer mode**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    You can run app in developer mode by using command
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    ```shell
+    npm run dev
+    ```
+
+    Application will run on port 3000 (localhost:3000)
+
+## :computer: Frontend
+
+   This application is created using [NextJS framework] and CSSinJS (styled-components).
+    
+   Other libraries:
+    
+    * fortawesome
+    * sendgrid
+    * axios
+    * formik
+    * gsap
+    * nodemailer
+    * react infinite scroll component
+    * simple react lightbox
+    * yup
+    * react markdown
+    * slugify
+
+## :wrench: Backend
+    
+   App is designed to work with [Strapi.io] (used v3). You can also use this tool, choose other API provider (Wordpress, DatoCMS etc) or design your API server.
+
+API schema:
+
+    .
+    ├── Posts
+    |  ├────── Title (text)
+    |  ├────── Content (rich text)
+    |  ├────── Tags (text)
+    |  ├────── User (relation)
+    |  ├────── Description (text)
+    |  ├────── CoverImage (media)
+    |  └────── categoties (relation)
+    ├── Categories
+    ├────── Title (text)
+    |  ├────── Name (text)
+    |  ├────── Description (text)
+    |  └────── posts (relation)
+    └── Users
+       ├────── username (text)
+       ├────── email (email)
+       ├────── provider (text)
+       ├────── password (password)
+       ├────── resetPasswordToken (text)
+       ├────── confirmationToken (text)
+       ├────── confirmed (boolean)
+       ├────── blocked (boolean)
+       ├────── role (relation)
+       ├────── posts (relation)
+       ├────── Avatar (media)
+       └────── Bio (rich text)
+
+You can recreate this schema in your Strapi application or create own API based on it. If you want redesign API you'll need to change it also on frontend side.
+
+## Changelog
+
+**0.1**
+
+- deploy app - beta version
+
+## ToDo
+
+- fix mobile view
+- tests
+- and most probably much, much more ;)
+
+[app]: https://nerdistry.pl/
+[NextJS framework]: https://nextjs.org/docs
+[Strapi.io]: https://strapi.io/

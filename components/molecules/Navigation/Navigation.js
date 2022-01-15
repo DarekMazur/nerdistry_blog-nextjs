@@ -26,12 +26,18 @@ const Navigation = () => {
     setScrollPosition(position);
   };
 
+  const [viewHeight, setViewHeight] = useState(0);
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    setViewHeight(window.innerHeight);
   }, []);
 
   const handleClick = () => {
@@ -48,7 +54,7 @@ const Navigation = () => {
           <SiteTitle isScroll={scrollPosition > 200}>Nerdistry.</SiteTitle>
         </Branding>
       </Link>
-      <StyledNavigation isOpen={isOpen}>
+      <StyledNavigation isOpen={isOpen} viewportHeight={viewHeight}>
         <NavigationList isScroll={scrollPosition > 200}>
           <Link href="/" passHref>
             <NavigationListItem linkto="home" route={route} as="a" onClick={handleClick}>

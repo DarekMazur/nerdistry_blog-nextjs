@@ -30,10 +30,13 @@ export const StyledNavigation = styled.nav`
   transition: transform 0.1s ease-in-out;
 
   @media (max-width: 767px) {
-    transform: translateX(${({ isOpen }) => (isOpen ? '0' : '120%')});
+    position: fixed;
+    transform: translateX(${({ isOpen }) => (isOpen ? '-100%' : '0')});
     top: 0;
-    height: 100vh;
-    width: 100vw;
+    bottom: 0;
+    right: -100%;
+    height: ${({ viewportHeight }) => `${viewportHeight}px`};
+    width: 100%;
     background: ${({ theme }) => theme.colors.midWhite};
   }
 `;

@@ -39,4 +39,8 @@ export const CTAbutton = styled.button`
   &:hover::before {
     transform: scaleX(1);
   }
+
+  @media (max-width: 767px) {
+    bottom: -4rem;
+  }
 `;

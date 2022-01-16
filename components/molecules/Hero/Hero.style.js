@@ -36,6 +36,10 @@ export const StyledDots = styled.div`
       left: -30px;
     }
   }
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;
 
 export const HeroImageWrapper = styled.div`

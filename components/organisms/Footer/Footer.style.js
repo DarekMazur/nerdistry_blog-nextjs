@@ -9,6 +9,12 @@ export const StyledFooter = styled.footer`
   font-weight: 700;
   color: ${({ theme }) => theme.colors.yellow};
   padding: 18.4rem 5.2rem 0;
+
+  @media (max-width: 1079px) {
+    flex-direction: column;
+    padding: 1rem 5.2rem 0;
+    align-items: center;
+  }
 `;
 
 export const FooterLogoImage = styled.div`
@@ -19,6 +25,11 @@ export const FooterLogoImage = styled.div`
   mask-size: cover;
   opacity: 0.4;
   cursor: pointer;
+
+  @media (max-width: 1079px) {
+    width: 10rem;
+    height: 3.5rem;
+  }
 `;
 
 export const FooterContent = styled.div`
@@ -34,6 +45,17 @@ export const FooterContent = styled.div`
   p {
     margin-left: -10rem;
   }
+
+  @media (max-width: 1079px) {
+    margin-left: 0;
+    flex-direction: column;
+    height: auto;
+
+    p {
+      margin-left: 0;
+      text-align: center;
+    }
+  }
 `;
 
 export const Dashes = styled.div`
@@ -46,4 +68,8 @@ export const Dashes = styled.div`
   mask: url(/line.svg) repeat-x;
   margin: 0;
   padding: 0;
+
+  @media (max-width: 1079px) {
+    display: none;
+  }
 `;

@@ -50,10 +50,6 @@ export const PostContent = styled.div`
 
 export const PostTeaser = styled.div`
   margin: 0 5rem;
-
-  @media (max-width: 767px) {
-    /* margin: 0 5rem 7rem; */
-  }
 `;
 
 export const PostImage = styled.div`

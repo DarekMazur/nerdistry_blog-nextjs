@@ -7,6 +7,11 @@ export const SocialMediaList = styled.ul`
   list-style: none;
   right: 0;
   bottom: 0;
+
+  @media (max-width: 1079px) {
+    position: static;
+    padding: 0;
+  }
 `;
 
 export const SocialMediaListItem = styled.li`
@@ -15,6 +20,10 @@ export const SocialMediaListItem = styled.li`
   margin-left: 4rem;
   opacity: 0.7;
   transition: opacity 0.2s ease-in-out;
+
+  &:nth-of-type(1) {
+    margin-left: 0;
+  }
 
   &:hover {
     opacity: 1;

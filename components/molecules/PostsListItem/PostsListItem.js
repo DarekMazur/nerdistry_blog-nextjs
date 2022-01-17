@@ -17,11 +17,7 @@ const PostsListItem = ({ title }) => {
   const [singlePost, setSinglePost] = useState({});
 
   const getPost = async (title) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts`, {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
-      },
-    });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts`);
     const posts = await res.json();
     const singlePost = posts.filter((post) => post.Title === title);
     setSinglePost(...singlePost);

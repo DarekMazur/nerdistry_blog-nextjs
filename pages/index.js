@@ -23,19 +23,11 @@ const Home = () => {
 };
 
 export async function getStaticProps() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts?_sort=published_at:DESC&_limit=5`, {
-    headers: {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
-    },
-  });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts?_sort=published_at:DESC&_limit=5`);
 
   const posts = await res.json();
 
-  const getNumberOfPosts = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts/count`, {
-    headers: {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
-    },
-  });
+  const getNumberOfPosts = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts/count`);
   const postsCount = await getNumberOfPosts.json();
 
   return {

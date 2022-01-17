@@ -29,8 +29,7 @@ export const SocialMediaListItem = styled.li`
     opacity: 1;
   }
 
-  a:visited,
-  a:active {
+  a {
     color: ${({ theme }) => theme.colors.midWhite};
   }
 `;

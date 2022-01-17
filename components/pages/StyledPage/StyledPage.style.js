@@ -22,6 +22,11 @@ export const StyledProjectsWrapper = styled.div`
   width: 150vw;
   display: flex;
   padding: 5.3rem 0;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    width: 100vw;
+  }
 `;
 
 export const ProjectSection = styled.div`
@@ -43,6 +48,16 @@ export const ProjectSection = styled.div`
 
     &:nth-of-type(1) {
       display: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    display: ${({ isCurtain }) => (isCurtain ? `none` : 'static')};
+    width: 100vw;
+    min-height: 0;
+
+    &:nth-of-type(1) {
+      display: block;
     }
   }
 
@@ -111,6 +126,7 @@ export const ButtonContent = styled.span`
     transform: translateY(300%);
     transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out;
   }
+
   &:hover::after {
     transform: translateY(0);
   }
@@ -118,6 +134,10 @@ export const ButtonContent = styled.span`
 
 export const Pointer = styled.p`
   cursor: pointer;
+
+  @media (max-width: 767px) {
+    display: ${({ isProject }) => (isProject ? `none` : 'static')};
+  }
 `;
 
 export const TechnologiesWrapper = styled.div`

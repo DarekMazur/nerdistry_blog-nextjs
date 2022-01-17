@@ -93,7 +93,9 @@ const ProjectsWrapper = ({ repo, image }) => {
             </p>
           )}
         </p>
-        <Pointer onClick={handleClick}>[click to close]</Pointer>
+        <Pointer isProject onClick={handleClick}>
+          [click to close]
+        </Pointer>
       </ProjectSection>
     </StyledProjectsWrapper>
   );

@@ -31,6 +31,6 @@ export const SocialMediaListItem = styled.li`
 
   a:visited,
   a:active {
-    color: inherit;
+    color: ${({ theme }) => theme.colors.midWhite};
   }
 `;

@@ -18,4 +18,8 @@ export const CircleImage = styled.div`
     width: 200px;
     height: 200px;
   }
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;

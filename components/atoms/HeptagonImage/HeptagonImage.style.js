@@ -22,4 +22,8 @@ export const HeptagonImage = styled.div`
     width: 200px;
     height: 200px;
   }
+
+  @media (max-width: 767px) {
+    display: ${({ bottomPos }) => (bottomPos ? 'static' : 'none')};
+  }
 `;

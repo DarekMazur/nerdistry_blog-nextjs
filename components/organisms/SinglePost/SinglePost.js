@@ -37,7 +37,7 @@ const SinglePost = ({ title, pagination }) => {
 
   return (
     <SinglePostWrapper>
-      <Author author={singlePost.User} />
+      <Author author={singlePost.users} />
       <SRLWrapper
         options={{
           buttons: {

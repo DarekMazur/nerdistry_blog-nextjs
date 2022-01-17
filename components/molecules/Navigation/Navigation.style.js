@@ -32,10 +32,10 @@ export const StyledNavigation = styled.nav`
   @media (max-width: 767px) {
     position: fixed;
     transform: translateX(${({ isOpen }) => (isOpen ? '-100%' : '0')});
-    top: 0;
+    top: -130px;
     bottom: 0;
     right: -100%;
-    height: ${({ viewportHeight }) => `${viewportHeight}px`};
+    height: ${({ viewportHeight }) => `${viewportHeight + 260}px`};
     width: 100%;
     background: ${({ theme }) => theme.colors.midWhite};
   }

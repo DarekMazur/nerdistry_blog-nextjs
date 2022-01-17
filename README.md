@@ -6,13 +6,17 @@
   Nerdistry blog
 </h1>
 
-## Version: 0.1 (beta)
+## Version: 0.1.2 (beta)
 
 Live demo: [app]
 
 ## :black_nib: About app
 
-lorem ipsum
+Hello world! Welcome on my first NextJS project - blog connected with Strapi backend.
+
+In this project you will find frontned part of blog. It was created mostly for fun and learn. During coding I decided to test also some APIs - so finally this blog has some portflio option.
+
+You can check current live version of this project <a href="https://nerdistry.pl" target="_blank">HERE</a>
 
 ## 🚀 Quick start
 
@@ -103,6 +107,10 @@ You can recreate this schema in your Strapi application or create own API based 
 **0.1.1**
 
 - add mobile style
+
+**0.1.2**
+
+- minor fixes in mobile style
 
 ## ToDo
 

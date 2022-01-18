@@ -5,9 +5,10 @@ import React, { useEffect, useState } from 'react';
 
 import Input from '../../atoms/Input/Input';
 import { SearchButton, SearchIconWrapper, SearchWrapper } from './SearchBar.style';
+import { ErrorMessage } from '../../atoms/Input/Input.style';
 
 const validationSchema = Yup.object().shape({
-  search: Yup.string().required('hey, tell me first what you are lookin for!'),
+  search: Yup.string().required('hey, tell me first what you are looking for!'),
 });
 
 const SearchBar = () => {
@@ -42,25 +43,36 @@ const SearchBar = () => {
             search: '',
           }}
           validationSchema={validationSchema}
+          onSubmit={(values, { setSubmitting, resetForm }) => {
+            console.log(values);
+            setSubmitting(false);
+            resetForm();
+            handleClick();
+          }}
         >
-          <>
-            <Input
-              name="searchInput"
-              id="searchInput"
-              label="Search by tags"
-              // onChange={handleChange}
-              // value={values.name}
-              // errorMessage={errorMessage(errors.name)}
-              isRequired
-            ></Input>
-            <SearchButton type="submit">Search</SearchButton>
-          </>
+          {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (
+            <form onSubmit={handleSubmit}>
+              <Input
+                name="search"
+                id="search"
+                label="Search by tags"
+                onChange={handleChange}
+                value={values.search}
+                errorMessage={errorMessage(errors.search)}
+                isRequired
+              />
+              <SearchButton disabled={isSubmitting} type="submit">
+                Search
+              </SearchButton>
+            </form>
+          )}
         </Formik>
         <Formik>
           <>
             {categories.length > 0
               ? categories.map((category) => (
                   <Input
+                    key={category.id}
                     type="checkbox"
                     name="checkBox"
                     id={category.Name}

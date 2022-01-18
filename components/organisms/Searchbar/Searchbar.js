@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import Input from '../../atoms/Input/Input';
 import { SearchButton, SearchIconWrapper, SearchWrapper } from './SearchBar.style';
 import { ErrorMessage } from '../../atoms/Input/Input.style';
+import axios from 'axios';
 
 const validationSchema = Yup.object().shape({
   search: Yup.string().required('hey, tell me first what you are looking for!'),
@@ -44,10 +45,14 @@ const SearchBar = () => {
           }}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
-            console.log(values);
-            setSubmitting(false);
-            resetForm();
-            handleClick();
+            axios
+              .post('api/search', values)
+              .then((res) => {
+                setSubmitting(false);
+                resetForm();
+                handleClick();
+              })
+              .catch(console.log('Ooops...'));
           }}
         >
           {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (

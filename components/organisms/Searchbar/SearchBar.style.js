@@ -34,6 +34,8 @@ export const SearchIconWrapper = styled.div`
 `;
 
 export const SearchButton = styled(SubmitButton)`
-  top: 6rem;
-  left: 2rem;
+  top: -3rem;
+  left: 0;
 `;
+
+export const SearchSection = styled.form``;

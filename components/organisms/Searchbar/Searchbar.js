@@ -1,21 +1,48 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Formik } from 'formik';
-import React, { useState } from 'react';
+import * as Yup from 'yup';
+import React, { useEffect, useState } from 'react';
 
 import Input from '../../atoms/Input/Input';
 import { SearchButton, SearchIconWrapper, SearchWrapper } from './SearchBar.style';
 
+const validationSchema = Yup.object().shape({
+  search: Yup.string().required('hey, tell me first what you are lookin for!'),
+});
+
 const SearchBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
+  const errorMessage = (message) => {
+    const error = message ? <ErrorMessage>{message}</ErrorMessage> : null;
+    return error;
+  };
+
+  const getCategoriesList = async () => {
+    const resCat = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/categories`);
+    const getAllCategories = await resCat.json();
+
+    setCategories(() => [...getAllCategories]);
+  };
+
+  useEffect(() => {
+    getCategoriesList();
+  }, []);
+
   return (
     <SearchWrapper isOpen={isOpen}>
       <div>
-        <Formik>
+        <Formik
+          initialValues={{
+            search: '',
+          }}
+          validationSchema={validationSchema}
+        >
           <>
             <Input
               name="searchInput"
@@ -31,42 +58,18 @@ const SearchBar = () => {
         </Formik>
         <Formik>
           <>
-            <Input
-              type="checkbox"
-              name="checkBox"
-              id="checkBox1"
-              label="check"
-              // onChange={handleChange}
-              // value={values.acceptTerms}
-              // errorMessage={errorMessage(errors.acceptTerms)}
-            />
-            <Input
-              type="checkbox"
-              name="checkBox"
-              id="checkBox2"
-              label="check"
-              // onChange={handleChange}
-              // value={values.acceptTerms}
-              // errorMessage={errorMessage(errors.acceptTerms)}
-            />
-            <Input
-              type="checkbox"
-              name="checkBox"
-              id="checkBox3"
-              label="check"
-              // onChange={handleChange}
-              // value={values.acceptTerms}
-              // errorMessage={errorMessage(errors.acceptTerms)}
-            />
-            <Input
-              type="checkbox"
-              name="checkBox"
-              id="checkBox4"
-              label="check"
-              // onChange={handleChange}
-              // value={values.acceptTerms}
-              // errorMessage={errorMessage(errors.acceptTerms)}
-            />
+            {categories.length > 0
+              ? categories.map((category) => (
+                  <Input
+                    type="checkbox"
+                    name="checkBox"
+                    id={category.Name}
+                    label={category.Name}
+                    // onChange={handleChange}
+                    // value={values.acceptTerms}
+                  />
+                ))
+              : null}
           </>
         </Formik>
       </div>

@@ -6,7 +6,7 @@
   Nerdistry blog
 </h1>
 
-## Version: 0.1.2 (beta)
+## Version: 0.2.0 (beta)
 
 Live demo: [app]
 
@@ -111,6 +111,10 @@ You can recreate this schema in your Strapi application or create own API based 
 **0.1.2**
 
 - minor fixes in mobile style
+
+**0.2.0**
+
+- connect with database
 
 ## ToDo
 

@@ -1,27 +1,32 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Formik } from 'formik';
-import React from 'react';
+import React, { useState } from 'react';
+
 import Input from '../../atoms/Input/Input';
-import { SubmitButton } from '../../atoms/Input/Input.style';
+import { SearchButton, SearchIconWrapper, SearchWrapper } from './SearchBar.style';
 
 const SearchBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div>
-      {' '}
-      {/* wrapper */}
+    <SearchWrapper isOpen={isOpen}>
       <div>
         <Formik>
           <>
             <Input
               name="searchInput"
               id="searchInput"
-              label="Search by tag"
+              label="Search by tags"
               // onChange={handleChange}
               // value={values.name}
               // errorMessage={errorMessage(errors.name)}
               isRequired
             ></Input>
-            <SubmitButton type="submit">Search</SubmitButton>
+            <SearchButton type="submit">Search</SearchButton>
           </>
         </Formik>
         <Formik>
@@ -65,12 +70,10 @@ const SearchBar = () => {
           </>
         </Formik>
       </div>
-      <div>
-        {' '}
-        {/* icon wrapper */}
+      <SearchIconWrapper onClick={handleClick}>
         <FontAwesomeIcon icon={['fas', 'search']} />
-      </div>
-    </div>
+      </SearchIconWrapper>
+    </SearchWrapper>
   );
 };
 

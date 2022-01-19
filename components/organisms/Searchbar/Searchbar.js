@@ -76,7 +76,7 @@ const SearchBar = () => {
             </form>
           )}
         </Formik>
-        <Formik>
+        {/* <Formik>
           <>
             {categories.length > 0
               ? categories.map((category) => (
@@ -92,7 +92,7 @@ const SearchBar = () => {
                 ))
               : null}
           </>
-        </Formik>
+        </Formik> */}
       </div>
       <SearchIconWrapper onClick={handleClick}>
         <FontAwesomeIcon icon={['fas', 'search']} />

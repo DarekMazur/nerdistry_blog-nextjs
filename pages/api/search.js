@@ -6,7 +6,12 @@ export default (req, res) => {
     const searchKeyWords = req.body.search.toLowerCase().split(', ');
 
     const results = req.body.search
-      ? allPosts.filter((post) => searchKeyWords.some((keyWord) => post.Tags?.toLowerCase().split(', ').includes(keyWord)))
+      ? allPosts.filter(
+          (post) =>
+            searchKeyWords.some((keyWord) => post.Tags?.toLowerCase().split(', ').includes(keyWord)) ||
+            post.Title?.toLowerCase().includes(req.body.search.toLowerCase()) ||
+            post.Content?.toLowerCase().includes(req.body.search.toLowerCase())
+        )
       : [];
 
     res.statusCode = 200;

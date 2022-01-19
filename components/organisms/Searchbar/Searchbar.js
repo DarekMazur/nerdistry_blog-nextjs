@@ -64,7 +64,7 @@ const SearchBar = () => {
               <Input
                 name="search"
                 id="search"
-                label="Search by tags"
+                label="Keywords"
                 onChange={handleChange}
                 value={values.search}
                 errorMessage={errorMessage(errors.search)}

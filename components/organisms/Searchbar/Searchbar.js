@@ -1,20 +1,25 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import Input from '../../atoms/Input/Input';
 import { SearchButton, SearchIconWrapper, SearchWrapper } from './SearchBar.style';
 import { ErrorMessage } from '../../atoms/Input/Input.style';
 import axios from 'axios';
+import { useRouter } from 'next/dist/client/router';
+import { ContentContext } from '../../../providers/ContentProvider';
 
 const validationSchema = Yup.object().shape({
   search: Yup.string().required('hey, tell me first what you are looking for!'),
 });
 
 const SearchBar = () => {
+  const { getSearchData } = useContext(ContentContext);
   const [isOpen, setIsOpen] = useState(false);
   const [categories, setCategories] = useState([]);
+
+  const router = useRouter();
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -45,14 +50,13 @@ const SearchBar = () => {
           }}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
-            axios
-              .post('api/search', values)
-              .then((res) => {
-                setSubmitting(false);
-                resetForm();
-                handleClick();
-              })
-              .catch(console.log('Ooops...'));
+            setSubmitting(false);
+            resetForm();
+            handleClick();
+            router.push({
+              pathname: '/search',
+              query: { results: values.search },
+            });
           }}
         >
           {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (

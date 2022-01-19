@@ -7,15 +7,15 @@ import Loading from '../../molecules/Loading/Loaging';
 import PostsListItem from '../../molecules/PostsListItem/PostsListItem';
 import { PostListWrapper } from './PostsList.style';
 
-const PostsList = ({ isBlog }) => {
-  const { posts, postsCount } = useContext(ContentContext);
+const PostsList = ({ isBlog, isSearch }) => {
+  const { posts, postsCount, searchData } = useContext(ContentContext);
 
-  const [postsList, setPostList] = useState(posts);
+  const [postsList, setPostList] = useState(isSearch ? searchData : posts);
   const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
-    setPostList(posts);
-  }, [posts]);
+    setPostList(isSearch ? searchData : posts);
+  }, [posts, searchData]);
 
   const getMorePosts = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/posts?_sort=published_at:DESC&_start=${postsList.length}&_limit=5`);

@@ -6,11 +6,13 @@ export const ContentContext = React.createContext({
   posts: [],
   postsCount: 0,
   singlePost: {},
+  searchData: [],
   getIsSingle: () => {},
   getInitialPosts: () => {},
   getPost: () => {},
   getCategoriesPosts: () => {},
   handleClick: () => {},
+  getSearchData: () => {},
 });
 
 const ContentPovider = ({ children, allPosts, postsCountValue }) => {
@@ -18,6 +20,7 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
   const [singlePost, setSinglePost] = useState({});
   const [isSingle, setIsSingle] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [searchData, setSearchData] = useState([]);
 
   const postsCount = postsCountValue;
 
@@ -47,6 +50,10 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
     setPosts(posts);
   };
 
+  const getSearchData = (data) => {
+    setSearchData(data);
+  };
+
   return (
     <ContentContext.Provider
       value={{
@@ -55,11 +62,13 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
         posts,
         postsCount,
         singlePost,
+        searchData,
         getIsSingle,
         getInitialPosts,
         getPost,
         getCategoriesPosts,
         handleClick,
+        getSearchData,
       }}
     >
       {children}

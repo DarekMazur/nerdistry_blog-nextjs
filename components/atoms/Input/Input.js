@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { InputWrapper, Label, StyledInput } from './Input.style';
 
-const Input = ({ tag: Tag, type, name, id, label, isRequired, onChange, value, errorMessage }) => {
+const Input = ({ tag: Tag, type, name, id, label, isRequired, onChange, value, errorMessage, isChecked }) => {
   const [isBlur, setIsBlur] = useState(false);
 
   const handleOnFocus = () => {
@@ -31,6 +31,7 @@ const Input = ({ tag: Tag, type, name, id, label, isRequired, onChange, value, e
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
         isError={errorMessage !== null}
+        checked={isChecked}
       />
       {errorMessage}
     </InputWrapper>

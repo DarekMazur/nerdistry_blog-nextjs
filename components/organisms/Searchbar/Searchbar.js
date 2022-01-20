@@ -18,6 +18,7 @@ const SearchBar = () => {
   const { getSearchData } = useContext(ContentContext);
   const [isOpen, setIsOpen] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [initialValues, setInitialValues] = useState({});
 
   const router = useRouter();
 
@@ -40,6 +41,13 @@ const SearchBar = () => {
   useEffect(() => {
     getCategoriesList();
   }, []);
+
+  useEffect(() => {
+    categories.forEach((category) => {
+      const key = category.Name;
+      setInitialValues((prevState) => ({ ...prevState, [key]: true }));
+    });
+  }, [categories]);
 
   return (
     <SearchWrapper isOpen={isOpen}>
@@ -76,23 +84,27 @@ const SearchBar = () => {
             </form>
           )}
         </Formik>
-        {/* <Formik>
-          <>
-            {categories.length > 0
-              ? categories.map((category) => (
-                  <Input
-                    key={category.id}
-                    type="checkbox"
-                    name="checkBox"
-                    id={category.Name}
-                    label={category.Name}
-                    // onChange={handleChange}
-                    // value={values.acceptTerms}
-                  />
-                ))
-              : null}
-          </>
-        </Formik> */}
+        <Formik initialValues={initialValues} enableReinitialize={true}>
+          {({ values, handleChange }) => (
+            <form>
+              <p>Filter</p>
+              {categories.length > 0
+                ? categories.map((category) => (
+                    <Input
+                      key={category.id}
+                      type="checkbox"
+                      name={category.Name}
+                      id={category.Name}
+                      label={category.Name}
+                      isChecked={values[category.Name]}
+                      onChange={handleChange}
+                      value={values[category.Name]}
+                    />
+                  ))
+                : null}
+            </form>
+          )}
+        </Formik>
       </div>
       <SearchIconWrapper onClick={handleClick}>
         <FontAwesomeIcon icon={['fas', 'search']} />

@@ -7,6 +7,7 @@ export const ContentContext = React.createContext({
   postsCount: 0,
   singlePost: {},
   searchData: [],
+  filteredCategories: [],
   getIsSingle: () => {},
   getInitialPosts: () => {},
   getPost: () => {},
@@ -21,6 +22,7 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
   const [isSingle, setIsSingle] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [searchData, setSearchData] = useState([]);
+  const [filteredCategories, setFilteredCategories] = useState([]);
 
   const postsCount = postsCountValue;
 
@@ -30,6 +32,10 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
 
   const handleClick = () => {
     setIsOpen(!isOpen);
+  };
+
+  const getCategoriesList = (categories) => {
+    setFilteredCategories([...categories]);
   };
 
   const getInitialPosts = () => {

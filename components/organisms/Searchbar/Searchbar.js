@@ -41,7 +41,14 @@ const SearchBar = () => {
   const FormikOnChange = () => {
     const { values } = useFormikContext();
     useEffect(() => {
-      console.log(values);
+      const categories = [];
+      for (const [key, value] of Object.entries(values)) {
+        if (value === true) {
+          categories.push(key);
+        }
+      }
+      console.log(categories.join('&_categories.Name='));
+      console.log('*************************');
     }, [values]);
 
     return null;

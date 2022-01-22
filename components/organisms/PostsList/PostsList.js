@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { ContentContext } from '../../../providers/ContentProvider';
 import PostsListEmpty from '../../atoms/PostsListEmpty/PostsListEmpty';

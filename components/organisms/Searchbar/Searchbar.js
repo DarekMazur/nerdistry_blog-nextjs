@@ -6,7 +6,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import Input from '../../atoms/Input/Input';
 import { SearchButton, SearchIconWrapper, SearchWrapper } from './SearchBar.style';
 import { ErrorMessage } from '../../atoms/Input/Input.style';
-import axios from 'axios';
 import { useRouter } from 'next/dist/client/router';
 import { ContentContext } from '../../../providers/ContentProvider';
 
@@ -15,10 +14,12 @@ const validationSchema = Yup.object().shape({
 });
 
 const SearchBar = () => {
-  const { getSearchData } = useContext(ContentContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [categories, setCategories] = useState([]);
-  const [initialValues, setInitialValues] = useState({});
+  // const [categories, setCategories] = useState([]);
+  // const [initialValues, setInitialValues] = useState({});
+  // const [values, setValues] = useState({});
+
+  // const { getCategoriesPosts } = useContext(ContentContext);
 
   const router = useRouter();
 
@@ -31,39 +32,40 @@ const SearchBar = () => {
     return error;
   };
 
-  const getCategoriesList = async () => {
-    const resCat = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/categories`);
-    const getAllCategories = await resCat.json();
+  // const getCategoriesList = async () => {
+  //   const resCat = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}/categories`);
+  //   const getAllCategories = await resCat.json();
 
-    setCategories(() => [...getAllCategories]);
-  };
+  //   setCategories(() => [...getAllCategories]);
+  // };
 
-  const FormikOnChange = () => {
-    const { values } = useFormikContext();
-    useEffect(() => {
-      const categories = [];
-      for (const [key, value] of Object.entries(values)) {
-        if (value === true) {
-          categories.push(key);
-        }
-      }
-      console.log(categories.join('&_categories.Name='));
-      console.log('*************************');
-    }, [values]);
+  // const FormikOnChange = () => {
+  //   const { values } = useFormikContext();
+  //   setValues(values);
+  //   console.log(values);
 
-    return null;
-  };
+  //   return null;
+  // };
 
-  useEffect(() => {
-    getCategoriesList();
-  }, []);
+  // useEffect(() => {
+  //   for (const [key, value] of Object.entries(values)) {
+  //     if (value === true) {
+  //       categories.push(key);
+  //     }
+  //   }
+  //   getCategoriesPosts(categories.join('&_categories.Name='));
+  // }, [values]);
 
-  useEffect(() => {
-    categories.forEach((category) => {
-      const key = category.Name;
-      setInitialValues((prevState) => ({ ...prevState, [key]: true }));
-    });
-  }, [categories]);
+  // useEffect(() => {
+  //   getCategoriesList();
+  // }, []);
+
+  // useEffect(() => {
+  //   categories.forEach((category) => {
+  //     const key = category.Name;
+  //     setInitialValues((prevState) => ({ ...prevState, [key]: true }));
+  //   });
+  // }, [categories]);
 
   return (
     <SearchWrapper isOpen={isOpen}>
@@ -99,7 +101,7 @@ const SearchBar = () => {
           </form>
         )}
       </Formik>
-      <Formik initialValues={initialValues} enableReinitialize={true}>
+      {/* <Formik initialValues={initialValues} enableReinitialize={true}>
         {({ values, handleChange }) => (
           <form>
             <p>Filter</p>
@@ -120,7 +122,7 @@ const SearchBar = () => {
               : null}
           </form>
         )}
-      </Formik>
+      </Formik> */}
       <SearchIconWrapper onClick={handleClick}>
         <FontAwesomeIcon icon={['fas', 'search']} />
       </SearchIconWrapper>

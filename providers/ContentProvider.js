@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
 export const ContentContext = React.createContext({
@@ -6,23 +7,19 @@ export const ContentContext = React.createContext({
   posts: [],
   postsCount: 0,
   singlePost: {},
-  searchData: [],
-  filteredCategories: [],
   getIsSingle: () => {},
   getInitialPosts: () => {},
   getPost: () => {},
   getCategoriesPosts: () => {},
   handleClick: () => {},
-  getSearchData: () => {},
 });
 
 const ContentPovider = ({ children, allPosts, postsCountValue }) => {
+  const router = useRouter();
   const [posts, setPosts] = useState(allPosts && allPosts.length > 0 ? [...allPosts] : []);
   const [singlePost, setSinglePost] = useState({});
   const [isSingle, setIsSingle] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [searchData, setSearchData] = useState([]);
-  const [filteredCategories, setFilteredCategories] = useState([]);
 
   const postsCount = postsCountValue;
 
@@ -32,10 +29,6 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
 
   const handleClick = () => {
     setIsOpen(!isOpen);
-  };
-
-  const getCategoriesList = (categories) => {
-    setFilteredCategories([...categories]);
   };
 
   const getInitialPosts = () => {
@@ -56,10 +49,6 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
     setPosts(posts);
   };
 
-  const getSearchData = (data) => {
-    setSearchData(data);
-  };
-
   return (
     <ContentContext.Provider
       value={{
@@ -68,13 +57,11 @@ const ContentPovider = ({ children, allPosts, postsCountValue }) => {
         posts,
         postsCount,
         singlePost,
-        searchData,
         getIsSingle,
         getInitialPosts,
         getPost,
         getCategoriesPosts,
         handleClick,
-        getSearchData,
       }}
     >
       {children}

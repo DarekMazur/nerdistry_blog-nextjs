@@ -12,6 +12,15 @@ export const SearchWrapper = styled.div`
   z-index: 15;
   padding: 2rem;
   transition: transform 100ms ease-in-out;
+
+  @media (max-width: 1080px) {
+    width: 50%;
+  }
+
+  @media (max-width: 767px) {
+    width: 80%;
+    height: 20rem;
+  }
 `;
 
 export const SearchIconWrapper = styled.div`
@@ -30,6 +39,10 @@ export const SearchIconWrapper = styled.div`
 
   &:hover {
     transform: translateX(0.3rem) scale(1.3);
+  }
+
+  @media (max-width: 767px) {
+    top: 5rem;
   }
 `;
 

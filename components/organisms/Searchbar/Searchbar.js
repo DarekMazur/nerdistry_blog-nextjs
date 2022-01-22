@@ -7,7 +7,7 @@ import Input from '../../atoms/Input/Input';
 import { SearchButton, SearchIconWrapper, SearchWrapper } from './SearchBar.style';
 import { ErrorMessage } from '../../atoms/Input/Input.style';
 import { useRouter } from 'next/dist/client/router';
-import { ContentContext } from '../../../providers/ContentProvider';
+// import { ContentContext } from '../../../providers/ContentProvider';
 
 const validationSchema = Yup.object().shape({
   search: Yup.string().required('hey, tell me first what you are looking for!'),

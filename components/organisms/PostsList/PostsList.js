@@ -29,7 +29,7 @@ const PostsList = ({ isBlog, isSearch }) => {
 
   return (
     <PostListWrapper>
-      {postsList.length !== 0 ? (
+      {postsList && postsList.length !== 0 ? (
         <InfiniteScroll
           dataLength={postsList.length}
           next={getMorePosts}

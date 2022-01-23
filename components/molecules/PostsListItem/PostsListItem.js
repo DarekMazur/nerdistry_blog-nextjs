@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import slugify from 'slugify';
 import gsap from 'gsap';
-import { dateToDisplay, readingTime, shortenContent } from '../../../utils/helpers';
+import { dateToDisplay, readingTime, shortenContent, minutesDeclination } from '../../../utils/helpers';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { CTAbutton } from '../../atoms/CTAbutton/CTAbutton.style';
 import { TitleH4 } from '../../atoms/TitleH4/TitleH4.style';
@@ -64,11 +64,15 @@ const PostsListItem = ({ title }) => {
           <PostContentList details={details} />
           <PostTeaser>
             <p>{singlePost.Content ? (singlePost.Description ? singlePost.Description : shortenContent(singlePost.Content)) : 'loading...'}</p>
-            <p>{singlePost.Content ? `Read in ${readingTime(singlePost.Content)} minutes` : 'calculating...'}</p>
+            <p>
+              {singlePost.Content
+                ? `Przeczytasz w ${readingTime(singlePost.Content)} ${minutesDeclination(readingTime(singlePost.Content))}`
+                : 'obliczam...'}
+            </p>
           </PostTeaser>
           <PostContentList isTagList details={details} />
           <Link href={singlePost.Title ? `/posts/${slugify(singlePost.Title || '', { remove: /[*+~.()'"!:@]/g, lower: true })}` : ''}>
-            <CTAbutton as="a">Read more</CTAbutton>
+            <CTAbutton as="a">Czytaj</CTAbutton>
           </Link>
         </PostContent>
       </PostItemContentWrapper>

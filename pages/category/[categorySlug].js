@@ -21,7 +21,7 @@ const CategoryPosts = ({ getCategory }) => {
 
   return (
     <>
-      <SectionTitle title={`Posts from category ${getCategory.Name}:`} />
+      <SectionTitle title={`Wpisy z kategorii ${getCategory.Name}:`} />
       <Description>{getCategory.Description}</Description>
       <PostsList isBlog="category" />
     </>

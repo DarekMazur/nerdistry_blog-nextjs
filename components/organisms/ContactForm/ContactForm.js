@@ -8,10 +8,13 @@ import axios from 'axios';
 import SendConfirmation from '../../molecules/SendConfirmation/SendConfirmation';
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required('name is required').min(2, 'name is too short, min length is 2').max(30, 'name is too long, max length is 30'),
-  email: Yup.string().required('email is required').email('email is not valid'),
-  message: Yup.string().required(`message can't be empty`),
-  acceptTerms: Yup.bool().oneOf([true], 'Accept Terms & Conditions is required'),
+  name: Yup.string()
+    .required('inię jest wymagane')
+    .min(2, 'imię jest za krótkie, podaj przynajmniej 2 znaki')
+    .max(30, 'imię jest za długie, maksymalna długość to 30 znaków'),
+  email: Yup.string().required('email jest wymagany').email('email jest niepoprawny'),
+  message: Yup.string().required(`wiadomość nie może być pusta`),
+  acceptTerms: Yup.bool().oneOf([true], 'zaakceptuj zasady prywatności'),
 });
 
 const ContactForm = () => {
@@ -66,7 +69,7 @@ const ContactForm = () => {
             <Input
               name="name"
               id="name"
-              label="Name"
+              label="Imię"
               onChange={handleChange}
               value={values.name}
               errorMessage={errorMessage(errors.name)}
@@ -86,7 +89,7 @@ const ContactForm = () => {
               tag="textarea"
               name="message"
               id="message"
-              label="Message"
+              label="Wiadomość"
               onChange={handleChange}
               value={values.message}
               errorMessage={errorMessage(errors.message)}
@@ -96,7 +99,7 @@ const ContactForm = () => {
               type="checkbox"
               name="acceptTerms"
               id="acceptTerms"
-              label={privacyLink('Terms & Conditions', 'Accept')}
+              label={privacyLink('zasady prywatności', 'Akceptuję')}
               onChange={handleChange}
               value={values.acceptTerms}
               errorMessage={errorMessage(errors.acceptTerms)}
@@ -104,7 +107,7 @@ const ContactForm = () => {
             />
 
             <SubmitButton disabled={isSubmitting} type="submit">
-              Send
+              Wyślij
             </SubmitButton>
           </ContactSection>
         )}

@@ -10,7 +10,7 @@ const LatestBlog = () => {
     <LatestBlogWrapper>
       <CircleImage />
       <HeptagonImage />
-      <SectionTitle title="Lorem Ipsum" description="Dolor Sit Amet" />
+      <SectionTitle title="Ostanio na blogu" description="Co nowego, czyli" />
       <PostsList />
     </LatestBlogWrapper>
   );

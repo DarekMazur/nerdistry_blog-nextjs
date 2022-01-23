@@ -24,16 +24,16 @@ const ProjectsPage = ({ repos }) => {
 
   return (
     <StyledPage>
-      <SectionTitle title="Projects" description="Dolor Sit Amet" />
+      <SectionTitle title="Projekty" description="takie tam, co robiłem" />
       {repos.map((repo, index) => (
         <ProjectsWrapper key={repo.id} repo={repo} image={images[index]?.urls.small} />
       ))}
       <Link href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USER}`} passHref>
         <ParagraphWithIcon as="a" target="_blank">
-          See more on <FontAwesomeIcon icon={['fab', 'github-square']} />
+          Zobacz więcej na <FontAwesomeIcon icon={['fab', 'github-square']} />
         </ParagraphWithIcon>
       </Link>
-      <SectionTitle title="Blast from the Past" description="Much, MUCH older projects" />
+      <SectionTitle title="Blast from the Past" description="Dużo, DUŻO, starsze projekty" />
       {blasts.map((blast) => (
         <ProjectsWrapper key={blast.name} repo={blast} image={blast.image} />
       ))}

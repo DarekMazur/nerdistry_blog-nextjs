@@ -21,12 +21,14 @@ export default async (req, res) => {
   const confirmMail = {
     from: `Nerdistry <no-replay@nerdistry.pl>`,
     to: `${req.body.name} <${req.body.email}>`,
-    subject: `Hello ${req.body.name}, thank you for your message!`,
-    text: `Hi ${req.body.name}, your message from nerdistry.pl was sent: "${req.body.message}"`,
-    html: `<h1>Hi ${req.body.name}</h1>
-    <h3>Thank you for your message, ${req.body.name}!</h3>
-    <p>For sure I'll read it and do my best to answer!</p>
-    <p>You can check your message bellow:</p>
+    subject: `Hej ${req.body.name}, dziękuję za wiadomość!`,
+    text: `Cześć ${req.body.name}, Twoja wiadomość z nerdistry.pl zostala wysłana: "${req.body.message}"`,
+    html: `<h1>Cześć ${req.body.name}</h1>
+    <h3>Dziękuję za wiadomość, ${req.body.name}!</h3>
+    <p>Na 100% ją przeczytam i postaram się odpowiedzieć!</p>
+    <p>Pozdrawiam,</p>
+    <p>Gacek</p>
+    <p>Poniżej możesz sprawdzić treść Twojej wiadomości:</p>
     <p>"${req.body.message}"</p>`,
   };
 

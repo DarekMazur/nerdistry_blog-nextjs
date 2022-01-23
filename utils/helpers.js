@@ -21,3 +21,20 @@ export const shortenContent = (content) => {
   const shorterContent = `${shorterContentArray?.join(' ')} [...]`;
   return shorterContent;
 };
+
+export const minutesDeclination = (value) => {
+  const output = [];
+  const sNumber = value.toString();
+
+  for (var i = 0, len = sNumber.length; i < len; i += 1) {
+    output.push(+sNumber.charAt(i));
+  }
+
+  if (value === 1) {
+    return 'minutę';
+  } else if (output[output.length - 1] === 2 || output[output.length - 1] === 3 || output[output.length - 1] === 4) {
+    return 'minuty';
+  } else {
+    return 'minut';
+  }
+};

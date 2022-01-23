@@ -59,7 +59,7 @@ const ProjectsWrapper = ({ repo, image }) => {
       </ProjectSection>
       <ProjectSection ref={imageRef} onClick={handleClick} isCurtain>
         <img src={image} alt="" />
-        <SectionTitle isProject title={isOpen ? 'Hide details' : 'Show details'} />
+        <SectionTitle isProject title={isOpen ? 'Ukryj szczegóły' : 'Pokaż szczegóły'} />
       </ProjectSection>
       <ProjectSection ref={contentRef} isDetails>
         <p>
@@ -76,25 +76,25 @@ const ProjectsWrapper = ({ repo, image }) => {
           </ul>
         </TechnologiesWrapper>
         <p>
-          <strong>Created at: </strong>
-          {`${dateToDisplay(repo.created_at)} ${repo.updated_at ? `(updated: ${dateToDisplay(repo.pushed_at)})` : ''}`}
+          <strong>Utworzony: </strong>
+          {`${dateToDisplay(repo.created_at)} ${repo.updated_at ? `(aktualizacja: ${dateToDisplay(repo.pushed_at)})` : ''}`}
         </p>
         <p>
           {repo.homepage ? (
             <Link href={repo.homepage} passHref>
               <StyledButton as="a" target="_blank" onMouseOver={handleMouseEnter} onMouseLeave={handleMouseLeave} isMouseOver={isMouseOver}>
-                <span>Visit project page</span>
-                <span>Click to visit!</span>
+                <span>Zobacz projekt</span>
+                <span>Kliknij!</span>
               </StyledButton>
             </Link>
           ) : (
             <p>
-              <i>-- work in progress --</i>
+              <i>-- prace trwają --</i>
             </p>
           )}
         </p>
         <Pointer isProject onClick={handleClick}>
-          [click to close]
+          [kliknij, aby zamknąć]
         </Pointer>
       </ProjectSection>
     </StyledProjectsWrapper>

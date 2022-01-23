@@ -58,7 +58,7 @@ const Navigation = () => {
         <NavigationList isScroll={scrollPosition > 200}>
           <Link href="/" passHref>
             <NavigationListItem linkto="home" route={route} as="a" onClick={handleClick}>
-              Home
+              Główna
             </NavigationListItem>
           </Link>
           <Link href="/blog" passHref>
@@ -68,12 +68,12 @@ const Navigation = () => {
           </Link>
           <Link href="/projects" passHref>
             <NavigationListItem linkto="projects" route={route} as="a" onClick={handleClick}>
-              Projects
+              Projekty
             </NavigationListItem>
           </Link>
           <Link href="/contact" passHref>
             <NavigationListItem linkto="projects" route={route} as="a" onClick={handleClick}>
-              Contact
+              Kontakt
             </NavigationListItem>
           </Link>
         </NavigationList>

@@ -35,7 +35,7 @@ const PostsList = ({ isBlog, isSearch }) => {
           next={getMorePosts}
           hasMore={isBlog && isBlog !== 'category' ? hasMore : false}
           loader={<Loading />}
-          endMessage={isBlog ? <TitleH4 isSmall>That's all for now. Return later for more content :)</TitleH4> : null}
+          endMessage={isBlog ? <TitleH4 isSmall>To by było na tyle. Wróć później po więcej :)</TitleH4> : null}
         >
           {postsList.map(({ id, Title }) => (
             <PostsListItem key={id} title={Title} />

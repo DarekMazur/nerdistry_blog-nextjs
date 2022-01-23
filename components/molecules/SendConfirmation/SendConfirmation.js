@@ -7,7 +7,7 @@ const SendConfirmation = ({ handleSend }) => {
   return (
     <StyledConfirmation>
       <CloseButton icon={['fas', 'times']} onClick={handleSend} />
-      <p>Thanks for message! I'll do my best to answer :)</p>
+      <p>Dzięki za wiadomość! Postaram się odpisać jak najszybciej :)</p>
       <FontAwesomeIcon icon={['far', 'paper-plane']} />
     </StyledConfirmation>
   );

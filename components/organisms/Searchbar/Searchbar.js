@@ -9,7 +9,7 @@ import { ErrorMessage } from '../../atoms/Input/Input.style';
 import { useRouter } from 'next/dist/client/router';
 
 const validationSchema = Yup.object().shape({
-  search: Yup.string().required('hey, tell me first what you are looking for!'),
+  search: Yup.string().required('Hej, najpierw powiedz, czego szukasz!'),
 });
 
 const SearchBar = () => {
@@ -48,14 +48,14 @@ const SearchBar = () => {
             <Input
               name="search"
               id="search"
-              label="Keywords"
+              label="Szukajka"
               onChange={handleChange}
               value={values.search}
               errorMessage={errorMessage(errors.search)}
               isRequired
             />
             <SearchButton disabled={isSubmitting} type="submit">
-              Search
+              Znajdź
             </SearchButton>
           </form>
         )}

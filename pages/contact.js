@@ -10,10 +10,10 @@ import { ContactWrapper } from '../components/organisms/ContactWrapper/ContactWr
 const Contact = () => {
   return (
     <>
-      <SectionTitle title="Stay in touch!" description="Hey, what you waiting for? Send me a message!" />
+      <SectionTitle title="Zostańmy w kontakcie!" description="Na co czekasz? Napiszże coś! :)" />
       <Description>
-        You can contact me using my social media profiles. And if prefere more traditional way - no problem! Fill contact form and press [Send]! I'll
-        read all messages and I'll do my best to answer ;)
+        Możesz napisać do mnie za pomocą socialmediów. Ale jeśli preferujesz bardziej tradycyjny sposób - to też nie problem. Wypełnij formularz
+        kontaktowy i kliknij [Wyślij!]. Czytam wszytkie wiadomości i na wszystkie staram się odpowiedzieć ;)
       </Description>
       <ContactContainer />
       <ContactWrapper>

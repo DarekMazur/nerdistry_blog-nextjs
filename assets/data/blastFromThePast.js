@@ -16,6 +16,14 @@ export const blasts = [
     image: '/blast/sw.jpg',
   },
   {
+    name: 'KW Kielce',
+    techStack: ['PHP', 'JavaScript', 'HTML5', 'CSS3'],
+    description: 'Strona Klubu Wspinaczkowego Kielce. Niestey klub się rozpadł i finalnie nigdy nie wyszła na produkcję :(',
+    created_at: '06.01.2019',
+    homepage: 'http://demo.dariusz-mazur.pl/',
+    image: '/blast/wkw.jpg',
+  },
+  {
     name: 'Lista płac',
     techStack: ['PHP', 'JavaScript', 'HTML5', 'CSS3'],
     description: 'Kalkulator listy płac (nieaktualne wylicznenia!)',

@@ -8,7 +8,7 @@ import { Wrapper } from './SloganWrapper.style';
 const SloganWrapper = () => {
   return (
     <Wrapper>
-      <Slogan>Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt.</Slogan>
+      <Slogan>Z notatnika młodego deva, czyli od juniora do zera. Czy tam na odwrót... ;)</Slogan>
       <HeroImageWrapper>
         <Image src={HeroImage} alt="" width={307} height={260} />
       </HeroImageWrapper>

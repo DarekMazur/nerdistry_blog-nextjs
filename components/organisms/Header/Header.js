@@ -9,7 +9,7 @@ const Header = () => {
     <>
       <Head>
         <title>Nerdistry. Tech site of life</title>
-        <meta name="description" content="" />
+        <meta name="description" content="Od zera do codera, czyli prosto o programowaniu i technologii." />
         <link rel="icon" href="/favicon.png" />
       </Head>
       <header>

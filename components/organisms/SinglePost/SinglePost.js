@@ -6,6 +6,20 @@ import Pagination from '../../molecules/Pagination/Pagination';
 import { useRouter } from 'next/router';
 import { SRLWrapper } from 'simple-react-lightbox';
 import Author from '../Author/Author';
+import {
+  EmailIcon,
+  EmailShareButton,
+  FacebookIcon,
+  FacebookMessengerIcon,
+  FacebookMessengerShareButton,
+  FacebookShareButton,
+  LinkedinIcon,
+  LinkedinShareButton,
+  RedditIcon,
+  RedditShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+} from 'next-share';
 
 const SinglePost = ({ title, pagination }) => {
   const { getPost, getIsSingle } = useContext(ContentContext);
@@ -14,6 +28,7 @@ const SinglePost = ({ title, pagination }) => {
   const [singlePostItem, setSinglePostItem] = useState({});
   const [isCopied, setIsCopied] = useState(false);
   const { singlePost } = useContext(ContentContext);
+  const link = `${process.env.NEXT_PUBLIC_URL}${router.asPath}`;
 
   useEffect(() => {
     getPost(title);
@@ -49,6 +64,25 @@ const SinglePost = ({ title, pagination }) => {
         {singlePostItem.length !== 0 ? (
           <SinglePostContent onClick={handleCopy} isCopied={isCopied}>
             <Markdown children={singlePostItem.Content} />
+            <FacebookShareButton url={link} quote={title}>
+              {console.log(process.env.NEXT_PUBLIC_URL)}
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            <TwitterShareButton url={link} title={title}>
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+            <RedditShareButton url={link} title={title}>
+              <RedditIcon size={32} round />
+            </RedditShareButton>
+            <LinkedinShareButton url={link}>
+              <LinkedinIcon size={32} round />
+            </LinkedinShareButton>
+            <FacebookMessengerShareButton url={link}>
+              <FacebookMessengerIcon size={32} round />
+            </FacebookMessengerShareButton>
+            <EmailShareButton url={link} subject={title}>
+              <EmailIcon size={32} round />
+            </EmailShareButton>
             <Pagination pagination={pagination} />
           </SinglePostContent>
         ) : null}

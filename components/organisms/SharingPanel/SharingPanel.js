@@ -34,7 +34,7 @@ const SharingPanel = ({ title }) => {
       <LinkedinShareButton url={link}>
         <LinkedinIcon size={32} round />
       </LinkedinShareButton>
-      <FacebookMessengerShareButton url={link}>
+      <FacebookMessengerShareButton url={link} appId={''}>
         <FacebookMessengerIcon size={32} round />
       </FacebookMessengerShareButton>
       <EmailShareButton url={link} subject={title}>

@@ -10,6 +10,13 @@ export const SinglePostContent = styled.div`
   margin: 0 auto 3.2rem;
   max-width: 102.4rem;
 
+  blockquote {
+    font-style: italic;
+    font-size: ${({ theme }) => theme.fontSize.s};
+    padding: 1rem 3rem;
+    border-left: ${({ theme }) => `${theme.colors.blue} 0.4rem solid`};
+  }
+
   code {
     background: ${({ theme }) => theme.colors.deepPurple};
     border: 1px solid #ddd;

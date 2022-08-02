@@ -70,6 +70,7 @@ export const SinglePostContent = styled.div`
   }
 
   img {
+    width: 90vw;
     max-width: 60rem;
     cursor: pointer;
   }
